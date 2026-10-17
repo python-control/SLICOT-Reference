@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     DK01MD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -6,7 +9,7 @@
       INTEGER          NMAX
       PARAMETER        ( NMAX = 20 )
 *     .. Local Scalars ..
-      CHARACTER*1      TYPE
+      CHARACTER(LEN=1)      TYPE
       INTEGER          I, INFO, N
 *     .. Local Arrays ..
       DOUBLE PRECISION A(NMAX)

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MA02GZ( N, A, LDA, K1, K2, IPIV, INCX )
 C
 C     PURPOSE
@@ -23,7 +26,7 @@ C             K = K1, ..., K2.
 C             On exit, the leading N-by-M part of this array contains
 C             the permuted matrix.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     K1      (input) INTEGER
@@ -63,7 +66,7 @@ C         CALL DTRSM( 'R', 'U', 'N', 'N', M, N, ONE, A, LDA, B, LDB )
 C         CALL DTRSM( 'R', 'L', 'N', 'U', M, N, ONE, A, LDA, B, LDB )
 C         CALL MA02GZ( M, B, LDB, 1, N, IPIV, -1 )
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     P. Gahinet, The MathWorks, Natick, U.S.A., Mar. 2011.
 C     Based on the SLICOT Library routine MA02GD.

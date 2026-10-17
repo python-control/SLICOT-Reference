@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB02UW( LTRANS, N, M, PAR, A, LDA, B, LDB, SCALE,
      $                   IWARN )
 C
@@ -15,7 +18,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     LTRANS  LOGICAL
+C     LTRANS  (input) LOGICAL
 C             Specifies if A or A-transpose is to be used, as follows:
 C             =.TRUE. :  A-transpose will be used;
 C             =.FALSE.:  A will be used (not transposed).
@@ -42,7 +45,7 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array must contain the
 C             matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= N.
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -51,7 +54,7 @@ C             contain the matrix B (right-hand side).
 C             On exit, the leading N-by-M part of this array contains
 C             the N-by-M matrix X (unknowns).
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= N.
 C
 C     SCALE   (output) DOUBLE PRECISION
@@ -62,7 +65,7 @@ C             SCALE will be at most 1.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warnings (A did not have to be perturbed);
 C             = 1:  A had to be perturbed to make its smallest (or only)
 C                   singular value greater than SMIN (see below).
@@ -89,7 +92,7 @@ C     Note: all input quantities are assumed to be smaller than overflow
 C     by a reasonable factor.  (See BIGNUM.)  In the interests of speed,
 C     this routine does not check the inputs for errors.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Aug. 2009.
 C     Based on the LAPACK Library routine DLALN2.

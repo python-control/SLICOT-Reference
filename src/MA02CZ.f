@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MA02CZ( N, KL, KU, A, LDA )
 C
 C     PURPOSE
@@ -33,10 +36,10 @@ C             where B is the matrix formed from the central band of A
 C             and P is a permutation matrix with ones down the secondary
 C             diagonal.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,N).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center,
 C     DLR Oberpfaffenhofen, March 1998.

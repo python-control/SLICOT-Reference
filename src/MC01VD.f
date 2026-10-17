@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MC01VD( A, B, C, Z1RE, Z1IM, Z2RE, Z2IM, INFO )
 C
 C     PURPOSE
@@ -19,18 +22,22 @@ C     C       (input) DOUBLE PRECISION
 C             The value of the coefficient of the constant term.
 C
 C     Z1RE    (output) DOUBLE PRECISION
+C             See Z1IM
+C
 C     Z1IM    (output) DOUBLE PRECISION
 C             The real and imaginary parts, respectively, of the largest
 C             root in magnitude.
 C
 C     Z2RE    (output) DOUBLE PRECISION
+C             See Z2IM
+C
 C     Z2IM    (output) DOUBLE PRECISION
 C             The real and imaginary parts, respectively, of the
 C             smallest root in magnitude.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             = 1:  if on entry, either A = B = 0.0 or A = 0.0 and the
 C                   root -C/B overflows; in this case Z1RE, Z1IM, Z2RE
@@ -72,7 +79,7 @@ C     NUMERICAL ASPECTS
 C
 C     The algorithm is numerically stable.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Mar. 1997.
 C     Supersedes Release 2.0 routine MC01JD by A.J. Geurts.

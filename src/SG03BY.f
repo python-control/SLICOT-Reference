@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SG03BY( XR, XI, YR, YI, CR, CI, SR, SI, Z )
 C
 C     PURPOSE
@@ -15,12 +18,23 @@ C     ARGUMENTS
 C
 C     Input/Output Parameters
 C
-C     XR, XI, (input) DOUBLE PRECISION
-C     YR, YI  (input) DOUBLE PRECISION
+C     XR      (input) DOUBLE PRECISION
+C
+C     XI      (input) DOUBLE PRECISION
+C
+C     YR      (input) DOUBLE PRECISION
+C
+C     YI      (input) DOUBLE PRECISION
 C             The given real scalars XR, XI, YR, YI.
 C
-C     CR, CI, (output) DOUBLE PRECISION
-C     SR, SI, (output) DOUBLE PRECISION
+C     CR      (output) DOUBLE PRECISION
+C
+C     CI      (output) DOUBLE PRECISION
+C
+C     SR      (output) DOUBLE PRECISION
+C
+C     SI      (output) DOUBLE PRECISION
+C
 C     Z       (output) DOUBLE PRECISION
 C             The computed real scalars CR, CI, SR, SI, Z, defining the
 C             complex Givens rotation and Z.
@@ -34,7 +48,7 @@ C
 C     In the interest of speed, this routine does not check the input
 C     for errors.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     T. Penzl, Technical University Chemnitz, Germany, Aug. 1998.
 C

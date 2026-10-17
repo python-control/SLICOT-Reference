@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     MB04TB/MB04WR EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -6,7 +9,7 @@
       INTEGER          NIN, NOUT
       PARAMETER        ( NIN = 5, NOUT = 6 )
       INTEGER          NBMAX, NMAX
-      PARAMETER        ( NBMAX = 64, NMAX = 421 )
+      PARAMETER        ( NBMAX = 64, NMAX = 30 )
       INTEGER          LDA, LDB, LDG, LDQ, LDRES, LDU1, LDU2, LDV1,
      $                 LDV2, LDWORK
       PARAMETER        ( LDA = NMAX, LDB = NMAX, LDG = NMAX, LDQ = NMAX,
@@ -14,7 +17,7 @@
      $                   LDV1 = NMAX, LDV2 = NMAX,
      $                   LDWORK = NBMAX*( 16*NMAX + 1 ) )
 *     .. Local Scalars ..
-      CHARACTER*1      TRANA, TRANB, TRANV1
+      CHARACTER(LEN=1)      TRANA, TRANB, TRANV1
       INTEGER          I, INFO, J, N
       DOUBLE PRECISION TEMP
 *     .. Local Arrays ..

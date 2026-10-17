@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB03QX( TRANA, UPLO, LYAPUN, N, XANORM, T, LDT, U, LDU,
      $                   R, LDR, FERR, IWORK, DWORK, LDWORK, INFO )
 C
@@ -17,19 +20,19 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TRANA   CHARACTER*1
+C     TRANA   (input) CHARACTER*1
 C             Specifies the form of op(A) to be used, as follows:
 C             = 'N':  op(A) = A    (No transpose);
 C             = 'T':  op(A) = A**T (Transpose);
 C             = 'C':  op(A) = A**T (Conjugate transpose = Transpose).
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which part of the symmetric matrix R is to be
 C             used, as follows:
 C             = 'U':  Upper triangular part;
 C             = 'L':  Lower triangular part.
 C
-C     LYAPUN  CHARACTER*1
+C     LYAPUN  (input) CHARACTER*1
 C             Specifies whether or not the original Lyapunov equations
 C             should be solved, as follows:
 C             = 'O':  Solve the original Lyapunov equations, updating
@@ -52,7 +55,7 @@ C             The leading N-by-N upper Hessenberg part of this array
 C             must contain the upper quasi-triangular matrix T in Schur
 C             canonical form from a Schur factorization of A.
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of array T.  LDT >= MAX(1,N).
 C
 C     U       (input) DOUBLE PRECISION array, dimension (LDU,N)
@@ -60,7 +63,7 @@ C             The leading N-by-N part of this array must contain the
 C             orthogonal matrix U from a real Schur factorization of A.
 C             If LYAPUN = 'R', the array U is not referenced.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of array U.
 C             LDU >= 1,        if LYAPUN = 'R';
 C             LDU >= MAX(1,N), if LYAPUN = 'O'.
@@ -78,7 +81,7 @@ C             On exit, the leading N-by-N part of this array contains
 C             the symmetric absolute residual matrix R (with bounds on
 C             rounding errors added), fully stored.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.  LDR >= MAX(1,N).
 C
 C     FERR    (output) DOUBLE PRECISION
@@ -91,16 +94,16 @@ C             calculations.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N*N)
+C     IWORK   (input/output) INTEGER array, dimension (N*N)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= 2*N*N.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -138,7 +141,7 @@ C     The routine can be also used as a final step in estimating a
 C     forward error bound for the solution of a continuous-time
 C     algebraic matrix Riccati equation.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Romania,
 C     Oct. 1998. Partly based on DGLSVX (and then SB03QD) by P. Petkov,

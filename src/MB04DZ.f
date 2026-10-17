@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04DZ( JOB, N, A, LDA, QG, LDQG, ILO, SCALE, INFO )
 C
 C     PURPOSE
@@ -27,7 +30,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the operations to be performed on H:
 C             = 'N':  none, set ILO = 1, SCALE(I) = 1.0, I = 1 .. N;
 C             = 'P':  permute only;
@@ -47,7 +50,7 @@ C             the matrix A of the balanced Hamiltonian. In particular,
 C             the strictly lower triangular part of the first ILO-1
 C             columns of A is zero.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     QG      (input/output) COMPLEX*16 array, dimension
@@ -61,7 +64,7 @@ C             G, respectively, of the balanced Hamiltonian. In
 C             particular, the lower triangular part of the first ILO-1
 C             columns of QG is zero.
 C
-C     LDQG    INTEGER
+C     LDQG    (input) INTEGER
 C             The leading dimension of the array QG.  LDQG >= MAX(1,N).
 C
 C     ILO     (output) INTEGER
@@ -81,7 +84,7 @@ C             column j.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -131,11 +134,6 @@ C     .. External Subroutines ..
       EXTERNAL          XERBLA, ZDRSCL, ZDSCAL, ZSWAP
 C     .. Intrinsic Functions ..
       INTRINSIC         ABS, DBLE, DIMAG, MAX, MIN
-C     .. Statement Functions ..
-      DOUBLE PRECISION  CABS1
-C     ..
-C     .. Statement Function definitions ..
-      CABS1( CDUM ) = ABS( DBLE( CDUM ) ) + ABS( DIMAG( CDUM ) )
 C
 C     .. Executable Statements ..
 C
@@ -443,5 +441,13 @@ C
          IF ( .NOT.CONV ) GO TO 140
       END IF
       RETURN
+      CONTAINS
+          FUNCTION CABS1(X)
+              COMPLEX*16 :: X
+              DOUBLE PRECISION :: CABS1
+              CABS1 = ABS( DBLE( X ) ) + ABS( DIMAG( X ) )
+              RETURN
+          END FUNCTION
+
 C *** Last line of MB04DZ ***
       END

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MA02ED( UPLO, N, A, LDA )
 C
 C     PURPOSE
@@ -9,7 +12,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which part of the matrix is given as follows:
 C             = 'U':  Upper triangular part;
 C             = 'L':  Lower triangular part.
@@ -28,10 +31,10 @@ C             lower triangle of the symmetric matrix A.
 C             On exit, the leading N-by-N part of this array contains
 C             the symmetric matrix A with all elements stored.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,N).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Romania,
 C     Oct. 1998.

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     IB03AD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -85,7 +88,7 @@
      $                    LDWORK = MAX( LW1, LW2, LW3, LW4 ) )
 *     .. Local Scalars ..
       LOGICAL           INIT1, INITB, INITL, INITN, INITS
-      CHARACTER*1       ALG, INIT, STOR
+      CHARACTER(LEN=1)       ALG, INIT, STOR
       INTEGER           BSN, I, INFO, INI, ITER, ITERCG, ITMAX1, ITMAX2,
      $                  IWARN, J, L, L1, L2, LPAR, LX, M, N, NN, NOBR,
      $                  NPRINT, NS, NSMP

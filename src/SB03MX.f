@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB03MX( TRANA, N, A, LDA, C, LDC, SCALE, DWORK, INFO )
 C
 C     PURPOSE
@@ -23,7 +26,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TRANA   CHARACTER*1
+C     TRANA   (input) CHARACTER*1
 C             Specifies the form of op(A) to be used, as follows:
 C             = 'N':  op(A) = A    (No transpose);
 C             = 'T':  op(A) = A**T (Transpose);
@@ -40,7 +43,7 @@ C             upper quasi-triangular matrix A, in Schur canonical form.
 C             The part of A below the first sub-diagonal is not
 C             referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -49,7 +52,7 @@ C             contain the symmetric matrix C.
 C             On exit, if INFO >= 0, the leading N-by-N part of this
 C             array contains the symmetric solution matrix X.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,N).
 C
 C     SCALE   (output) DOUBLE PRECISION
@@ -58,11 +61,11 @@ C             prevent the solution overflowing.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (2*N)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (2*N)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -91,7 +94,7 @@ C     NUMERICAL ASPECTS
 C                               3
 C     The algorithm requires 0(N ) operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, May 1997.
 C     Supersedes Release 2.0 routine SB03AZ by Control Systems Research

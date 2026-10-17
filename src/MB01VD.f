@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB01VD( TRANA, TRANB, MA, NA, MB, NB, ALPHA, BETA,
      $                   A, LDA, B, LDB, C, LDC, MC, NC, INFO )
 C
@@ -15,13 +18,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TRANA   CHARACTER*1
+C     TRANA   (input) CHARACTER*1
 C             Specifies the form of op(A) to be used as follows:
 C             = 'N':  op(A) = A;
 C             = 'T':  op(A) = A';
 C             = 'C':  op(A) = A'.
 C
-C     TRANB   CHARACTER*1
+C     TRANB   (input) CHARACTER*1
 C             Specifies the form of op(B) to be used as follows:
 C             = 'N':  op(B) = B;
 C             = 'T':  op(B) = B';
@@ -55,7 +58,7 @@ C             If TRANA = 'N', the leading MA-by-NA part of this array
 C             must contain the matrix A; otherwise, the leading NA-by-MA
 C             part of this array must contain the matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.
 C             LDA >= max(1,MA), if TRANA = 'N';
 C             LDA >= max(1,NA), if TRANA = 'T' or 'C'.
@@ -66,7 +69,7 @@ C             If TRANB = 'N', the leading MB-by-NB part of this array
 C             must contain the matrix B; otherwise, the leading NB-by-MB
 C             part of this array must contain the matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             LDB >= max(1,MB), if TRANB = 'N';
 C             LDB >= max(1,NB), if TRANB = 'T' or 'C'.
@@ -79,7 +82,7 @@ C             On exit, the leading MC-by-NC part of this array contains
 C             the computed matrix expression
 C             C = alpha*kron( op(A), op(B) ) + beta*C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.
 C             LDC >= max(1,MC).
 C
@@ -91,7 +94,7 @@ C             The number of columns of the matrix C.  NC = NA*NB.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -112,7 +115,7 @@ C     op(B) = B', it could be more efficient to transpose A and/or B
 C     before calling this routine, and use the 'N' values for TRANA
 C     and/or TRANB.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, February 2000.
 C

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB02QD( JOB, FACT, TRANA, UPLO, LYAPUN, N, A, LDA, T,
      $                   LDT, U, LDU, G, LDG, Q, LDQ, X, LDX, SEP,
      $                   RCOND, FERR, IWORK, DWORK, LDWORK, INFO )
@@ -18,14 +21,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the computation to be performed, as follows:
 C             = 'C':  Compute the reciprocal condition number only;
 C             = 'E':  Compute the error bound only;
 C             = 'B':  Compute both the reciprocal condition number and
 C                     the error bound.
 C
-C     FACT    CHARACTER*1
+C     FACT    (input) CHARACTER*1
 C             Specifies whether or not the real Schur factorization of
 C             the matrix Ac = A - G*X (if TRANA = 'N') or Ac = A - X*G
 C             (if TRANA = 'T' or 'C') is supplied on entry, as follows:
@@ -36,19 +39,19 @@ C             = 'N':  The Schur factorization of Ac will be computed
 C                     and the factors will be stored in T and U (if
 C                     LYAPUN = 'O').
 C
-C     TRANA   CHARACTER*1
+C     TRANA   (input) CHARACTER*1
 C             Specifies the form of op(A) to be used, as follows:
 C             = 'N':  op(A) = A    (No transpose);
 C             = 'T':  op(A) = A**T (Transpose);
 C             = 'C':  op(A) = A**T (Conjugate transpose = Transpose).
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which part of the symmetric matrices Q and G is
 C             to be used, as follows:
 C             = 'U':  Upper triangular part;
 C             = 'L':  Lower triangular part.
 C
-C     LYAPUN  CHARACTER*1
+C     LYAPUN  (input) CHARACTER*1
 C             Specifies whether or not the original Lyapunov equations
 C             should be solved in the iterative estimation process,
 C             as follows:
@@ -68,12 +71,12 @@ C             If FACT = 'N' or LYAPUN = 'O', the leading N-by-N part of
 C             this array must contain the matrix A.
 C             If FACT = 'F' and LYAPUN = 'R', A is not referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.
 C             LDA >= max(1,N), if FACT = 'N' or  LYAPUN = 'O';
 C             LDA >= 1,        if FACT = 'F' and LYAPUN = 'R'.
 C
-C     T       (input or output) DOUBLE PRECISION array, dimension
+C     T       (input/output) DOUBLE PRECISION array, dimension
 C             (LDT,N)
 C             If FACT = 'F', then T is an input argument and on entry,
 C             the leading N-by-N upper Hessenberg part of this array
@@ -86,10 +89,10 @@ C             Hessenberg part of this array contains the upper quasi-
 C             triangular matrix T in Schur canonical form from a Schur
 C             factorization of Ac (see argument FACT).
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of the array T.  LDT >= max(1,N).
 C
-C     U       (input or output) DOUBLE PRECISION array, dimension
+C     U       (input/output) DOUBLE PRECISION array, dimension
 C             (LDU,N)
 C             If LYAPUN = 'O' and FACT = 'F', then U is an input
 C             argument and on entry, the leading N-by-N part of this
@@ -101,7 +104,7 @@ C             contains the orthogonal N-by-N matrix from a real Schur
 C             factorization of Ac (see argument FACT).
 C             If LYAPUN = 'R', the array U is not referenced.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of the array U.
 C             LDU >= 1,        if LYAPUN = 'R';
 C             LDU >= MAX(1,N), if LYAPUN = 'O'.
@@ -117,7 +120,7 @@ C             Matrix G should correspond to G in the "reduced" Riccati
 C             equation (with matrix T, instead of A), if LYAPUN = 'R'.
 C             See METHOD.
 C
-C     LDG     INTEGER
+C     LDG     (input) INTEGER
 C             The leading dimension of the array G.  LDG >= max(1,N).
 C
 C     Q       (input) DOUBLE PRECISION array, dimension (LDQ,N)
@@ -131,7 +134,7 @@ C             Matrix Q should correspond to Q in the "reduced" Riccati
 C             equation (with matrix T, instead of A), if LYAPUN = 'R'.
 C             See METHOD.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.  LDQ >= max(1,N).
 C
 C     X       (input) DOUBLE PRECISION array, dimension (LDX,N)
@@ -141,7 +144,7 @@ C             equation (with matrix A), if LYAPUN = 'O', or of the
 C             "reduced" Riccati equation (with matrix T), if
 C             LYAPUN = 'R'. See METHOD.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of the array X.  LDX >= max(1,N).
 C
 C     SEP     (output) DOUBLE PRECISION
@@ -166,13 +169,13 @@ C             If JOB = 'C', FERR is not referenced.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N*N)
+C     IWORK   (input/output) INTEGER array, dimension (N*N)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0 or INFO = N+1, DWORK(1) returns the
 C             optimal value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             Let LWA = N*N, if LYAPUN = 'O' and JOB = 'E' or 'B';
 C                 LWA = 0,   otherwise.
@@ -192,7 +195,7 @@ C             is issued by XERBLA.
 C
 C     Error indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -272,7 +275,7 @@ C     When SEP is computed and it is zero, the routine returns
 C     immediately, with RCOND and FERR (if requested) set to 0 and 1,
 C     respectively. In this case, the equation is singular.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     P.Hr. Petkov, Technical University of Sofia, December 1998.
 C     V. Sima, Katholieke Univ. Leuven, Belgium, February 1999.

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04NY( M, N, V, INCV, TAU, A, LDA, B, LDB, DWORK )
 C
 C     PURPOSE
@@ -40,7 +43,7 @@ C             contain the matrix A.
 C             On exit, the leading M-by-1 part of this array contains
 C             the updated matrix A (the first column of C * H).
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,M).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,N)
@@ -49,12 +52,12 @@ C             contain the matrix B.
 C             On exit, the leading M-by-N part of this array contains
 C             the updated matrix B (the last n columns of C * H).
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,M).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (M)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (M)
 C             DWORK is not referenced if H has order less than 11.
 C
 C     METHOD
@@ -104,8 +107,19 @@ C
 C
 C     Form  C * H, where H has order n+1.
 C
-      GO TO ( 10, 30, 50, 70, 90, 110, 130, 150,
-     $        170, 190 ) N+1
+C      GO TO ( 10, 30, 50, 70, 90, 110, 130, 150,
+C     $        170, 190 ) N+1
+      IF ( N+1 .EQ. 1 ) GO TO 10
+      IF ( N+1 .EQ. 2 ) GO TO 30
+      IF ( N+1 .EQ. 3 ) GO TO 50
+      IF ( N+1 .EQ. 4 ) GO TO 70
+      IF ( N+1 .EQ. 5 ) GO TO 90
+      IF ( N+1 .EQ. 6 ) GO TO 110
+      IF ( N+1 .EQ. 7 ) GO TO 130
+      IF ( N+1 .EQ. 8 ) GO TO 150
+      IF ( N+1 .EQ. 9 ) GO TO 170
+      IF ( N+1 .EQ. 10 ) GO TO 190
+
 C
 C     Code for general N. Compute
 C

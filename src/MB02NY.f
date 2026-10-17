@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB02NY( UPDATU, UPDATV, M, N, I, K, Q, E, U, LDU, V,
      $                   LDV, DWORK )
 C
@@ -19,14 +22,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPDATU  LOGICAL
+C     UPDATU  (input) LOGICAL
 C             Indicates whether the user wishes to accumulate in a
 C             matrix U the left-hand Givens rotations S, as follows:
 C             = .FALSE.:  Do not form U;
 C             = .TRUE. :  The given matrix U is updated (postmultiplied)
 C                         by the left-hand Givens rotations S.
 C
-C     UPDATV  LOGICAL
+C     UPDATV  (input) LOGICAL
 C             Indicates whether the user wishes to accumulate in a
 C             matrix V the right-hand Givens rotations T, as follows:
 C             = .FALSE.:  Do not form V;
@@ -70,7 +73,7 @@ C             left, annihilating E(i) if i < k, have been postmultiplied
 C             into U.
 C             U is not referenced if UPDATU = .FALSE..
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of the array U.
 C             LDU >= max(1,M) if UPDATU = .TRUE.;
 C             LDU >= 1        if UPDATU = .FALSE..
@@ -83,14 +86,14 @@ C             right, annihilating E(i-1) if i > 1,  have been
 C             postmultiplied into V.
 C             V is not referenced if UPDATV = .FALSE..
 C
-C     LDV     INTEGER
+C     LDV     (input) INTEGER
 C             The leading dimension of the array V.
 C             LDV >= max(1,N) if UPDATV = .TRUE.;
 C             LDV >= 1        if UPDATV = .FALSE..
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (MAX(1,LDWORK))
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (MAX(1,LDWORK))
 C             LDWORK >= 2*MAX(K-I,I-1),  if UPDATV = UPDATU = .TRUE.;
 C             LDWORK >= 2*(K-I), if UPDATU = .TRUE., UPDATV = .FALSE.;
 C             LDWORK >= 2*(I-1), if UPDATV = .TRUE., UPDATU = .FALSE.;
@@ -141,7 +144,7 @@ C     NUMERICAL ASPECTS
 C
 C     The algorithm is backward stable.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, June 1997.
 C     Supersedes Release 2.0 routine MB02BZ by S. Van Huffel, Katholieke

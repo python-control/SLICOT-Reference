@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     MB4DPZ EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -9,7 +12,7 @@
       PARAMETER        ( LDA  = NMAX, LDC = NMAX, LDDE = NMAX,
      $                   LDVW = NMAX )
 *     .. Local Scalars ..
-      CHARACTER*1      JOB
+      CHARACTER(LEN=1)      JOB
       INTEGER          I, ILO, INFO, IWARN, J, N
       DOUBLE PRECISION THRESH
 *     .. Local Arrays ..

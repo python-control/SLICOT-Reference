@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB02SD( N, H, LDH, IPIV, INFO )
 C
 C     PURPOSE
@@ -19,7 +22,7 @@ C             On exit, the factors L and U from the factorization
 C             H = P*L*U; the unit diagonal elements of L are not stored,
 C             and L is lower bidiagonal.
 C
-C     LDH     INTEGER
+C     LDH     (input) INTEGER
 C             The leading dimension of the array H.  LDH >= max(1,N).
 C
 C     IPIV    (output) INTEGER array, dimension (N)
@@ -28,7 +31,7 @@ C             was interchanged with row IPIV(i).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -56,7 +59,7 @@ C     NUMERICAL ASPECTS
 C                                2
 C     The algorithm requires 0( N ) operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, June 1998.
 C

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     MD03BD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -11,7 +14,7 @@
      $                                  NMAX*NMAX + NMAX +
      $                                  MAX( MMAX, 5*NMAX ) ) )
 *     .. Local Scalars ..
-      CHARACTER*1       COND, SCALE, XINIT
+      CHARACTER(LEN=1)       COND, SCALE, XINIT
       INTEGER           I, INFO, ITMAX, IWARN, LDPAR1, LDPAR2, LIPAR, M,
      $                  N, NFEV, NJEV, NPRINT
       DOUBLE PRECISION  FACTOR, FTOL, GTOL, TOL, XTOL

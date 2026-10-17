@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03SD( JOBSCL, N, A, LDA, QG, LDQG, WR, WI, DWORK,
      $                   LDWORK, INFO )
 C
@@ -28,7 +31,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBSCL  CHARACTER*1
+C     JOBSCL  (input) CHARACTER*1
 C             Specifies whether or not balancing operations should
 C             be performed by the LAPACK subroutine DGEBAL on the
 C             Hessenberg matrix A'' in (2), as follows:
@@ -48,7 +51,7 @@ C             upper left block A' of the square-reduced Hamiltonian
 C             matrix H' in (1), as produced by SLICOT Library routine
 C             MB04ZD.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     QG      (input) DOUBLE PRECISION array, dimension (LDQG,N+1)
@@ -63,10 +66,12 @@ C             in (1), as produced by SLICOT Library routine MB04ZD.
 C             So, if i >= j, then Q'(i,j) is stored in QG(i,j) and
 C             G'(i,j) is stored in QG(j,i+1).
 C
-C     LDQG    INTEGER
+C     LDQG    (input) INTEGER
 C             The leading dimension of the array QG.  LDQG >= MAX(1,N).
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION array, dimension (N)
 C             The arrays WR and WI contain the real and imaginary parts,
 C             respectively, of the N eigenvalues of H' with non-negative
@@ -85,18 +90,18 @@ C             pairs.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             LDWORK >= MAX(1,N*(N+1)).
 C             For good performance, LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, then the i-th argument had an illegal
 C                   value;
@@ -142,7 +147,7 @@ C     are of roughly the same magnitude, the computed eigenvalue is
 C     essentially as accurate as the computed eigenvalue obtained by
 C     traditional methods. See [1] or [2].
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     P. Benner, Universitaet Bremen, Germany, and
 C     R. Byers, University of Kansas, Lawrence, USA.

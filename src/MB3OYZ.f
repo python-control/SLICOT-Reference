@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB3OYZ( M, N, A, LDA, RCOND, SVLMAX, RANK, SVAL, JPVT,
      $                   TAU, DWORK, ZWORK, INFO )
 C
@@ -40,7 +43,7 @@ C             of  RANK  elementary reflectors.
 C             The remaining  N-RANK  columns contain the result of the
 C             QR factorization process used.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,M).
 C
 C     RCOND   (input) DOUBLE PRECISION
@@ -93,13 +96,13 @@ C             factors of the elementary reflectors.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension ( 2*N )
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension ( 2*N )
 C
-C     ZWORK   COMPLEX*16 array, dimension ( 3*N-1 )
+C     ZWORK   (input/output) COMPLEX~*16 array, dimension ( 3*N-1 )
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -149,7 +152,7 @@ C     NUMERICAL ASPECTS
 C
 C     The algorithm is backward stable.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, Feb. 1998.
 C     Complex version: V. Sima, Research Institute for Informatics,

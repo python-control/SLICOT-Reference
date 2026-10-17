@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04YD( JOBU, JOBV, M, N, RANK, THETA, Q, E, U, LDU, V,
      $                   LDV, INUL, TOL, RELTOL, DWORK, LDWORK, IWARN,
      $                   INFO )
@@ -23,7 +26,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBU    CHARACTER*1
+C     JOBU    (input) CHARACTER*1
 C             Indicates whether the user wishes to accumulate in a
 C             matrix U the left-hand Givens rotations, as follows:
 C             = 'N':  Do not form U;
@@ -33,7 +36,7 @@ C                     are accumulated in U;
 C             = 'U':  The given matrix U is updated by the left-hand
 C                     Givens rotations used in the calculation.
 C
-C     JOBV    CHARACTER*1
+C     JOBV    (input) CHARACTER*1
 C             Indicates whether the user wishes to accumulate in a
 C             matrix V the right-hand Givens rotations, as follows:
 C             = 'N':  Do not form V;
@@ -108,7 +111,7 @@ C             If JOBU = 'N', the array U is not referenced and can be
 C             supplied as a dummy array (i.e. set parameter LDU = 1 and
 C             declare this array to be U(1,1) in the calling program).
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of array U. If JOBU = 'U' or
 C             JOBU = 'I', LDU >= MAX(1,M); if JOBU = 'N', LDU >= 1.
 C
@@ -126,7 +129,7 @@ C             If JOBV = 'N', the array V is not referenced and can be
 C             supplied as a dummy array (i.e. set parameter LDV = 1 and
 C             declare this array to be V(1,1) in the calling program).
 C
-C     LDV     INTEGER
+C     LDV     (input) INTEGER
 C             The leading dimension of array V. If JOBV = 'U' or
 C             JOBV = 'I', LDV >= MAX(1,N); if JOBV = 'N', LDV >= 1.
 C
@@ -144,7 +147,7 @@ C             singular values are all less than or equal to THETA.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             This parameter defines the multiplicity of singular values
 C             by considering all singular values within an interval of
 C             length TOL as coinciding. TOL is used in checking how many
@@ -159,7 +162,7 @@ C             EPS * MAX(ABS(Q(i)), ABS(E(k))), where EPS is the
 C             machine precision (see LAPACK Library routine DLAMCH),
 C             i = 1,2,...,MIN(M,N) and k = 1,2,...,MIN(M,N)-1.
 C
-C     RELTOL  DOUBLE PRECISION
+C     RELTOL  (input) DOUBLE PRECISION
 C             This parameter specifies the minimum relative width of an
 C             interval. When an interval is narrower than TOL, or than
 C             RELTOL times the larger (in magnitude) endpoint, then it
@@ -171,9 +174,9 @@ C             tolerance is taken as BASE * EPS.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1,6*MIN(M,N)-5), if JOBU = 'I' or 'U', or
 C                                               JOBV = 'I' or 'U';
@@ -182,7 +185,7 @@ C                                               JOBV = 'N'.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 1:  if the rank of the bidiagonal matrix J (as specified
 C                   by the user) has been lowered because a singular
@@ -190,7 +193,7 @@ C                   value of multiplicity larger than 1 was found.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value; this includes values like RANK > MIN(M,N), or
@@ -248,7 +251,7 @@ C     To avoid overflow, matrix J is scaled so that its largest element
 C     is no greater than  overflow**(1/2) * underflow**(1/4) in absolute
 C     value (and not much smaller than that, for maximal accuracy).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, June 1997.
 C     Supersedes Release 2.0 routine MB04QD by S. Van Huffel, Katholieke

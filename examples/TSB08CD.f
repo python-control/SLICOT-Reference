@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     SB08CD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -16,7 +19,7 @@
 *     .. Local Scalars ..
       DOUBLE PRECISION TOL
       INTEGER          I, INFO, IWARN, J, M, N, NQ, NR, P
-      CHARACTER*1      DICO
+      CHARACTER(LEN=1)      DICO
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), B(LDB,MPMAX), BR(LDBR,PMAX),
      $                 C(LDC,NMAX), D(LDD,MPMAX), DR(LDDR,PMAX),

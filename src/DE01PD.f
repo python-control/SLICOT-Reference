@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE DE01PD( CONV, WGHT, N, A, B, W, INFO )
 C
 C     PURPOSE
@@ -9,13 +12,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     CONV    CHARACTER*1
+C     CONV    (input) CHARACTER*1
 C             Indicates whether convolution or deconvolution is to be
 C             performed as follows:
 C             = 'C':  Convolution;
 C             = 'D':  Deconvolution.
 C
-C     WGHT    CHARACTER*1
+C     WGHT    (input) CHARACTER*1
 C             Indicates whether the precomputed weights are available
 C             or not, as follows:
 C             = 'A':  available;
@@ -49,7 +52,7 @@ C             On exit, this array contains the long weight vector.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -70,7 +73,7 @@ C     NUMERICAL ASPECTS
 C
 C     The algorithm requires O(N log(N)) floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, April 2001.
 C

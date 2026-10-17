@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TB01WD( N, M, P, A, LDA, B, LDB, C, LDC, U, LDU,
      $                   WR, WI, DWORK, LDWORK, INFO )
 C
@@ -36,7 +39,7 @@ C                             [  c  a  ]
 C                    where b*c < 0. The eigenvalues of such a block
 C                    are a +- sqrt(bc).
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -45,7 +48,7 @@ C             contain the input matrix B.
 C             On exit, the leading N-by-M part of this array contains
 C             the transformed input matrix U' * B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -54,7 +57,7 @@ C             contain the output matrix C.
 C             On exit, the leading P-by-N part of this array contains
 C             the transformed output matrix C * U.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     U       (output) DOUBLE PRECISION array, dimension (LDU,N)
@@ -63,10 +66,13 @@ C             orthogonal transformation matrix used to reduce A to the
 C             real Schur form. The columns of U are the Schur vectors of
 C             matrix A.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of array U.  LDU >= max(1,N).
 C
-C     WR, WI  (output) DOUBLE PRECISION arrays, dimension (N)
+C     WR      (output) DOUBLE PRECISION arrays, dimension (N)
+C             See WI
+C
+C     WI      (output) DOUBLE PRECISION arrays, dimension (N)
 C             WR and WI contain the real and imaginary parts,
 C             respectively, of the computed eigenvalues of A. The
 C             eigenvalues will be in the same order that they appear on
@@ -77,17 +83,17 @@ C             first.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
-C             The dimension of working array DWORK.  LWORK >= 3*N.
+C     LDWORK  (input) INTEGER
+C             The dimension of working array DWORK.  LDWORK >= 3*N.
 C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -107,7 +113,7 @@ C     NUMERICAL ASPECTS
 C                                     3
 C     The algorithm requires about 10N  floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center,
 C     DLR Oberpfaffenhofen, March 1998.

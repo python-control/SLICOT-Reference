@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     UD01MD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -9,7 +12,7 @@
       PARAMETER        ( LDA = MMAX )
 *     .. Local Scalars ..
       INTEGER          I, INFO, J, L, M, N
-      CHARACTER*72     TEXT
+      CHARACTER(LEN=72)     TEXT
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX)
 *     .. External Subroutines ..

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03RY( M, N, PMAX, A, LDA, B, LDB, C, LDC, INFO )
 C
 C     PURPOSE
@@ -31,7 +34,7 @@ C             The leading M-by-M part of this array must contain the
 C             matrix A of the Sylvester equation, in real Schur form.
 C             The elements below the real Schur form are not referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,M).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,N)
@@ -39,7 +42,7 @@ C             The leading N-by-N part of this array must contain the
 C             matrix B of the Sylvester equation, in real Schur form.
 C             The elements below the real Schur form are not referenced.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -55,12 +58,12 @@ C             had the infinity norm greater than PMAX. Part of the
 C             matrix C has possibly been overwritten with the
 C             corresponding part of X.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,M).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             = 1:  an elementary submatrix of X had the infinity norm
 C                   greater than the given value PMAX.
@@ -118,7 +121,7 @@ C     the reduction of M to a block-diagonal form. Bounding a norm of
 C     X is equivalent to setting an upper bound to the condition number
 C     of the transformation matrix Y.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, June 1998.
 C     Based on the RASP routine SYLSM by A. Varga, German Aerospace

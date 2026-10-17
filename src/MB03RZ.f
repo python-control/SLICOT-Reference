@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03RZ( JOBX, SORT, N, PMAX, A, LDA, X, LDX, NBLCKS,
      $                   BLSIZE, W, TOL, INFO )
 C     PURPOSE
@@ -14,14 +17,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBX    CHARACTER*1
+C     JOBX    (input) CHARACTER*1
 C             Specifies whether or not the transformations are
 C             accumulated, as follows:
 C             = 'N':  The transformations are not accumulated;
 C             = 'U':  The transformations are accumulated in X (the
 C                     given matrix X is updated).
 C
-C     SORT    CHARACTER*1
+C     SORT    (input) CHARACTER*1
 C             Specifies whether or not the diagonal elements of the
 C             Schur form are reordered, as follows:
 C             = 'N':  The diagonal elements are not reordered;
@@ -56,7 +59,7 @@ C             Schur form.
 C             The strictly lower triangular part is used as workspace,
 C             but it is set to zero before exit.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     X       (input/output) COMPLEX*16 array, dimension (LDX,*)
@@ -70,7 +73,7 @@ C             non-unitary similarity transformations having elements
 C             with magnitude less than or equal to PMAX.
 C             If JOBX = 'N', this array is not referenced.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of array X.
 C             LDX >= 1,        if JOBX = 'N';
 C             LDX >= MAX(1,N), if JOBX = 'U'.
@@ -87,7 +90,7 @@ C             This array contains the eigenvalues of the matrix A.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used in the ordering of the diagonal
 C             elements of the upper triangular matrix.
 C             If the user sets TOL > 0, then the given value of TOL is
@@ -113,7 +116,7 @@ C             If SORT = 'N' or 'C', this parameter is not referenced.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -220,7 +223,7 @@ C     well-conditioned enough. The routine can be easily modified to
 C     provide estimates for the condition numbers of the clusters of
 C     eigenvalues.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, June 2021.
 C

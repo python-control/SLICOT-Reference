@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE BD02AD( DEF, NR, DPAR, IPAR, VEC, N, M, P, E, LDE, A,
      1                   LDA, B, LDB, C, LDC, D, LDD, NOTE, DWORK,
      2                   LDWORK, INFO )
@@ -22,7 +25,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DEF     CHARACTER*1
+C     DEF     (input) CHARACTER(LEN=1)
 C             Specifies the kind of values used as parameters when
 C             generating parameter-dependent and scalable examples
 C             (i.e., examples with NR(1) = 2, 3, or 4):
@@ -93,28 +96,28 @@ C             matrix E.
 C             NOTE that this array is overwritten (by the identity
 C             matrix), if VEC(4) = .FALSE..
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.  LDE >= N.
 C
 C     A       (output) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N part of this array contains the
 C             matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= N.
 C
 C     B       (output) DOUBLE PRECISION array, dimension (LDB,M)
 C             The leading N-by-M part of this array contains the
 C             matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= N.
 C
 C     C       (output) DOUBLE PRECISION array, dimension (LDC,N)
 C             The leading P-by-N part of this array contains the
 C             matrix C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= P.
 C
 C     D       (output) DOUBLE PRECISION array, dimension (LDD,M)
@@ -123,25 +126,25 @@ C             matrix D.
 C             NOTE that this array is overwritten (by the zero
 C             matrix), if VEC(8) = .FALSE..
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of array D.  LDD >= P.
 C
-C     NOTE    (output) CHARACTER*70
+C     NOTE    (output) CHARACTER(LEN=70)
 C             String containing short information about the chosen
 C             example.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             NOTE that DWORK is not used in the current version
 C             of BD02AD.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             LDWORK >= 1.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value; in particular, INFO = -3 or -4 indicates
@@ -160,7 +163,7 @@ C     NUMERICAL ASPECTS
 C
 C     None
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, V. Mehrmann, and T. Penzl (TU Chemnitz)
 C
@@ -184,7 +187,7 @@ C     .. Parameters ..
      1                    THREE = 3.0D0, FOUR = 4.0D0 )
 C     .. Scalar Arguments ..
       CHARACTER         DEF
-      CHARACTER*70      NOTE
+      CHARACTER(LEN=70)      NOTE
       INTEGER           INFO, LDA, LDB, LDC, LDD, LDE, LDWORK, M, N, P
 C     .. Array Arguments ..
       LOGICAL           VEC(8)
@@ -192,7 +195,7 @@ C     .. Array Arguments ..
       DOUBLE PRECISION  A(LDA,*), B(LDB,*), C(LDC,*), D(LDD,*), DPAR(*),
      1                  DWORK(*), E(LDE,*)
 C     .. Local Scalars ..
-      CHARACTER*12      DATAF
+      CHARACTER(LEN=12)      DATAF
       INTEGER           I, J, STATUS
       DOUBLE PRECISION  TEMP
 C     .. Local Arrays ..

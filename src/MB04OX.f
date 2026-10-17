@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04OX( N, A, LDA, X, INCX )
 C
 C     PURPOSE
@@ -28,7 +31,7 @@ C            On exit, the leading N-by-N upper triangular part of this
 C            array contains the upper triangular matrix R.
 C            The strict lower triangle of A is not referenced.
 C
-C     LDA    INTEGER
+C     LDA    (input) INTEGER
 C            The leading dimension of the array A.  LDA >= max(1,N).
 C
 C     X      (input/output) DOUBLE PRECISION array, dimension
@@ -45,7 +48,7 @@ C     The matrix Q is formed as a sequence of plane rotations in planes
 C     (1, n+1), (2, n+1), ..., (n, n+1), the rotation in the (j, n+1)th
 C     plane, Q(j), being chosen to annihilate the jth element of x.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center,
 C     DLR Oberpfaffenhofen, July 1998.

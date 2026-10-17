@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     TG01ED EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -14,7 +17,7 @@
      $                            MAX( LMAX, NMAX ),
      $                            5*MIN( LMAX, NMAX ) ) ) )
 *     .. Local Scalars ..
-      CHARACTER*1      JOBA
+      CHARACTER(LEN=1)      JOBA
       INTEGER          I, INFO, J, L, M, N, P, RANKE, RNKA22
       DOUBLE PRECISION TOL
 *     .. Local Arrays ..

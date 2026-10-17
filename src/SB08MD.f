@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB08MD( ACONA, DA, A, RES, E, DWORK, LDWORK, INFO )
 C
 C     PURPOSE
@@ -24,7 +27,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     ACONA   CHARACTER*1
+C     ACONA   (input) CHARACTER*1
 C             Indicates whether the coefficients of A(s) or B(s) =
 C             A(-s) * A(s) are to be supplied as follows:
 C             = 'A':  The coefficients of A(s) are to be supplied;
@@ -55,14 +58,14 @@ C             powers of s.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= 5*DA+5.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -153,7 +156,7 @@ C     In order for the problem e(-s) * e(s) = B(s) to have a real
 C     solution e(s), it is necessary and sufficient that B(j*omega)
 C     >= 0 for any purely imaginary argument j*omega (see [1]).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Aug. 1997.
 C     Supersedes Release 2.0 routine SB08AD by A.J. Geurts.

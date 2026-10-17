@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     AB05PD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -13,7 +16,7 @@
      $                   LDC = PMAX, LDC1 = PMAX,  LDC2 = PMAX,
      $                   LDD = PMAX, LDD1 = PMAX,  LDD2 = PMAX )
 *     .. Local Scalars ..
-      CHARACTER*1      OVER
+      CHARACTER(LEN=1)      OVER
       INTEGER          I, INFO, J, M, N, N1, N2, P
       DOUBLE PRECISION ALPHA
 *     .. Local Arrays ..

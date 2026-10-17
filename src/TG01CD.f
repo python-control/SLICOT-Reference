@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TG01CD( COMPQ, L, N, M, A, LDA, E, LDE, B, LDB, Q, LDQ,
      $                   DWORK, LDWORK, INFO )
 C
@@ -15,7 +18,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COMPQ   CHARACTER*1
+C     COMPQ   (input) CHARACTER*1
 C             = 'N':  do not compute Q;
 C             = 'I':  Q is initialized to the unit matrix, and the
 C                     orthogonal matrix Q is returned;
@@ -39,7 +42,7 @@ C             contain the state dynamics matrix A.
 C             On exit, the leading L-by-N part of this array contains
 C             the transformed matrix Q'*A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,L).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -59,7 +62,7 @@ C
 C             where E11 is an MIN(L,N)-by-MIN(L,N) upper triangular
 C             matrix.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.  LDE >= MAX(1,L).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -68,7 +71,7 @@ C             contain the input/state matrix B.
 C             On exit, the leading L-by-M part of this array contains
 C             the transformed matrix Q'*B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.
 C             LDB >= MAX(1,L) if M > 0 or LDB >= 1 if M = 0.
 C
@@ -87,27 +90,27 @@ C                              on exit, the leading L-by-L part of this
 C                              array contains the orthogonal matrix
 C                              Q1*Q.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of array Q.
 C             LDQ >= 1,        if COMPQ = 'N';
 C             LDQ >= MAX(1,L), if COMPQ = 'U' or 'I'.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1, MIN(L,N) + MAX(L,N,M)).
 C             For optimum performance
-C             LWORK >= MAX(1, MIN(L,N) + MAX(L,N,M)*NB),
+C             LDWORK >= MAX(1, MIN(L,N) + MAX(L,N,M)*NB),
 C             where NB is the optimal blocksize.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -127,7 +130,7 @@ C
 C     The algorithm is numerically backward stable and requires
 C     0( L*L*N )  floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen.
 C     March 1999. Based on the RASP routine RPDSQR.

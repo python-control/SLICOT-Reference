@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE DG01OD( SCR, WGHT, N, A, W, INFO )
 C
 C     PURPOSE
@@ -9,14 +12,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     SCR     CHARACTER*1
+C     SCR     (input) CHARACTER*1
 C             Indicates whether the signal is scrambled on input or
 C             on output as follows:
 C             = 'N':  the signal is not scrambled at all;
 C             = 'I':  the input signal is bit-reversed;
 C             = 'O':  the output transform is bit-reversed.
 C
-C     WGHT    CHARACTER*1
+C     WGHT    (input) CHARACTER*1
 C             Indicates whether the precomputed weights are available
 C             or not, as follows:
 C             = 'A':  available;
@@ -50,7 +53,7 @@ C             On exit, this array contains the long weight vector.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -71,7 +74,7 @@ C
 C     The algorithm is backward stable and requires O(N log(N))
 C     floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, April 2001.
 C

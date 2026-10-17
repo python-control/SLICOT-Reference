@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     MB03ZD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -6,7 +9,7 @@
       INTEGER          NIN, NOUT
       PARAMETER        ( NIN = 5, NOUT = 6 )
       INTEGER          NMAX
-      PARAMETER        ( NMAX = 200 )
+      PARAMETER        ( NMAX = 100 )
       INTEGER          LDG, LDRES, LDS, LDT, LDU1, LDU2, LDUS, LDUU,
      $                 LDV1, LDV2, LDWORK
       PARAMETER        ( LDG = NMAX, LDRES = 2*NMAX, LDS = NMAX,
@@ -14,7 +17,7 @@
      $                   LDUS = 2*NMAX, LDUU = 2*NMAX, LDV1 = NMAX,
      $                   LDV2 = NMAX, LDWORK = 3*NMAX*NMAX + 7*NMAX )
 *     .. Local Scalars ..
-      CHARACTER*1      BALANC, METH, ORTBAL, STAB, WHICH
+      CHARACTER(LEN=1)      BALANC, METH, ORTBAL, STAB, WHICH
       INTEGER          I, ILO, INFO, J, M, N
 *     .. Local Arrays ..
       LOGICAL          LWORK(2*NMAX), SELECT(NMAX)
@@ -29,7 +32,7 @@
       LOGICAL          LSAME
       DOUBLE PRECISION DLANGE
 *     .. External Subroutines ..
-      EXTERNAL         MB03ZD
+      EXTERNAL         MB03ZD, DGEMM
 *     .. Executable Statements ..
       WRITE ( NOUT, FMT = 99999 )
 *     Skip the heading in the data file and read the data.

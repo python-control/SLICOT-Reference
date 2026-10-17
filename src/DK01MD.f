@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE DK01MD( TYPE, N, A, INFO )
 C
 C     PURPOSE
@@ -8,7 +11,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TYPE    CHARACTER*1
+C     TYPE    (input) CHARACTER*1
 C             Indicates the type of window to be applied to the signal
 C             as follows:
 C             = 'M':  Hamming window;
@@ -27,7 +30,7 @@ C             On exit, this array contains the windowing function.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -62,7 +65,7 @@ C     NUMERICAL ASPECTS
 C
 C     The algorithm requires 0( N ) operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Feb. 1997.
 C     Supersedes Release 2.0 routine DK01AD by R. Dekeyser, State

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MA01DD( AR1, AI1, AR2, AI2, EPS, SAFEMN, D )
 C
 C     PURPOSE
@@ -10,11 +13,15 @@ C
 C     Input/Output Parameters
 C
 C     AR1     (input) DOUBLE PRECISION
+C             See AI1
+C
 C     AI1     (input) DOUBLE PRECISION
 C             These scalars define the real and imaginary parts of the
 C             number A1.
 C
 C     AR2     (input) DOUBLE PRECISION
+C             See AI2
+C
 C     AI2     (input) DOUBLE PRECISION
 C             These scalars define the real and imaginary parts of the
 C             number A2.
@@ -40,7 +47,7 @@ C
 C     The chordal metric is finite even if A1 and A2 are both infinite,
 C     or if one of them is infinite and the other is finite, nonzero.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Mar. 2023.
 C

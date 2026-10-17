@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB01OT( UPLO, TRANS, N, ALPHA, BETA, R, LDR, E, LDE, T,
      $                   LDT )
 C
@@ -18,13 +21,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which triangle of the symmetric matrix R is
 C             given as follows:
 C             = 'U':  the upper triangular part is given;
 C             = 'L':  the lower triangular part is given.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of E to be used in the matrix
 C             multiplication as follows:
 C             = 'N':  R := alpha*R + beta*E*T' + beta*T*E';
@@ -58,7 +61,7 @@ C             UPLO = 'U'), or lower triangular part (if UPLO = 'L'), of
 C             this array contains the corresponding triangular part of
 C             the computed matrix R.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.  LDR >= MAX(1,N).
 C
 C     E       (input) DOUBLE PRECISION array, dimension (LDE,N)
@@ -66,7 +69,7 @@ C             On entry, the leading N-by-N upper triangular part of this
 C             array must contain the upper triangular matrix E.
 C             The remaining part of this array is not referenced.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.  LDE >= MAX(1,N).
 C
 C     T       (input) DOUBLE PRECISION array, dimension (LDT,N)
@@ -74,7 +77,7 @@ C             On entry, the leading N-by-N upper triangular part of this
 C             array must contain the upper triangular matrix T.
 C             The remaining part of this array is not referenced.
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of array T.  LDT >= MAX(1,N).
 C
 C     METHOD

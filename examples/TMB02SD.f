@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     MB02SD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -16,7 +19,7 @@
 *     .. Local Scalars ..
       DOUBLE PRECISION HNORM, RCOND
       INTEGER          I, INFO, INFO1, J, N, NRHS
-      CHARACTER*1      NORM, TRANS
+      CHARACTER(LEN=1)      NORM, TRANS
 *     .. Local Arrays ..
       DOUBLE PRECISION H(LDH,NMAX), B(LDB,NRHMAX), DWORK(LDWORK)
       INTEGER          IPIV(NMAX), IWORK(LIWORK)

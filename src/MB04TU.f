@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04TU( N, X, INCX, Y, INCY, C, S )
 C
 C     PURPOSE
@@ -13,11 +16,30 @@ C     REMARK. This routine is a modification of DROT from BLAS.
 C             This routine is called only by the SLICOT routines MB04TX
 C             and MB04VX.
 C
+C     Arguments
+C
+C     N       (input) INTEGER
+C
+C     X       (input/output) DOUBLE PRECISION array,
+C             dimension((N-1)*ABS(INCX)+1)
+C
+C     INCX    (input) INTEGER
+C
+C     Y       (input/output) DOUBLE PRECISION array,
+C             dimension((N-1)*ABS(INCX)+1)
+C
+C     INCY    (input) INTEGER
+C
+C     C       (input) DOUBLE PRECISION
+C
+C     S       (input) DOUBLE PRECISION
+C
+C
 C     NUMERICAL ASPECTS
 C
 C     The algorithm is backward stable.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Apr. 1997.
 C     Supersedes Release 2.0 routine MB04FU by Th.G.J. Beelen,

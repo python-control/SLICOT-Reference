@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     MB04ZD EXAMPLE PROGRAM TEXT.
 *
 *     .. Parameters ..
@@ -13,7 +16,7 @@
       PARAMETER        ( ZERO = 0.0D0, ONE = 1.0D0 )
 *     .. Local Scalars ..
       INTEGER          I, INFO, IJ, J, JI, N, POS, WPOS
-      CHARACTER*1      COMPU
+      CHARACTER(LEN=1)      COMPU
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), DWORK(LDWORK), QG(LDQG,NMAX+1),
      $                 U(LDU,NMAX)

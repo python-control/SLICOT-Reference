@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     TC01OD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -12,7 +15,7 @@
      $                   LDQCO1 = MAXMP, LDQCO2 = MAXMP )
 *     .. Local Scalars ..
       INTEGER          I, INDLIM, INFO, J, K, M, P, PORM
-      CHARACTER*1      LERI
+      CHARACTER(LEN=1)      LERI
       LOGICAL          LLERI
 *     .. Local Arrays ..
       DOUBLE PRECISION PCOEFF(LDPCO1,LDPCO2,INDMAX),

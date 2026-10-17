@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TB01LD( DICO, STDOM, JOBA, N, M, P, ALPHA, A, LDA, B,
      $                   LDB, C, LDC, NDIM, U, LDU, WR, WI, DWORK,
      $                   LDWORK, INFO )
@@ -15,12 +18,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies the type of the system as follows:
 C             = 'C':  continuous-time system;
 C             = 'D':  discrete-time system.
 C
-C     STDOM   CHARACTER*1
+C     STDOM   (input) CHARACTER*1
 C             Specifies whether the domain of interest is of stability
 C             type (left part of complex plane or inside of a circle)
 C             or of instability type (right part of complex plane or
@@ -28,7 +31,7 @@ C             outside of a circle) as follows:
 C             = 'S':  stability type domain;
 C             = 'U':  instability type domain.
 C
-C     JOBA    CHARACTER*1
+C     JOBA    (input) CHARACTER*1
 C             Specifies the shape of the state dynamics matrix on entry
 C             as follows:
 C             = 'S':  A is in an upper real Schur form;
@@ -74,7 +77,7 @@ C             For a discrete-time system (DICO = 'D'):
 C               Abs(lambda(A)) < ALPHA if STDOM = 'S';
 C               Abs(lambda(A)) > ALPHA if STDOM = 'U'.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -83,7 +86,7 @@ C             contain the input matrix B.
 C             On exit, the leading N-by-M part of this array contains
 C             the transformed input matrix U' * B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -92,7 +95,7 @@ C             contain the output matrix C.
 C             On exit, the leading P-by-N part of this array contains
 C             the transformed output matrix C * U.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     NDIM    (output) INTEGER
@@ -107,10 +110,13 @@ C             real Schur form of A. The first NDIM columns of U form
 C             an orthogonal basis for the invariant subspace of A
 C             corresponding to the first NDIM eigenvalues.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of array U.  LDU >= max(1,N).
 C
-C     WR, WI  (output) DOUBLE PRECISION arrays, dimension (N)
+C     WR      (output) DOUBLE PRECISION arrays, dimension (N)
+C             See WI
+C
+C     WI      (output) DOUBLE PRECISION arrays, dimension (N)
 C             WR and WI contain the real and imaginary parts,
 C             respectively, of the computed eigenvalues of A. The
 C             eigenvalues will be in the same order that they appear on
@@ -121,11 +127,11 @@ C             first.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of working array DWORK.
 C             LDWORK >= MAX(1,N)   if JOBA = 'S';
 C             LDWORK >= MAX(1,3*N) if JOBA = 'G'.
@@ -133,7 +139,7 @@ C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0: successful exit;
 C             < 0: if INFO = -i, the i-th argument had an illegal
 C                  value;
@@ -155,7 +161,7 @@ C     NUMERICAL ASPECTS
 C                                     3
 C     The algorithm requires about 14N  floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center,
 C     DLR Oberpfaffenhofen, March 1998.

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SG03BX( DICO, TRANS, A, LDA, E, LDE, B, LDB, U, LDU,
      $                   SCALE, M1, LDM1, M2, LDM2, INFO )
 C
@@ -26,10 +29,10 @@ C
 C     Furthermore, the auxiliary matrices
 C
 C                                   -1        -1
-C        M1 := op(U) * op(A) * op(E)   * op(U)
+C        op(M1) := op(U) * op(A) * op(E)   * op(U)
 C
 C                           -1        -1
-C        M2 := op(B) * op(E)   * op(U)
+C        op(M2) := op(B) * op(E)   * op(U)
 C
 C     are computed in a numerically reliable way.
 C
@@ -47,13 +50,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DICO    CHARACTER*1
+C     DICO    (input) CHARACTER*1
 C             Specifies whether the continuous-time or the discrete-time
 C             equation is to be solved:
 C             = 'C':  Solve continuous-time equation (1);
 C             = 'D':  Solve discrete-time equation (2).
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies whether the transposed equation is to be solved
 C             or not:
 C             = 'N':  op(K) = K,     K = A, B, E, U;
@@ -65,28 +68,28 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,2)
 C             The leading 2-by-2 part of this array must contain the
 C             matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= 2.
 C
 C     E       (input) DOUBLE PRECISION array, dimension (LDE,2)
 C             The leading 2-by-2 upper triangular part of this array
 C             must contain the matrix E.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.  LDE >= 2.
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,2)
 C             The leading 2-by-2 upper triangular part of this array
 C             must contain the matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= 2.
 C
 C     U       (output) DOUBLE PRECISION array, dimension (LDU,2)
 C             The leading 2-by-2 part of this array contains the upper
 C             triangular matrix U.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of the array U.  LDU >= 2.
 C
 C     SCALE   (output) DOUBLE PRECISION
@@ -97,19 +100,19 @@ C     M1      (output) DOUBLE PRECISION array, dimension (LDM1,2)
 C             The leading 2-by-2 part of this array contains the
 C             matrix M1.
 C
-C     LDM1    INTEGER
+C     LDM1    (input) INTEGER
 C             The leading dimension of the array M1.  LDM1 >= 2.
 C
 C     M2      (output) DOUBLE PRECISION array, dimension (LDM2,2)
 C             The leading 2-by-2 part of this array contains the
 C             matrix M2.
 C
-C     LDM2    INTEGER
+C     LDM2    (input) INTEGER
 C             The leading dimension of the array M2.  LDM2 >= 2.
 C
 C     Error indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             = 2:  the eigenvalues of the pencil A - lambda * E are not
 C                   a pair of complex conjugate numbers;
@@ -143,7 +146,7 @@ C
 C     If the solution matrix U is singular, the matrices M1 and M2 are
 C     properly set (see [1], equation (6.21)).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     T. Penzl, Technical University Chemnitz, Germany, Aug. 1998.
 C     V. Sima, substantial changes, Dec. 2021, Jan. 2022.
@@ -153,9 +156,11 @@ C
 C     Sep. 1998, Dec. 1998.
 C     July 2003 (V. Sima; suggested by Klaus Schnepper).
 C     Oct. 2003 (A. Varga).
+C     Feb. 2026 (M. Koehler; fix E normalization)
 C
 C     ******************************************************************
 C
+      IMPLICIT NONE
 C     .. Parameters ..
       DOUBLE PRECISION  ONE, TWO, ZERO, SAFETY
       PARAMETER         ( ONE = 1.0D+0, TWO = 2.0D+0, ZERO = 0.0D+0,
@@ -172,19 +177,20 @@ C     .. Local Scalars ..
       DOUBLE PRECISION  A11, A12, A21, A22, AI11, AI12, AI21, AI22,
      $                  ALPHA, AR11, AR12, AR21, AR22, B11, B12I, B12R,
      $                  BETAI, BETAR, BI11, BI12, BI21, BI22, BIGNUM,
-     $                  BR11, BR12, BR21, BR22, C, CL, CQ, CQB, CQBI,
+     $                  BR11, BR12, BR21, BR22, C, CQ, CQB, CQBI,
      $                  CQU, CQUI, CZ, E11, E12, E22, EI12, EI21, ER11,
      $                  ER12, ER22, EPS, LAMI, LAMR, LI, LR, M1I12,
      $                  M1R12, M2I12, M2R12, M2R22, M2S, MI, MR, MX, P,
-     $                  S, SCALE1, SCALE2, SI, SIQ, SIQB, SIQU, SIZ, SL,
+     $                  SCALE1, SCALE2, SI, SIQ, SIQB, SIQU, SIZ,
      $                  SMLNUM, SQTWO, SR, SRQ, SRQB, SRQU, SRZ, T, TMP,
      $                  UI12, UI22, UR11, UR12, UR22, V, VI12, VR12,
      $                  VR22, W, XR, XI, YR, YI
-      INTEGER           CT
-      LOGICAL           ISCONT, ISTRNS
+      LOGICAL           ISCONT, ISTRNS, NORMALIZED, URECOVER
 C     .. Local Arrays ..
       COMPLEX*16        M3(1), M3C(2,1)
       DOUBLE PRECISION  AS(2,2), D(2), DWORK(10), ES(2,2), ET(2), EV(2)
+      DOUBLE PRECISION  ALPHAR(2), ALPHAI(2), BETA(2)
+      DOUBLE PRECISION  QI(2,2), ZI(2,2), QB(2)
       INTEGER           IWORK(7)
 C     .. External Functions ..
       DOUBLE PRECISION  DLAMCH, DLAPY2, DLAPY3
@@ -192,7 +198,7 @@ C     .. External Functions ..
       EXTERNAL          DLAMCH, DLAPY2, DLAPY3, LSAME
 C     .. External Subroutines ..
       EXTERNAL          DLABAD, DLADIV, DLAG2, DLASV2, SG03BR, ZLARFG,
-     $                  ZSTEIN
+     $                  ZSTEIN, DLAGV2, DLARTGP, DROTG, DROT
 C     .. Intrinsic Functions ..
       INTRINSIC         ABS, DBLE, DCMPLX, DIMAG, MAX, MIN, SQRT
 C
@@ -252,6 +258,38 @@ C
          BR11    = BR22
          BR22    = V
       END IF
+
+C     If ES(1,2) .NE. 0 we have to normalize the pencil
+C
+      NORMALIZED = .FALSE.
+      IF ( ES(1,2) .NE. ZERO) THEN
+        CALL DLAGV2(AS, 2, ES, 2, ALPHAR, ALPHAI, BETA,
+     $          QI(1,1), QI(1,2), ZI(1,1), ZI(2,1) )
+        QI(2,1) = -QI(1,2)
+        QI(2,2) =  QI(1,1)
+        ZI(1,2) = -ZI(2,1)
+        ZI(2,2) =  ZI(1,1)
+        IF (ALPHAI(1) .EQ. ZERO ) THEN
+            INFO = 2
+            RETURN
+        END IF
+
+        BI11 = BR11
+        BI12 = BR12
+        BI22 = BR22
+
+        BR11 = BI11 * ZI(1,1) + BI12*ZI(2,1)
+        BR12 = BI11 * ZI(1,2) + BI12*ZI(2,2)
+        BR21 = BI22*ZI(2,1)
+        BR22 = BI22*ZI(2,2)
+
+        CALL DLARTGP(BR11, BR21, QB(1), QB(2), TMP)
+        BR11 = TMP
+        BR21 = ZERO
+        CALL DROT(1, BR12, 1, BR22, 1, QB(1), QB(2))
+        NORMALIZED = .TRUE.
+      END IF
+
 C
 C     Perform QZ-step to transform the pencil A - lambda * E to complex
 C     generalized Schur form. The main diagonal of the Schur factor of E
@@ -259,9 +297,6 @@ C     is real and positive.
 C
 C     Compute eigenvalues (LAMR + LAMI * I, LAMR - LAMI * I).
 C
-      CT = 0
-   10 CONTINUE
-      CT = CT + 1
       P  = MAX( EPS*MAX( ABS( ES(1,1) ), ABS( ES(1,2) ),
      $                   ABS( ES(2,2) ) ), SMLNUM )
       IF ( MIN( ABS( ES(1,1) ), ABS( ES(2,2) ) ).LT.P ) THEN
@@ -273,65 +308,6 @@ C
       IF ( LAMI.LE.ZERO ) THEN
          INFO = 2
          RETURN
-      END IF
-C
-      IF ( ES(1,2).NE.ZERO ) THEN
-C
-C        Standardize, that is, rotate so that ES is diagonal with
-C        ES(1,1) non-negative.
-C
-         CALL DLASV2( ES(1,1), ES(1,2), ES(2,2), E22, E11, SR, C, SL,
-     $                CL )
-C
-         IF ( E11.LT.ZERO ) THEN
-            C   = -C
-            SR  = -SR
-            E11 = -E11
-            E22 = -E22
-         END IF
-C
-C        Update A using the left and right rotations.
-C
-         S = CL*AS(1,1) + SL*AS(2,1)
-         T = CL*AS(1,2) + SL*AS(2,2)
-         V = CL*AS(2,1) - SL*AS(1,1)
-         W = CL*AS(2,2) - SL*AS(1,2)
-C
-         AS(1,1) = S*C + T*SR
-         AS(2,1) = V*C + W*SR
-         AS(1,2) = T*C - S*SR
-         AS(2,1) = W*C - V*SR
-C
-         ES(1,1) = E11
-         ES(2,1) = ZERO
-         ES(1,2) = ZERO
-C
-C        If E22 is negative, negate the second columns.
-C
-         IF ( E22.LT.ZERO ) THEN
-            ES(2,2) = -E22
-            AS(1,2) = -AS(1,2)
-            AS(2,2) = -AS(2,2)
-         ELSE
-            ES(2,2) =  E22
-         END IF
-C
-C        Recompute the shift.
-C
-         CALL DLAG2( AS, 2, ES, 2, SMLNUM*EPS*SAFETY, SCALE1, SCALE2,
-     $               LAMR, W, LAMI )
-C
-C        If standardization has perturbed the shift onto real line,
-C        do another (real single-shift) QR step.
-C
-         IF ( LAMI.EQ.ZERO ) THEN
-            IF ( CT.EQ.1 ) THEN
-               GO TO 10
-            ELSE
-               INFO = 2
-               RETURN
-            END IF
-         END IF
       END IF
 C
 C     Compute left unitary transformation matrix Q.
@@ -799,6 +775,28 @@ C
       END IF
 C
       U(2,2) = DLAPY2( U(2,2), UI22 )
+
+      URECOVER = .FALSE.
+      IF ( NORMALIZED ) THEN
+C         Use ZI as temporary location, not needed any longer
+          ZI(1,1) = U(1,1)
+          ZI(1,2) = U(1,2)
+          ZI(2,1) = U(2,1)
+          ZI(2,2) = U(2,2)
+
+          U(1,1) = ZI(1,1) * QI(1,1) + ZI(1,2) * QI(2,1)
+          U(1,2) = ZI(1,1) * QI(1,2) + ZI(1,2) * QI(2,2)
+          U(2,1) = ZI(2,1) * QI(1,1) + ZI(2,2) * QI(2,1)
+          U(2,2) = ZI(2,1) * QI(1,2) + ZI(2,2) * QI(2,2)
+
+          IF (U(2,1).NE.ZERO) THEN
+            URECOVER = .TRUE.
+            CALL DLARTGP(U(1,1), U(2,1), BETA(1), BETA(2), TMP)
+            U(1,1) = TMP
+            U(2,1) = ZERO
+            CALL DROT(1, U(1,2), 1, U(2,2), 1, BETA(1), BETA(2))
+          END IF
+      END IF
 C
 C     Transform the matrices M1 and M2 back.
 C
@@ -824,6 +822,21 @@ C
       M2(2,1) = ZERO
       M2(1,2) =  CQB*V + CQBI*W - M2R22*( SRQB*CQU - SIQB*CQUI )
       M2(2,2) = SRQB*V + SIQB*W + M2R22*(  CQB*CQU - CQBI*CQUI )
+
+C     Apply the second Upper triangularization of U
+      IF (URECOVER) THEN
+C           Make M1 correct
+            CALL DROT(2, M1(1,1), 2, M1(2,1), 2, BETA(1), BETA(2))
+            CALL DROT(2, M1(1,1), 1, M1(1,2), 1, BETA(1), BETA(2))
+      END IF
+      IF (NORMALIZED) THEN
+C           Make M2 correct, undo the intermediate multiplication with QB
+          CALL DROT(2, M2(1,1), 2, M2(2,1), 2, QB(1), -QB(2))
+          IF ( URECOVER ) THEN
+            CALL DROT(2, M2(1,1), 1, M2(1,2), 1, BETA(1), BETA(2))
+          END IF
+      END IF
+
 C
 C     If the transposed equation (op(K)=K**T, K=A,B,E,U) is to be
 C     solved, transpose the matrix U with respect to the

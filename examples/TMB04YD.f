@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     MB04YD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -16,7 +19,7 @@
 *     .. Local Scalars ..
       DOUBLE PRECISION RELTOL, THETA, TOL
       INTEGER          I, INFO, IWARN, J, M, MINMN, N, RANK, RANK1
-      CHARACTER*1      JOBU, JOBV
+      CHARACTER(LEN=1)      JOBU, JOBV
       LOGICAL          LJOBUU, LJOBVU
 *     .. Local Arrays ..
       DOUBLE PRECISION DWORK(LDWORK), E(MNMIN-1), Q(MNMIN),

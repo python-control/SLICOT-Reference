@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04XY( JOBU, JOBV, M, N, X, LDX, TAUP, TAUQ, U,
      $                   LDU, V, LDV, INUL, INFO )
 C
@@ -15,7 +18,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBU    CHARACTER*1
+C     JOBU    (input) CHARACTER*1
 C             Specifies whether to transform the columns in U as
 C             follows:
 C             = 'N':  Do not transform the columns in U;
@@ -23,7 +26,7 @@ C             = 'A':  Transform the columns in U (U has M columns);
 C             = 'S':  Transform the columns in U (U has min(M,N)
 C                     columns).
 C
-C     JOBV    CHARACTER*1
+C     JOBV    (input) CHARACTER*1
 C             Specifies whether to transform the columns in V as
 C             follows:
 C             = 'N':  Do not transform the columns in V;
@@ -46,7 +49,7 @@ C             in the rows of its upper triangle the Householder
 C             transformations Qj in factored form.
 C             X is modified by the routine but restored on exit.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of the array X.   LDX >= MAX(1,M).
 C
 C     TAUP    (input) DOUBLE PRECISION array, dimension (MIN(M,N))
@@ -63,7 +66,7 @@ C             applied to each column i of U corresponding to a parameter
 C             INUL(i) = .TRUE.
 C             NOTE that U is not referenced if JOBU = 'N'.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of the array U.
 C             LDU >= MAX(1,M), if JOBU = 'A' or JOBU = 'S';
 C             LDU >= 1,        if JOBU = 'N'.
@@ -76,7 +79,7 @@ C             applied to each column i of V corresponding to a parameter
 C             INUL(i) = .TRUE.
 C             NOTE that V is not referenced if JOBV = 'N'.
 C
-C     LDV     INTEGER
+C     LDV     (input) INTEGER
 C             The leading dimension of the array V.
 C             LDV >= MAX(1,M), if JOBV = 'A' or JOBV = 'S';
 C             LDV >= 1,        if JOBV = 'N'.
@@ -88,7 +91,7 @@ C             (1 <= i <= MAX(M,N)).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -102,7 +105,7 @@ C     NUMERICAL ASPECTS
 C
 C     The algorithm is backward stable.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, June 1997.
 C     Supersedes Release 2.0 routine MB04PZ by S. Van Huffel, Katholieke

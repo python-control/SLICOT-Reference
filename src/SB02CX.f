@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       LOGICAL FUNCTION SB02CX( REIG, IEIG )
 C
 C     PURPOSE
@@ -28,7 +31,7 @@ C     NUMERICAL ASPECTS
 C
 C     None.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     P. Hr. Petkov, Technical University of Sofia, May, 1999.
 C

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MC03NX( MP, NP, DP, P, LDP1, LDP2, A, LDA, E, LDE )
 C
 C     PURPOSE
@@ -40,10 +43,10 @@ C             The leading MP-by-NP-by-(DP+1) part of this array must
 C             contain the coefficients of the polynomial matrix P(s)
 C             in (1) in increasing powers of s.
 C
-C     LDP1    INTEGER
+C     LDP1    (input) INTEGER
 C             The leading dimension of array P.  LDP1 >= MAX(1,MP).
 C
-C     LDP2    INTEGER
+C     LDP2    (input) INTEGER
 C             The second dimension of array P.   LDP2 >= MAX(1,NP).
 C
 C     A       (output) DOUBLE PRECISION array, dimension
@@ -51,7 +54,7 @@ C             (LDA,(DP-1)*MP+NP)
 C             The leading DP*MP-by-((DP-1)*MP+NP) part of this array
 C             contains the matrix A as described in (2).
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,DP*MP).
 C
 C     E       (output) DOUBLE PRECISION array, dimension
@@ -59,14 +62,14 @@ C             (LDE,(DP-1)*MP+NP)
 C             The leading DP*MP-by-((DP-1)*MP+NP) part of this array
 C             contains the matrix E as described in (2).
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.  LDE >= MAX(1,DP*MP).
 C
 C     NUMERICAL ASPECTS
 C
 C     None.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Mar. 1997.
 C     Supersedes Release 2.0 routine MC03BX by G.J.H.H. van den Hurk.

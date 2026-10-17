@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       INTEGER FUNCTION MA01CD( A, IA, B, IB )
 C
 C     PURPOSE
@@ -35,7 +38,7 @@ C     IB      (input)  INTEGER
 C             Exponent of the base for the first real scalar. The scalar
 C             is represented as B * BASE**(IB).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Romania,
 C     Feb. 2010.

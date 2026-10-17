@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB01TD( N, A, LDA, B, LDB, DWORK, INFO )
 C
 C     PURPOSE
@@ -19,7 +22,7 @@ C             The leading N-by-N part of this array must contain the
 C             upper quasi-triangular matrix A. The elements below the
 C             subdiagonal are not referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,N)
@@ -31,16 +34,16 @@ C             the computed product A * B, with the same structure as
 C             on entry.
 C             The elements below the subdiagonal are not referenced.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= max(1,N).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (N-1)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (N-1)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -57,7 +60,7 @@ C
 C     This routine can be used, for instance, for computing powers of
 C     a real Schur form matrix.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, June 1998.
 C

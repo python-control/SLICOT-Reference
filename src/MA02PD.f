@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MA02PD( M, N, A, LDA, NZR, NZC )
 C
 C     PURPOSE
@@ -19,7 +22,7 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading M-by-N part of this array must contain the
 C             matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,M).
 C
 C     NZR     (output) INTEGER

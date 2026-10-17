@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03AD( SHFT, K, N, AMAP, S, SINV, A, LDA1, LDA2, C1,
      $                   S1, C2, S2 )
 C
@@ -21,7 +24,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     SHFT    CHARACTER*1
+C     SHFT    (input) CHARACTER*1
 C             Specifies the number of shifts employed by the shift
 C             polynomial, as follows:
 C             = 'D':  two shifts (assumes N > 2);
@@ -54,10 +57,10 @@ C             The leading N-by-N-by-K part of this array must contain
 C             the product (implicitly represented by its K factors)
 C             in periodic upper Hessenberg form.
 C
-C     LDA1    INTEGER
+C     LDA1    (input) INTEGER
 C             The first leading dimension of the array A.  LDA1 >= N.
 C
-C     LDA2    INTEGER
+C     LDA2    (input) INTEGER
 C             The second leading dimension of the array A.  LDA2 >= N.
 C
 C     C1      (output)  DOUBLE PRECISION
@@ -75,7 +78,7 @@ C     METHOD
 C
 C     Two Givens rotations are properly computed and applied.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, June 2001.
 C

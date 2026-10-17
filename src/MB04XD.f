@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04XD( JOBU, JOBV, M, N, RANK, THETA, A, LDA, U, LDU,
      $                   V, LDV, Q, INUL, TOL, RELTOL, DWORK, LDWORK,
      $                   IWARN, INFO )
@@ -11,7 +14,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBU    CHARACTER*1
+C     JOBU    (input) CHARACTER(LEN=1)
 C             Specifies whether to compute the left singular subspace
 C             as follows:
 C             = 'N':  Do not compute the left singular subspace;
@@ -20,7 +23,7 @@ C                     left singular subspace in U;
 C             = 'S':  Return the first (min(M,N) - RANK) base vectors
 C                     of the desired left singular subspace in U.
 C
-C     JOBV    CHARACTER*1
+C     JOBV    (input) CHARACTER(LEN=1)
 C             Specifies whether to compute the right singular subspace
 C             as follows:
 C             = 'N':  Do not compute the right singular subspace;
@@ -70,7 +73,7 @@ C             matrix A from which the basis of a desired singular
 C             subspace is to be computed.
 C             NOTE that this array is destroyed.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= max(1,M).
 C
 C     U       (output) DOUBLE PRECISION array, dimension (LDU,*)
@@ -93,7 +96,7 @@ C             be supplied as a dummy array (i.e. set parameter LDU = 1
 C             and declare this array to be U(1,1) in the calling
 C             program).
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of array U.
 C             LDU >= max(1,M) if JOBU = 'A' or JOBU = 'S',
 C             LDU >= 1        if JOBU = 'N'.
@@ -118,7 +121,7 @@ C             be supplied as a dummy array (i.e. set parameter LDV = 1
 C             and declare this array to be V(1,1) in the calling
 C             program).
 C
-C     LDV     INTEGER
+C     LDV     (input) INTEGER
 C             The leading dimension of array V.
 C             LDV >= max(1,N) if JOBV = 'A' or JOBV = 'S',
 C             LDV >= 1        if JOBV = 'N'.
@@ -143,7 +146,7 @@ C             to the computed singular subspaces.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             This parameter defines the multiplicity of singular values
 C             by considering all singular values within an interval of
 C             length TOL as coinciding. TOL is used in checking how many
@@ -156,7 +159,7 @@ C             QR/QL iterations. If the user sets TOL to be less than or
 C             equal to 0, then the tolerance is taken as specified in
 C             SLICOT Library routine MB04YD document.
 C
-C     RELTOL  DOUBLE PRECISION
+C     RELTOL  (input) DOUBLE PRECISION
 C             This parameter specifies the minimum relative width of an
 C             interval. When an interval is narrower than TOL, or than
 C             RELTOL times the larger (in magnitude) endpoint, then it
@@ -168,11 +171,11 @@ C             tolerance is taken as BASE * EPS.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK = max(1, LDW + max(2*P + max(M,N), LDY)), where
 C                  P = min(M,N);
@@ -191,7 +194,7 @@ C             is issued by XERBLA.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 1:  if the rank of matrix A (as specified by the user)
 C                   has been lowered because a singular value of
@@ -199,7 +202,7 @@ C                   multiplicity greater than 1 was found.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -310,7 +313,7 @@ C     gained in total least squares applications (cf [2 - 4]), in the
 C     computation of the null space of a matrix and in solving
 C     (non)homogeneous linear equations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, June 1997.
 C     Supersedes Release 2.0 routine MB04PD by S. Van Huffel, Katholieke
@@ -338,7 +341,7 @@ C     .. Array Arguments ..
       LOGICAL           INUL(*)
       DOUBLE PRECISION  A(LDA,*), DWORK(*), Q(*), U(LDU,*), V(LDV,*)
 C     .. Local Scalars ..
-      CHARACTER*1       JOBUY, JOBVY
+      CHARACTER(LEN=1)       JOBUY, JOBVY
       LOGICAL           ALL, LJOBUA, LJOBUS, LJOBVA, LJOBVS, LQUERY, QR,
      $                  WANTU, WANTV
       INTEGER           I, IHOUSH, IJ, ITAU, ITAUP, ITAUQ, J, JU, JV,

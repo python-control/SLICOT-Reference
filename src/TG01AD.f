@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TG01AD( JOB, L, N, M, P, THRESH, A, LDA, E, LDE,
      $                   B, LDB, C, LDC, LSCALE, RSCALE, DWORK, INFO )
 C
@@ -33,7 +36,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Indicates which matrices are involved in balancing, as
 C             follows:
 C             = 'A':  All matrices are involved in balancing;
@@ -66,7 +69,7 @@ C             contain the state dynamics matrix A.
 C             On exit, the leading L-by-N part of this array contains
 C             the balanced matrix Dl*A*Dr.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,L).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -75,7 +78,7 @@ C             contain the descriptor matrix E.
 C             On exit, the leading L-by-N part of this array contains
 C             the balanced matrix Dl*E*Dr.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.  LDE >= MAX(1,L).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -85,7 +88,7 @@ C             On exit, if M > 0, the leading L-by-M part of this array
 C             contains the balanced matrix Dl*B.
 C             The array B is not referenced if M = 0.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.
 C             LDB >= MAX(1,L) if M > 0 or LDB >= 1 if M = 0.
 C
@@ -96,7 +99,7 @@ C             On exit, if P > 0, the leading P-by-N part of this array
 C             contains the balanced matrix C*Dr.
 C             The array C is not referenced if P = 0.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     LSCALE  (output) DOUBLE PRECISION array, dimension (L)
@@ -111,11 +114,11 @@ C             SCALE(j) = Dr(j), for j = 1,...,N.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (3*(L+N))
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (3*(L+N))
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit.
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -149,7 +152,7 @@ C     NUMERICAL ASPECTS
 C
 C     None.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen.
 C     March 1999. Based on the LAPACK routine DGGBAL.

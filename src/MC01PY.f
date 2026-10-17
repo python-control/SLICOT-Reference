@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MC01PY( K, REZ, IMZ, P, DWORK, INFO )
 C
 C     PURPOSE
@@ -15,6 +18,8 @@ C             The number of zeros (and hence the degree) of P(x).
 C             K >= 0.
 C
 C     REZ     (input) DOUBLE PRECISION array, dimension (K)
+C             See IMZ
+C
 C     IMZ     (input) DOUBLE PRECISION array, dimension (K)
 C             The real and imaginary parts of the i-th zero of P(x)
 C             must be stored in REZ(i) and IMZ(i), respectively, where
@@ -28,12 +33,12 @@ C             powers of x.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (K)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (K)
 C             If K = 0, this array is not referenced.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -57,7 +62,7 @@ C     NUMERICAL ASPECTS
 C
 C     None.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, May 2002.
 C

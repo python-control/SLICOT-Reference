@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB05OY( JOB, N, LOW, IGH, A, LDA, SCALE, INFO )
 C
 C     PURPOSE
@@ -10,7 +13,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the type of backward transformation required,
 C             as follows:
 C             = 'N', do nothing, return immediately;
@@ -27,6 +30,8 @@ C     N       (input) INTEGER
 C             The order of the matrix A.  N >= 0.
 C
 C     LOW     (input) INTEGER
+C             See IGH
+C
 C     IGH     (input) INTEGER
 C             The integers LOW and IGH determined by DGEBAL.
 C             1 <= LOW <= IGH <= N, if N > 0; LOW=1 and IGH=0, if N=0.
@@ -37,7 +42,7 @@ C             contain the matrix to be back-transformed.
 C             On exit, the leading N-by-N part of this array contains
 C             the transformed matrix.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,N).
 C
 C     SCALE   (input) DOUBLE PRECISION array, dimension (N)
@@ -46,7 +51,7 @@ C             returned by DGEBAL.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

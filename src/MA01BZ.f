@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MA01BZ( BASE, K, S, A, INCA, ALPHA, BETA, SCAL )
 C
 C     PURPOSE
@@ -39,7 +42,7 @@ C
 C     SCAL    (output)  INTEGER
 C             Scaling factor exponent, see ALPHA.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, Dec. 2002.
 C

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     MB05OD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -14,7 +17,7 @@
 *     .. Local Scalars ..
       DOUBLE PRECISION DELTA
       INTEGER          I, IDIG, INFO, IWARN, J, MDIG, N
-      CHARACTER*1      BALANC
+      CHARACTER(LEN=1)      BALANC
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), DWORK(LDWORK)
       INTEGER          IWORK(NMAX)

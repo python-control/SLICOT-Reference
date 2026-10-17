@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     TB05AD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -18,7 +21,7 @@
       COMPLEX*16       FREQ
       DOUBLE PRECISION RCOND
       INTEGER          I, INFO, J, M, N, P
-      CHARACTER*1      BALEIG, INITA
+      CHARACTER(LEN=1)      BALEIG, INITA
       LOGICAL          LBALBA, LBALEA, LBALEB, LBALEC, LINITA
 *     .. Local Arrays ..
       COMPLEX*16       G(LDG,MMAX), HINVB(LDHINV,MMAX), ZWORK(LZWORK)

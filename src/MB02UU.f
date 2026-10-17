@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB02UU( N, A, LDA, RHS, IPIV, JPIV, SCALE )
 C
 C     PURPOSE
@@ -20,7 +23,7 @@ C             The leading N-by-N part of this array must contain
 C             the LU part of the factorization of the matrix A computed
 C             by SLICOT Library routine MB02UV:  A = P * L * U * Q.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1, N).
 C
 C     RHS     (input/output) DOUBLE PRECISION array, dimension (N)
@@ -46,7 +49,7 @@ C     In the interest of speed, this routine does not check the input
 C     for errors. It should only be used if the order of the matrix A
 C     is very small.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Bo Kagstrom and P. Poromaa, Univ. of Umea, Sweden, Nov. 1993.
 C

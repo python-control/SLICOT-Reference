@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     SB03SD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -18,7 +21,7 @@
 *     .. Local Scalars ..
       DOUBLE PRECISION FERR, RCOND, SCALE, SEPD
       INTEGER          I, INFO1, INFO2, J, N
-      CHARACTER*1      DICO, FACT, JOB, LYAPUN, TRANA, TRANAT, UPLO
+      CHARACTER(LEN=1)      DICO, FACT, JOB, LYAPUN, TRANA, TRANAT, UPLO
 *     .. Local Arrays ..
       INTEGER          IWORK(LIWORK)
       DOUBLE PRECISION A(LDA,NMAX), C(LDC,NMAX), DWORK(LDWORK),

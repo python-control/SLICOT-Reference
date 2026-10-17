@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MC01XD( ALPHA, BETA, GAMMA, DELTA, EVR, EVI, EVQ,
      $                   DWORK, LDWORK, INFO )
 C
@@ -12,13 +15,23 @@ C
 C     Input/Output Parameters
 C
 C     ALPHA   (input) DOUBLE PRECISION
+C             The coefficients of the polynomial P.
+C
 C     BETA    (input) DOUBLE PRECISION
+C             The coefficients of the polynomial P.
+C
 C     GAMMA   (input) DOUBLE PRECISION
+C             The coefficients of the polynomial P.
+C
 C     DELTA   (input) DOUBLE PRECISION
 C             The coefficients of the polynomial P.
 C
 C     EVR     (output) DOUBLE PRECISION array, DIMENSION at least 3
+C             See EVR
+C
 C     EVI     (output) DOUBLE PRECISION array, DIMENSION at least 3
+C             See EVI
+C
 C     EVQ     (output) DOUBLE PRECISION array, DIMENSION at least 3
 C             On output, the kth root of P will be equal to
 C             (EVR(K) + i*EVI(K))/EVQ(K) if EVQ(K) .NE. ZERO. Note that
@@ -28,11 +41,11 @@ C             EVQ(K) >= 0.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, DIMENSION (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, DIMENSION (LDWORK)
 C             On exit, if LDWORK = -1 on input, then DWORK(1) returns
 C             the optimal value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.  LDWORK >= 42.
 C
 C             If LDWORK = -1, an optimal workspace query is assumed; the
@@ -42,7 +55,7 @@ C             array, and no error message is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;

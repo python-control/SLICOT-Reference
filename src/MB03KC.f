@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03KC( K, KHESS, N, R, S, A, LDA, V, TAU )
 C
 C     PURPOSE
@@ -62,7 +65,7 @@ C             dimension LDA.
 C             On exit, this array contains at position IXA(k) the
 C             N-by-N matrix Te_k stored with leading dimension LDA.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             Leading dimension of the matrices Ae_k and Te_k in the
 C             one-dimensional array A.  LDA >= N.
 C
@@ -86,7 +89,7 @@ C     NUMERICAL ASPECTS
 C
 C     The implemented method is numerically backward stable.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Romania,
 C     Mar. 2010, an essentially new version of the PEP routine

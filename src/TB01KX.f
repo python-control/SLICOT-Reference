@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TB01KX( N, M, P, NDIM, A, LDA, B, LDB, C, LDC, U, LDU,
      $                   V, LDV, INFO )
 C
@@ -40,7 +43,7 @@ C             blocks in real Schur form, with the elements below the
 C             first subdiagonal set to zero. The leading block has
 C             dimension NDIM-by-NDIM.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -49,7 +52,7 @@ C             contain the input matrix B.
 C             On exit, the leading N-by-M part of this array contains
 C             the transformed input matrix inv(U) * B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -58,7 +61,7 @@ C             contain the output matrix C.
 C             On exit, the leading P-by-N part of this array contains
 C             the transformed output matrix C * U.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1,P).
 C
 C     U       (input/output) DOUBLE PRECISION array, dimension (LDU,N)
@@ -72,7 +75,7 @@ C             of its leading diagonal block. The last N-NDIM columns of
 C             U span the reducing subspace of A corresponding to the
 C             eigenvalues of the trailing diagonal block of A.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of the array U.  LDU >= max(1,N).
 C
 C     V       (output) DOUBLE PRECISION array, dimension (LDV,N)
@@ -80,12 +83,12 @@ C             The leading N-by-N part of this array contains the
 C             inverse of the transformation matrix U used to reduce A
 C             to the block-diagonal form.
 C
-C     LDV     INTEGER
+C     LDV     (input) INTEGER
 C             The leading dimension of the array V.  LDV >= max(1,N).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0: successful exit;
 C             < 0: if INFO = -i, the i-th argument had an illegal value;
 C             = 1: the separation of the two diagonal blocks failed
@@ -111,7 +114,7 @@ C                                   3
 C     The algorithm requires about N /2 + NDIM*(N-NDIM)*(2*N+M+P)
 C     floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center,
 C     DLR Oberpfaffenhofen, March 1998.

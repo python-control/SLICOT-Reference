@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     MB03TD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -11,7 +14,7 @@
       PARAMETER        ( LDA  = NMAX, LDG  = NMAX, LDRES  = NMAX,
      $                   LDU1 = NMAX, LDU2 = NMAX, LDWORK = 8*NMAX )
 *     .. Local Scalars ..
-      CHARACTER*1      COMPU, TYP
+      CHARACTER(LEN=1)      COMPU, TYP
       INTEGER          I, INFO, J, N, M
 *     .. Local Arrays ..
       LOGICAL          LOWER(NMAX), SELECT(NMAX)

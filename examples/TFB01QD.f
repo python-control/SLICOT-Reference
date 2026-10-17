@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     FB01QD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -15,7 +18,7 @@
 *     .. Local Scalars ..
       DOUBLE PRECISION TOL
       INTEGER          I, INFO, ISTEP, J, M, N, P
-      CHARACTER*1      JOBK, MULTBQ
+      CHARACTER(LEN=1)      JOBK, MULTBQ
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), B(LDB,MMAX), C(LDC,NMAX),
      $                 DIAG(PMAX), DWORK(LDWORK), K(LDK,PMAX),

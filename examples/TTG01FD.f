@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     TG01FD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -12,7 +15,7 @@
       PARAMETER        ( LDWORK = MAX( 1, PMAX,
      $                   MIN(LMAX,NMAX)+MAX( 3*NMAX, MMAX, LMAX ) ) )
 *     .. Local Scalars ..
-      CHARACTER*1      COMPQ, COMPZ, JOBA
+      CHARACTER(LEN=1)      COMPQ, COMPZ, JOBA
       INTEGER          I, INFO, J, L, M, N, P, RANKE, RNKA22
       DOUBLE PRECISION TOL
 *     .. Local Arrays ..

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE DG01MD( INDI, N, XR, XI, INFO )
 C
 C     PURPOSE
@@ -9,7 +12,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     INDI    CHARACTER*1
+C     INDI    (input) CHARACTER*1
 C             Indicates whether a Fourier transform or inverse Fourier
 C             transform is to be performed as follows:
 C             = 'D':  (Direct) Fourier transform;
@@ -36,7 +39,7 @@ C             f(z) if INDI = 'D', or z if INDI = 'I'.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -79,7 +82,7 @@ C     NUMERICAL ASPECTS
 C
 C     The algorithm requires 0( N*log(N) ) operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Feb. 1997.
 C     Supersedes Release 2.0 routine DG01AD by R. Dekeyser, State

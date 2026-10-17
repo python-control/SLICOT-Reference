@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SG03AY( TRANS, N, A, LDA, E, LDE, X, LDX, SCALE, INFO )
 C
 C     PURPOSE
@@ -23,7 +26,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies whether the transposed equation is to be solved
 C             or not:
 C             = 'N':  Solve equation (1);
@@ -38,14 +41,14 @@ C     A       (input) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading N-by-N upper Hessenberg part of this array
 C             must contain the quasitriangular matrix A.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     E       (input) DOUBLE PRECISION array, dimension (LDE,N)
 C             The leading N-by-N upper triangular part of this array
 C             must contain the matrix E.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.  LDE >= MAX(1,N).
 C
 C     X       (input/output) DOUBLE PRECISION array, dimension (LDX,N)
@@ -55,7 +58,7 @@ C             the upper triangular part of this matrix need be given.
 C             On exit, the leading N-by-N part of this array contains
 C             the solution matrix X of the equation.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of the array X.  LDX >= MAX(1,N).
 C
 C     SCALE   (output) DOUBLE PRECISION
@@ -64,7 +67,7 @@ C             (0 < SCALE <= 1)
 C
 C     Error indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -100,7 +103,7 @@ C     by Gauss elimination with complete pivoting. The loss of stability
 C     of the Gauss elimination with complete pivoting is rarely
 C     encountered in practice.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     T. Penzl, Technical University Chemnitz, Germany, Aug. 1998.
 C

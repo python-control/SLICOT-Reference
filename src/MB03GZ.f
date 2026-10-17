@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03GZ( Z11, Z12, Z22, H11, H12, CO1, SI1, CO2, SI2 )
 C
 C     PURPOSE
@@ -71,7 +74,7 @@ C     NUMERICAL ASPECTS
 C
 C     The algorithm is numerically backward stable.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Matthias Voigt, Fakultaet fuer Mathematik, Technische Universitaet
 C     Chemnitz, April 21, 2009.

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     AB08NZ EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -27,7 +30,7 @@
       DOUBLE PRECISION TOL
       INTEGER          DINFZ, I, INFO, J, M, N, NINFZ, NKROL, NKROR,
      $                 NU, P, RANK
-      CHARACTER*1      EQUIL
+      CHARACTER(LEN=1)      EQUIL
 *     .. Local Arrays ..
       COMPLEX*16       A(LDA,NMAX), AF(LDAF,NMAX+PMAX), ALPHA(NMAX),
      $                 B(LDB,MMAX), BETA(NMAX), BF(LDBF,MMAX+NMAX),

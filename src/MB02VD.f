@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB02VD( TRANS, M, N, A, LDA, IPIV, B, LDB, INFO )
 C
 C     PURPOSE
@@ -14,7 +17,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of op(A) to be used as follows:
 C             = 'N':  op(A) = A;
 C             = 'T':  op(A) = A';
@@ -36,7 +39,7 @@ C             On exit, the leading N-by-N part of this array contains
 C             the factors L and U from the factorization A = P*L*U;
 C             the unit diagonal elements of L are not stored.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     IPIV    (output) INTEGER array, dimension (N)
@@ -76,7 +79,7 @@ C     This routine enables to solve the system X * A = B or X * A' = B
 C     as easily and efficiently as possible; it is similar to the LAPACK
 C     Library routine DGESV, which solves A * X = B.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Mar. 2000.
 C

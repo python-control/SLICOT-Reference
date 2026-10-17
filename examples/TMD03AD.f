@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     MD03AD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -12,7 +15,7 @@
       INTEGER           LDPAR1, LDPAR2, LIPAR
       PARAMETER         ( LDPAR1 = 1, LDPAR2 = 1, LIPAR = 5 )
 *     .. Local Scalars ..
-      CHARACTER*1       ALG, STOR, UPLO, XINIT
+      CHARACTER(LEN=1)       ALG, STOR, UPLO, XINIT
       INTEGER           I, INFO, ITMAX, IWARN, M, N, NFEV, NJEV, NPRINT
       DOUBLE PRECISION  CGTOL, TOL
 *     .. Array Arguments ..

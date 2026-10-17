@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE UD01DD( M, N, NIN, A, LDA, INFO )
 C
 C     PURPOSE
@@ -22,12 +25,12 @@ C     A       (output) DOUBLE PRECISION array, dimension (LDA,N)
 C             The leading M-by-N part of this array contains the sparse
 C             matrix A. The not assigned elements are set to zero.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,M).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -51,7 +54,7 @@ C     NUMERICAL ASPECTS
 C
 C     None.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, June 1998.
 C     Based on routine RDSPAR by A.J. Geurts, Eindhoven University of

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB05MD( BALANC, N, DELTA, A, LDA, V, LDV, Y, LDY, VALR,
      $                   VALI, IWORK, DWORK, LDWORK, INFO )
 C
@@ -16,7 +19,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     BALANC  CHARACTER*1
+C     BALANC  (input) CHARACTER*1
 C             Indicates how the input matrix should be diagonally scaled
 C             to improve the conditioning of its eigenvalues as follows:
 C             = 'N':  Do not diagonally scale;
@@ -39,7 +42,7 @@ C             contain the matrix A of the problem.
 C             On exit, the leading N-by-N part of this array contains
 C             the solution matrix exp(A*delta).
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= max(1,N).
 C
 C     V       (output) DOUBLE PRECISION array, dimension (LDV,N)
@@ -60,7 +63,7 @@ C             (negative) imaginary value is given by
 C                                       2
 C             p + q*j (p - q*j), where j  = -1.
 C
-C     LDV     INTEGER
+C     LDV     (input) INTEGER
 C             The leading dimension of array V.  LDV >= max(1,N).
 C
 C     Y       (output) DOUBLE PRECISION array, dimension (LDY,N)
@@ -74,10 +77,12 @@ C             product exp(Lambda*delta) times the inverse of the (right)
 C             eigenvector matrix of A, where Lambda is the diagonal
 C             matrix of eigenvalues.
 C
-C     LDY     INTEGER
+C     LDY     (input) INTEGER
 C             The leading dimension of array Y.  LDY >= max(1,N).
 C
 C     VALR    (output) DOUBLE PRECISION array, dimension (N)
+C             See VALI
+C
 C     VALI    (output) DOUBLE PRECISION array, dimension (N)
 C             These arrays contain the real and imaginary parts,
 C             respectively, of the eigenvalues of the matrix A. The
@@ -87,21 +92,21 @@ C             having positive imaginary part first.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N)
+C     IWORK   (input/output) INTEGER array, dimension (N)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK, and if N > 0, DWORK(2) returns the reciprocal
 C             condition number of the triangular matrix used to obtain
 C             the inverse of the eigenvector matrix.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= max(1,4*N).
 C             For good performance, LDWORK must generally be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -143,7 +148,7 @@ C     NUMERICAL ASPECTS
 C                               3
 C     The algorithm requires 0(N ) operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Apr. 1997.
 C     Supersedes Release 2.0 routine MB05AD by M.J. Denham, Kingston

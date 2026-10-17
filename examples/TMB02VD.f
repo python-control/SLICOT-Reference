@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     MB02VD EXAMPLE PROGRAM TEXT
 *
       INTEGER          NIN, NOUT
@@ -8,7 +11,7 @@
       PARAMETER        ( LDA = NMAX, LDB = MMAX )
 *     .. Local Scalars ..
       INTEGER          I, INFO, J, M, N
-      CHARACTER*1      TRANS
+      CHARACTER(LEN=1)      TRANS
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), B(LDB,NMAX)
       INTEGER          IPIV(NMAX)

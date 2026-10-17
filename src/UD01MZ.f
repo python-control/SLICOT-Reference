@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE UD01MZ( M, N, L, NOUT, A, LDA, TEXT, INFO )
 C
 C     PURPOSE
@@ -27,7 +30,7 @@ C     A       (input) COMPLEX*16 array, dimension (LDA,N)
 C             The leading M-by-N part of this array must contain the
 C             matrix to be printed.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= M.
 C
 C     TEXT    (input) CHARACTER*72.
@@ -36,7 +39,7 @@ C             maximum of 72 characters). For example, TEXT = 'Matrix A'.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -66,7 +69,7 @@ C     NUMERICAL ASPECTS
 C
 C     None.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Oct. 1997.
 C     Complex version: V. Sima, Research Institute for Informatics,

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE IB01CD( JOBX0, COMUSE, JOB, N, M, L, NSMP, A, LDA, B,
      $                   LDB, C, LDC, D, LDD, U, LDU, Y, LDY, X0, V,
      $                   LDV, TOL, IWORK, DWORK, LDWORK, IWARN, INFO )
@@ -23,14 +26,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBX0   CHARACTER*1
+C     JOBX0   (input) CHARACTER*1
 C             Specifies whether or not the initial state should be
 C             computed, as follows:
 C             = 'X':  compute the initial state x(0);
 C             = 'N':  do not compute the initial state (possibly,
 C                     because x(0) is known to be zero).
 C
-C     COMUSE  CHARACTER*1
+C     COMUSE  (input) CHARACTER*1
 C             Specifies whether the system matrices B and D should be
 C             computed or used, as follows:
 C             = 'C':  compute the system matrices B and D, as specified
@@ -43,7 +46,7 @@ C             to zero.
 C             If  JOBX0 = 'N'  and  COMUSE =  'N',  then  x(0)  is
 C             neither computed nor set to zero.
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             If  COMUSE = 'C'  or  'U',  specifies which of the system
 C             matrices  B and D  should be computed or used, as follows:
 C             = 'B':  compute/use the matrix B only (D is known to be
@@ -103,12 +106,12 @@ C             part of this array must contain the system state matrix A.
 C             If  N = 0,  or  JOBX0 = 'N'  and  COMUSE <> 'C',  this
 C             array is not referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.
 C             LDA >= MAX(1,N),  if  JOBX0 = 'X'  or   COMUSE =  'C';
 C             LDA >= 1,         if  JOBX0 = 'N'  and  COMUSE <> 'C'.
 C
-C     B       (input or output) DOUBLE PRECISION array, dimension
+C     B       (input/output) DOUBLE PRECISION array, dimension
 C             (LDB,M)
 C             If  JOBX0 = 'X'  and  COMUSE = 'U',  B  is an input
 C             parameter and, on entry, the leading N-by-M part of this
@@ -119,7 +122,7 @@ C             contains the estimated system input matrix  B.
 C             If  min(N,M) = 0,  or  JOBX0 = 'N'  and  COMUSE = 'U',
 C             or  COMUSE = 'N',  this array is not referenced.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             LDB >= MAX(1,N),  if  M > 0,  COMUSE = 'U',  JOBX0 = 'X',
 C                               or  M > 0,  COMUSE = 'C';
@@ -133,13 +136,12 @@ C             matrix  C.
 C             If  N = 0,  or  JOBX0 = 'N'  and  COMUSE <> 'C',  this
 C             array is not referenced.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.
 C             LDC >= L,  if  N > 0, and  JOBX0 = 'X'  or  COMUSE = 'C';
 C             LDC >= 1,  if  N = 0, or  JOBX0 = 'N'  and  COMUSE <> 'C'.
 C
-C     D       (input or output) DOUBLE PRECISION array, dimension
-C             (LDD,M)
+C     D       (input/output) DOUBLE PRECISION array, dimension (LDD,M)
 C             If  JOBX0 = 'X',  COMUSE = 'U',  and  JOB = 'D',  D  is an
 C             input parameter and, on entry, the leading L-by-M part of
 C             this array must contain the system input-output matrix  D.
@@ -151,7 +153,7 @@ C             If  M = 0,  or  JOBX0 = 'N'  and  COMUSE = 'U',  or
 C             COMUSE = 'N',  or  JOB = 'B',  this array is not
 C             referenced.
 C
-C     LDD     INTEGER
+C     LDD     (input) INTEGER
 C             The leading dimension of the array D.
 C             LDD >= L,  if  M > 0,   JOBX0 = 'X',  COMUSE = 'U',  and
 C                                                   JOB = 'D',  or
@@ -159,8 +161,7 @@ C                        if  M > 0,  COMUSE = 'C',  and  JOB = 'D';
 C             LDD >= 1,  if  M = 0,  or  JOBX0 = 'N'  and  COMUSE = 'U',
 C                        or  COMUSE = 'N',  or  JOB = 'B'.
 C
-C     U       (input or input/output) DOUBLE PRECISION array, dimension
-C             (LDU,M)
+C     U       (input/output) DOUBLE PRECISION array, dimension (LDU,M)
 C             On entry, if  COMUSE = 'C',  or  JOBX0 = 'X'  and
 C             COMUSE = 'U',  the leading NSMP-by-M part of this array
 C             must contain the t-by-m input-data sequence matrix  U,
@@ -176,7 +177,7 @@ C             array is unchanged on exit.
 C             If  M = 0,  or  JOBX0 = 'N'  and  COMUSE = 'U',  or
 C             COMUSE = 'N',  this array is not referenced.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of the array U.
 C             LDU >= MAX(1,NSMP),  if  M > 0    and  COMUSE = 'C'  or
 C                                  JOBX0 = 'X'  and  COMUSE = 'U;
@@ -192,7 +193,7 @@ C             output component for consecutive time increments.
 C             If  JOBX0 = 'N'  and  COMUSE <> 'C',  this array is not
 C             referenced.
 C
-C     LDY     INTEGER
+C     LDY     (input) INTEGER
 C             The leading dimension of the array Y.
 C             LDY >= MAX(1,NSMP),  if  JOBX0 = 'X'  or   COMUSE = 'C;
 C             LDY >= 1,            if  JOBX0 = 'N'  and  COMUSE <> 'C'.
@@ -215,14 +216,14 @@ C             factorization of the matrix  A.
 C             If  JOBX0 = 'N'  and  COMUSE <> 'C',  this array is not
 C             referenced.
 C
-C     LDV     INTEGER
+C     LDV     (input) INTEGER
 C             The leading dimension of the array V.
 C             LDV >= MAX(1,N),  if  JOBX0 = 'X'  or   COMUSE =  'C;
 C             LDV >= 1,         if  JOBX0 = 'N'  and  COMUSE <> 'C'.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used for estimating the rank of
 C             matrices. If the user sets  TOL > 0,  then the given value
 C             of  TOL  is used as a lower bound for the reciprocal
@@ -234,7 +235,7 @@ C             (see LAPACK Library routine DLAMCH).  TOL <= 1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK), where
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK), where
 C             LIWORK >= 0,          if  JOBX0 = 'N'  and  COMUSE <> 'C';
 C             LIWORK >= N,          if  JOBX0 = 'X'  and  COMUSE <> 'C';
 C             LIWORK >= N*M + a,        if COMUSE = 'C' and JOB = 'B',
@@ -242,7 +243,7 @@ C             LIWORK >= max(N*M + a,M), if COMUSE = 'C' and JOB = 'D',
 C             with  a = 0,  if  JOBX0 = 'N';
 C                   a = N,  if  JOBX0 = 'X'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if  INFO = 0,  DWORK(1) returns the optimal value
 C             of LDWORK;  DWORK(2)  contains the reciprocal condition
 C             number of the triangular factor of the QR factorization of
@@ -267,7 +268,7 @@ C             and  COMUSE <> 'C'.
 C             On exit, if  INFO = -26,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= 2,  if  JOBX0 = 'N'  and  COMUSE <> 'C',  or
 C                           if  max( N, M ) = 0.
@@ -325,7 +326,7 @@ C             A,  (B,)  C,  (D,)  U,  and  Y.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 4:  the least squares problem to be solved has a
 C                   rank-deficient coefficient matrix;
@@ -336,7 +337,7 @@ C                   identification problem.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -460,7 +461,7 @@ C     the computed matrices  B  and  D  are fitted to the input and
 C     output trajectories. However, if matrix  A  is unstable, the
 C     computed matrices  B  and  D  could be inaccurate.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Apr. 2000.
 C

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     MB04VD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -21,7 +24,7 @@
 *     .. Local Scalars ..
       DOUBLE PRECISION TOL
       INTEGER          I, INFO, J, M, N, NBLCKI, NBLCKS, RANKE
-      CHARACTER*1      JOBQ, JOBZ, MODE
+      CHARACTER(LEN=1)      JOBQ, JOBZ, MODE
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), DWORK(LDWORK), E(LDE,NMAX),
      $                 Q(LDQ,MMAX), Z(LDZ,NMAX)

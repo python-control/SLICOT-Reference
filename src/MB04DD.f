@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04DD( JOB, N, A, LDA, QG, LDQG, ILO, SCALE, INFO )
 C
 C     PURPOSE
@@ -20,7 +23,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the operations to be performed on H:
 C             = 'N':  none, set ILO = 1, SCALE(I) = 1.0, I = 1 .. N;
 C             = 'P':  permute only;
@@ -40,7 +43,7 @@ C             the matrix A of the balanced Hamiltonian. In particular,
 C             the strictly lower triangular part of the first ILO-1
 C             columns of A is zero.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     QG      (input/output) DOUBLE PRECISION array, dimension
@@ -54,7 +57,7 @@ C             G, respectively, of the balanced Hamiltonian. In
 C             particular, the lower triangular part of the first ILO-1
 C             columns of QG is zero.
 C
-C     LDQG    INTEGER
+C     LDQG    (input) INTEGER
 C             The leading dimension of the array QG.  LDQG >= MAX(1,N).
 C
 C     ILO     (output) INTEGER
@@ -74,7 +77,7 @@ C             column j.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -319,14 +322,26 @@ C
 C              Compute 1-norm of row and column I without diagonal
 C              elements.
 C
-               R = DASUM( I-ILO, A(I,ILO), LDA ) +
-     $             DASUM( N-I,   A(I,I+1), LDA ) +
-     $             DASUM( I-ILO, QG(ILO,I+1), 1 ) +
-     $             DASUM( N-I,   QG(I,I+2), LDQG )
-               C = DASUM( I-ILO, A(ILO,I), 1 ) +
-     $             DASUM( N-I,   A(I+1,I), 1 ) +
-     $             DASUM( I-ILO, QG(I,ILO), LDQG ) +
-     $             DASUM( N-I,   QG(I+1,I), 1 )
+               R = 0.0D0
+               C = 0.0D0
+               IF ( I - ILO .GT. 0 ) THEN
+                   R = R + DASUM( I-ILO, A(I,ILO), LDA )
+                   R = R + DASUM( I-ILO, QG(ILO,I+1), 1 )
+               END IF
+               IF ( N - I .GT. 0 ) THEN
+                   R = R + DASUM( N-I,   A(I,I+1), LDA )
+                   R = R + DASUM( N-I,   QG(I,I+2), LDQG )
+               END IF
+
+               IF ( I - ILO .GT. 0 ) THEN
+                   C = C + DASUM( I-ILO, A(ILO,I), 1 )
+                   C = C + DASUM( I-ILO, QG(I,ILO), LDQG )
+               END IF
+               IF ( N - I .GT. 0 ) THEN
+                   C = C + DASUM( N-I,   A(I+1,I), 1 )
+                   C = C + DASUM( N-I,   QG(I+1,I), 1 )
+               END IF
+
                QII = ABS( QG(I,I) )
                GII = ABS( QG(I,I+1) )
 C

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     MB4DLZ EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -8,8 +11,8 @@
       INTEGER          LDA, LDB
       PARAMETER        ( LDA = NMAX, LDB = NMAX )
 *     .. Local Scalars ..
-      CHARACTER*1      JOB
-      INTEGER          I, ILO, INFO, IWARN, J, N
+      CHARACTER(LEN=1)      JOB
+      INTEGER          I, ILO, IHI, INFO, IWARN, J, N
       DOUBLE PRECISION THRESH
 *     .. Local Arrays ..
       COMPLEX*16       A(LDA, NMAX ), B( LDB, NMAX )

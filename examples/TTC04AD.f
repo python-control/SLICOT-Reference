@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     TC04AD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -20,7 +23,7 @@
 *     .. Local Scalars ..
       DOUBLE PRECISION RCOND
       INTEGER          I, INFO, J, K, KPCOEF, M, N, P, PORM, PORP
-      CHARACTER*1      LERI
+      CHARACTER(LEN=1)      LERI
       LOGICAL          LLERI
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), B(LDB,MAXMP), C(LDC,NMAX),

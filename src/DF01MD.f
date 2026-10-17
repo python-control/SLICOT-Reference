@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE DF01MD( SICO, N, DT, A, DWORK, INFO )
 C
 C     PURPOSE
@@ -9,7 +12,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     SICO    CHARACTER*1
+C     SICO    (input) CHARACTER*1
 C             Indicates whether the sine transform or cosine transform
 C             is to be computed as follows:
 C             = 'S':  The sine transform is computed;
@@ -33,11 +36,11 @@ C             given signal.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (N+1)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (N+1)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

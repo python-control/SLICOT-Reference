@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     TB03AD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -22,7 +25,7 @@
       DOUBLE PRECISION TOL
       INTEGER          I, INDBLK, INFO, J, K, KPCOEF, M, N, NR, P, PORM,
      $                 PORP
-      CHARACTER*1      EQUIL, LERI
+      CHARACTER(LEN=1)      EQUIL, LERI
       LOGICAL          LLERI
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), B(LDB,MAXMP), C(LDC,NMAX),
