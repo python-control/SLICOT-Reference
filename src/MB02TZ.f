@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB02TZ( NORM, N, HNORM, H, LDH, IPIV, RCOND, DWORK,
      $                   ZWORK, INFO )
 C
@@ -11,7 +14,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     NORM    CHARACTER*1
+C     NORM    (input) CHARACTER*1
 C             Specifies whether the 1-norm condition number or the
 C             infinity-norm condition number is required:
 C             = '1' or 'O':  1-norm;
@@ -30,7 +33,7 @@ C     H       (input) COMPLEX*16 array, dimension (LDH,N)
 C             The factors L and U from the factorization H = P*L*U
 C             as computed by MB02SZ.
 C
-C     LDH     INTEGER
+C     LDH     (input) INTEGER
 C             The leading dimension of the array H.  LDH >= max(1,N).
 C
 C     IPIV    (input) INTEGER array, dimension (N)
@@ -43,13 +46,13 @@ C             computed as RCOND = 1/(norm(H) * norm(inv(H))).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (N)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (N)
 C
-C     ZWORK   COMPLEX*16 array, dimension (2*N)
+C     ZWORK   (input/output) COMPLEX~*16 array, dimension (2*N)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -68,7 +71,7 @@ C     NUMERICAL ASPECTS
 C                                2
 C     The algorithm requires 0( N ) complex operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Dec. 1996.
 C     Supersedes Release 2.0 routine TB01FY by A.J. Laub, University of
@@ -102,7 +105,7 @@ C     .. Local Scalars ..
       INTEGER            IX, J, JP, KASE, KASE1
 C
       DOUBLE PRECISION   HINVNM, SCALE, SMLNUM
-      COMPLEX*16         T, ZDUM
+      COMPLEX*16         T
 C     ..
 C     .. External Functions ..
       LOGICAL            LSAME
@@ -115,12 +118,6 @@ C     .. External Subroutines ..
 C     ..
 C     .. Intrinsic Functions ..
       INTRINSIC          ABS, DBLE, DCONJG, DIMAG, MAX
-C     ..
-C     .. Statement Functions ..
-      DOUBLE PRECISION   CABS1
-C     ..
-C     .. Statement Function definitions ..
-      CABS1( ZDUM ) = ABS( DBLE( ZDUM ) ) + ABS( DIMAG( ZDUM ) )
 C     ..
 C     .. Executable Statements ..
 C
@@ -225,5 +222,13 @@ C
 C
    40 CONTINUE
       RETURN
+      CONTAINS
+          FUNCTION CABS1(X)
+              COMPLEX*16 :: X
+              DOUBLE PRECISION :: CABS1
+              CABS1 = ABS( DBLE( X ) ) + ABS( DIMAG( X ) )
+              RETURN
+          END FUNCTION
+
 C *** Last line of MB02TZ ***
       END

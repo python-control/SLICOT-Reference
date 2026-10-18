@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03BE( K, AMAP, S, SINV, A, LDA1, LDA2 )
 C
 C     PURPOSE
@@ -33,10 +36,10 @@ C             On exit, the leading 2-by-2-by-K part of this array
 C             contains the product after at most 20 iterations of a real
 C             shifted periodic QZ algorithm.
 C
-C     LDA1    INTEGER
+C     LDA1    (input) INTEGER
 C             The first leading dimension of the array A.  LDA1 >= 2.
 C
-C     LDA2    INTEGER
+C     LDA2    (input) INTEGER
 C             The second leading dimension of the array A.  LDA2 >= 2.
 C
 C     METHOD
@@ -44,7 +47,7 @@ C
 C     Ten iterations of a real single shifted periodic QZ algorithm are
 C     applied to the 2-by-2 matrix product A.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, June 2001.
 C

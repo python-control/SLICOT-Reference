@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03QV( N, S, LDS, T, LDT, ALPHAR, ALPHAI, BETA, INFO )
 C
 C     PURPOSE
@@ -15,17 +18,21 @@ C
 C     S       (input) DOUBLE PRECISION array, dimension(LDS,N)
 C             The upper quasi-triangular matrix S.
 C
-C     LDS     INTEGER
+C     LDS     (input) INTEGER
 C             The leading dimension of the array S.  LDS >= max(1,N).
 C
 C     T       (input) DOUBLE PRECISION array, dimension(LDT,N)
 C             The upper triangular matrix T.
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of the array T.  LDT >= max(1,N).
 C
 C     ALPHAR  (output) DOUBLE PRECISION array, dimension (N)
+C             See BETA
+C
 C     ALPHAI  (output) DOUBLE PRECISION array, dimension (N)
+C             See BETA
+C
 C     BETA    (output) DOUBLE PRECISION array, dimension (N)
 C             On exit, (ALPHAR(j) + ALPHAI(j)*i)/BETA(j), j=1,...,N,
 C             are the generalized eigenvalues.
@@ -40,12 +47,12 @@ C             complex conjugate pair, with ALPHAI(j+1) negative.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen,
 C     October 2002.

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     SB02QD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -18,7 +21,7 @@
       DOUBLE PRECISION FERR, RCND, RCOND, SEP
       INTEGER          I, INFO1, INFO2, INFO3, IS, IU, IW, J, N, N2,
      $                 SDIM
-      CHARACTER*1      FACT, JOB, JOBS, LYAPUN, TRANA, TRANAT, UPLO
+      CHARACTER(LEN=1)      FACT, JOB, JOBS, LYAPUN, TRANA, TRANAT, UPLO
 *     .. Local Arrays ..
       LOGICAL          BWORK(2*NMAX)
       INTEGER          IWORK(LIWORK)

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     TB01ID EXAMPLE PROGRAM TEXT.
 *
 *     .. Parameters ..
@@ -8,7 +11,7 @@
       INTEGER          LDA, LDB, LDC
       PARAMETER        ( LDA = NMAX, LDB = NMAX, LDC = PMAX )
 *     .. Local Scalars ..
-      CHARACTER*1      JOB
+      CHARACTER(LEN=1)      JOB
       INTEGER          I, INFO, J, M, N, P
       DOUBLE PRECISION MAXRED
 *     .. Local Arrays ..

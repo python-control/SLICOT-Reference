@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     MB03XZ EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -8,7 +11,7 @@
       INTEGER          NIN, NOUT
       PARAMETER        ( NIN = 5, NOUT = 6 )
       INTEGER          NMAX
-      PARAMETER        ( NMAX = 100 )
+      PARAMETER        ( NMAX = 50 )
       INTEGER          LDA, LDAE, LDAS, LDGE, LDQG, LDQGE, LDQGS, LDRES,
      $                 LDU1, LDU2, LDWORK, LZWORK
       PARAMETER        ( LDA   = 2*NMAX, LDAE  = 2*NMAX, LDAS  = NMAX,
@@ -18,7 +21,7 @@
      $                   LDWORK = 20*NMAX*NMAX + 12*NMAX + 2,
      $                   LZWORK = 12*NMAX - 2 )
 *     .. Local Scalars ..
-      CHARACTER*1      BALANC, JOB, JOBU
+      CHARACTER(LEN=1)      BALANC, JOB, JOBU
       INTEGER          I, ILO, INFO, J, M, N
       DOUBLE PRECISION TEMP
 *     .. Local Arrays ..
@@ -36,7 +39,7 @@
       EXTERNAL         DLAPY2, LSAME, MA02JZ, ZLANGE
 *     .. External Subroutines ..
       EXTERNAL         MA02EZ, MB03XZ, MB04DZ, ZCOPY, ZGEMM, ZLACPY,
-     $                 ZLASET
+     $                 ZLASET, DLACPY
 *     ..Intrinsic Functions..
       INTRINSIC        DBLE, DCMPLX, DIMAG
 *     .. Executable Statements ..

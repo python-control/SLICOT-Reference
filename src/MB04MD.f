@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04MD( N, MAXRED, A, LDA, SCALE, INFO )
 C
 C     PURPOSE
@@ -40,7 +43,7 @@ C             contain the input matrix A.
 C             On exit, the leading N-by-N part of this array contains
 C             the balanced matrix.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,N).
 C
 C     SCALE   (output) DOUBLE PRECISION array, dimension (N)
@@ -50,7 +53,7 @@ C             for j = 1,...,N.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit.
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -76,7 +79,7 @@ C     NUMERICAL ASPECTS
 C
 C     None.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, June 1997.
 C     Supersedes Release 2.0 routine MB04AD by T.W.C. Williams,

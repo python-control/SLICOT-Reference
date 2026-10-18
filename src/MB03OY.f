@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03OY( M, N, A, LDA, RCOND, SVLMAX, RANK, SVAL, JPVT,
      $                   TAU, DWORK, INFO )
 C
@@ -41,7 +44,7 @@ C             of  RANK  elementary reflectors.
 C             The remaining  N-RANK  columns contain the result of the
 C             QR factorization process used.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,M).
 C
 C     RCOND   (input) DOUBLE PRECISION
@@ -94,11 +97,11 @@ C             factors of the elementary reflectors.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension ( 3*N-1 )
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension ( 3*N-1 )
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -153,7 +156,7 @@ C
 C     For a matrix with a small norm, the rank is set to zero if the
 C     largest column Euclidean norm is smaller than or equal to RCOND.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, Feb. 1998.
 C

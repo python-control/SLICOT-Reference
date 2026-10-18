@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03DZ( A, LDA, B, LDB, CO1, SI1, CO2, SI2 )
 C
 C     PURPOSE
@@ -22,7 +25,7 @@ C             On entry, the leading 2-by-2 upper triangular part of
 C             this array must contain the matrix A of the pencil.
 C             The (2,1) entry is not referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= 2.
 C
 C     B       (input) COMPLEX*16 array, dimension (LDB, 2)
@@ -30,7 +33,7 @@ C             On entry, the leading 2-by-2 upper triangular part of
 C             this array must contain the matrix B of the pencil.
 C             The (2,1) entry is not referenced.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= 2.
 C
 C     CO1     (output) DOUBLE PRECISION
@@ -62,7 +65,7 @@ C     NUMERICAL ASPECTS
 C
 C     The algorithm is numerically backward stable.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Matthias Voigt, Fakultaet fuer Mathematik, Technische Universitaet
 C     Chemnitz, January 26, 2009.

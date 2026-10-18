@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB02SZ( N, H, LDH, IPIV, INFO )
 C
 C     PURPOSE
@@ -19,7 +22,7 @@ C             On exit, the factors L and U from the factorization
 C             H = P*L*U; the unit diagonal elements of L are not stored,
 C             and L is lower bidiagonal.
 C
-C     LDH     INTEGER
+C     LDH     (input) INTEGER
 C             The leading dimension of the array H.  LDH >= max(1,N).
 C
 C     IPIV    (output) INTEGER array, dimension (N)
@@ -28,7 +31,7 @@ C             was interchanged with row IPIV(i).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -56,7 +59,7 @@ C     NUMERICAL ASPECTS
 C                                2
 C     The algorithm requires 0( N ) complex operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Dec. 1996.
 C     Supersedes Release 2.0 routine TB01FX by A.J. Laub, University of
@@ -73,6 +76,7 @@ C     Frequency response, Hessenberg form, matrix algebra.
 C
 C     ******************************************************************
 C
+      IMPLICIT NONE
 C     .. Parameters ..
       COMPLEX*16        ZERO
       PARAMETER         ( ZERO = ( 0.0D+0, 0.0D+0 ) )
@@ -83,15 +87,10 @@ C     .. Array Arguments ..
       COMPLEX*16        H(LDH,*)
 C     .. Local Scalars ..
       INTEGER           J, JP
-      COMPLEX*16        CDUM
 C     .. External Subroutines ..
       EXTERNAL          XERBLA, ZAXPY, ZSWAP
 C     .. Intrinsic Functions ..
       INTRINSIC         ABS, DBLE, DIMAG, MAX
-C     .. Statement Functions ..
-      DOUBLE PRECISION  CABS1
-C     .. Statement Function definitions ..
-      CABS1( CDUM )   = ABS( DBLE( CDUM ) ) + ABS( DIMAG( CDUM ) )
 C     ..
 C     .. Executable Statements ..
 C
@@ -149,5 +148,12 @@ C
          END IF
    10 CONTINUE
       RETURN
+      CONTAINS
+          FUNCTION CABS1(X)
+              COMPLEX*16 :: X
+              DOUBLE PRECISION :: CABS1
+              CABS1 = ABS( DBLE( X ) ) + ABS( DIMAG( X ) )
+              RETURN
+          END FUNCTION
 C *** Last line of MB02SZ ***
       END

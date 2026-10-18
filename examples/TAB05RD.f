@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     AB05RD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -19,7 +22,7 @@
       PARAMETER        ( ZERO = 0.0D0 )
 *     .. Local Scalars ..
       LOGICAL          LJOBD, OUTPF
-      CHARACTER*1      FBTYPE, JOBD
+      CHARACTER(LEN=1)      FBTYPE, JOBD
       INTEGER          I, INFO, J, M, MV, N, P, PZ
       DOUBLE PRECISION ALPHA, BETA, RCOND
 *     .. Local Arrays ..

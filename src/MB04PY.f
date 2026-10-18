@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04PY( SIDE, M, N, V, TAU, C, LDC, DWORK )
 C
 C     PURPOSE
@@ -17,7 +20,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     SIDE    CHARACTER*1
+C     SIDE    (input) CHARACTER*1
 C             Indicates whether the elementary reflector should be
 C             applied from the left or from the right, as follows:
 C             = 'L':  Compute H * C;
@@ -45,12 +48,12 @@ C             contain the matrix C.
 C             On exit, the leading M-by-N part of this array contains
 C             the matrix H * C, if SIDE = 'L', or C * H, if SIDE = 'R'.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,M).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (N), if SIDE = 'L', or
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (N), if SIDE = 'L', or
 C                                               (M), if SIDE = 'R'.
 C             DWORK is not referenced if H has order less than 11.
 C
@@ -112,8 +115,20 @@ C
 C
 C        Form  H * C, where H has order m.
 C
-         GO TO ( 10, 30, 50, 70, 90, 110, 130, 150,
-     $           170, 190 ) M
+C         GO TO ( 10, 30, 50, 70, 90, 110, 130, 150,
+C     $           170, 190 ) M
+         IF ( M .EQ. 1 ) GO TO 10
+         IF ( M .EQ. 2 ) GO TO 30
+         IF ( M .EQ. 3 ) GO TO 50
+         IF ( M .EQ. 4 ) GO TO 70
+         IF ( M .EQ. 5 ) GO TO 90
+         IF ( M .EQ. 6 ) GO TO 110
+         IF ( M .EQ. 7 ) GO TO 130
+         IF ( M .EQ. 8 ) GO TO 150
+         IF ( M .EQ. 9 ) GO TO 170
+         IF ( M .EQ. 10 ) GO TO 190
+
+C
 C
 C        Code for general M.
 C
@@ -369,8 +384,19 @@ C
 C
 C        Form  C * H, where H has order n.
 C
-         GO TO ( 210, 230, 250, 270, 290, 310, 330, 350,
-     $           370, 390 ) N
+C         GO TO ( 210, 230, 250, 270, 290, 310, 330, 350,
+C     $           370, 390 ) N
+          IF ( N .EQ. 1 ) GO TO 210
+          IF ( N .EQ. 2 ) GO TO 230
+          IF ( N .EQ. 3 ) GO TO 250
+          IF ( N .EQ. 4 ) GO TO 270
+          IF ( N .EQ. 5 ) GO TO 290
+          IF ( N .EQ. 6 ) GO TO 310
+          IF ( N .EQ. 7 ) GO TO 330
+          IF ( N .EQ. 8 ) GO TO 350
+          IF ( N .EQ. 9 ) GO TO 370
+          IF ( N .EQ. 10 ) GO TO 390
+
 C
 C        Code for general N.
 C

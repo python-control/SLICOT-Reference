@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     TD03AD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -22,7 +25,7 @@
      $                                 MAXMP*( MAXMP + 2 ) ) )
 *     .. Local Scalars ..
       DOUBLE PRECISION TOL
-      CHARACTER*1      EQUIL, LERI, ROWCOL
+      CHARACTER(LEN=1)      EQUIL, LERI, ROWCOL
       INTEGER          I, INDBLK, INFO, J, K, KDCOEF, M, MAXINP, N, NR,
      $                 P, PORMD, PORMP
 *     .. Local Arrays ..

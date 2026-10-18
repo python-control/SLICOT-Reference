@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB04MW( M, D, IPR, INFO )
 C
 C     PURPOSE
@@ -31,7 +34,7 @@ C             specified by IPR(i).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             = 1:  if a singular matrix was encountered.
 C

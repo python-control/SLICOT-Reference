@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE DG01ND( INDI, N, XR, XI, INFO )
 C
 C     PURPOSE
@@ -9,7 +12,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     INDI    CHARACTER*1
+C     INDI    (input) CHARACTER*1
 C             Indicates whether a Fourier transform or inverse Fourier
 C             transform is to be performed as follows:
 C             = 'D':  (Direct) Fourier transform;
@@ -26,7 +29,7 @@ C             On entry with INDI = 'D', the first N elements of this
 C             array must contain the odd part of the input signal; for
 C             example, XR(I) = A(2*I-1) for I = 1,2,...,N.
 C             On entry with INDI = 'I', the first N+1 elements of this
-C             array must contain the the real part of the input discrete
+C             array must contain the real part of the input discrete
 C             Fourier transform (computed, for instance, by a previous
 C             call of the routine).
 C             On exit with INDI = 'D', the first N+1 elements of this
@@ -41,7 +44,7 @@ C             On entry with INDI = 'D', the first N elements of this
 C             array must contain the even part of the input signal; for
 C             example, XI(I) = A(2*I) for I = 1,2,...,N.
 C             On entry with INDI = 'I', the first N+1 elements of this
-C             array must contain the the imaginary part of the input
+C             array must contain the imaginary part of the input
 C             discrete Fourier transform (computed, for instance, by a
 C             previous call of the routine).
 C             On exit with INDI = 'D', the first N+1 elements of this
@@ -53,7 +56,7 @@ C             of the computed inverse discrete Fourier transform.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

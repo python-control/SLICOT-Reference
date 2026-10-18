@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MA02RD( ID, N, D, E, INFO )
 C
 C     Purpose
@@ -10,7 +13,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     ID      CHARACTER*1
+C     ID      (input) CHARACTER*1
 C             Specifies the desired order, as follows:
 C             = 'I': sort D in increasing order;
 C             = 'D': sort D in decreasing order.
@@ -35,7 +38,7 @@ C             contain E(j), for all i = 1, 2, ... N.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

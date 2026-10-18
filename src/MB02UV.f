@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB02UV( N, A, LDA, IPIV, JPIV, INFO )
 C
 C     PURPOSE
@@ -23,7 +26,7 @@ C             the unit diagonal elements of L are not stored. If U(k, k)
 C             appears to be less than SMIN, U(k, k) is given the value
 C             of SMIN, giving a nonsingular perturbed system.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1, N).
 C
 C     IPIV    (output) INTEGER array, dimension (N)
@@ -36,7 +39,7 @@ C             matrix has been interchanged with column JPIV(j).
 C
 C     Error indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             = k:  U(k, k) is likely to produce owerflow if one tries
 C                   to solve for x in Ax = b. So U is perturbed to get
@@ -48,7 +51,7 @@ C     In the interests of speed, this routine does not check the input
 C     for errors. It should only be used to factorize matrices A of
 C     very small order.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Bo Kagstrom and Peter Poromaa, Univ. of Umea, Sweden, Nov. 1993.
 C

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB01PD( SCUN, TYPE, M, N, KL, KU, ANRM, NBL, NROWS, A,
      $                   LDA, INFO )
 C
@@ -11,12 +14,12 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     SCUN    CHARACTER*1
+C     SCUN    (input) CHARACTER*1
 C             SCUN indicates the operation to be performed.
 C             = 'S':  scale the matrix.
 C             = 'U':  undo scaling of the matrix.
 C
-C     TYPE    CHARACTER*1
+C     TYPE    (input) CHARACTER*1
 C             TYPE indicates the storage type of the input matrix.
 C             = 'G':  A is a full matrix.
 C             = 'L':  A is a (block) lower triangular matrix.
@@ -95,7 +98,7 @@ C     larger than BIGNUM, respectively.  For undoing the scaling, the
 C     norm is again compared with SMLNUM or BIGNUM, and the reciprocal
 C     of the previous scaling factor is used.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, Nov. 1996.
 C

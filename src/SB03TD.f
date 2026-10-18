@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB03TD( JOB, FACT, TRANA, UPLO, LYAPUN, N, SCALE, A,
      $                   LDA, T, LDT, U, LDU, C, LDC, X, LDX, SEP,
      $                   RCOND, FERR, WR, WI, IWORK, DWORK, LDWORK,
@@ -19,7 +22,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the computation to be performed, as follows:
 C             = 'X':  Compute the solution only;
 C             = 'S':  Compute the separation only;
@@ -28,7 +31,7 @@ C             = 'E':  Compute the error bound only;
 C             = 'A':  Compute all: the solution, separation, reciprocal
 C                     condition number, and the error bound.
 C
-C     FACT    CHARACTER*1
+C     FACT    (input) CHARACTER*1
 C             Specifies whether or not the real Schur factorization
 C             of the matrix A is supplied on entry, as follows:
 C             = 'F':  On entry, T and U (if LYAPUN = 'O') contain the
@@ -38,19 +41,19 @@ C             = 'N':  The Schur factorization of A will be computed
 C                     and the factors will be stored in T and U (if
 C                     LYAPUN = 'O').
 C
-C     TRANA   CHARACTER*1
+C     TRANA   (input) CHARACTER*1
 C             Specifies the form of op(A) to be used, as follows:
 C             = 'N':  op(A) = A    (No transpose);
 C             = 'T':  op(A) = A**T (Transpose);
 C             = 'C':  op(A) = A**T (Conjugate transpose = Transpose).
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which part of the symmetric matrix C is to be
 C             used, as follows:
 C             = 'U':  Upper triangular part;
 C             = 'L':  Lower triangular part.
 C
-C     LYAPUN  CHARACTER*1
+C     LYAPUN  (input) CHARACTER*1
 C             Specifies whether or not the original or "reduced"
 C             Lyapunov equations should be solved, as follows:
 C             = 'O':  Solve the original Lyapunov equations, updating
@@ -66,7 +69,7 @@ C
 C     N       (input) INTEGER
 C             The order of the matrices A, X, and C.  N >= 0.
 C
-C     SCALE   (input or output) DOUBLE PRECISION
+C     SCALE   (input/output) DOUBLE PRECISION
 C             If JOB = 'C' or JOB = 'E', SCALE is an input argument:
 C             the scale factor, set by a Lyapunov solver.
 C             0 <= SCALE <= 1.
@@ -82,7 +85,7 @@ C             original matrix A.
 C             If FACT = 'F' and (LYAPUN = 'R' or JOB = 'X'), A is
 C             not referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.
 C             LDA >= MAX(1,N), if FACT = 'N' or LYAPUN = 'O' and
 C                                               JOB <> 'X';
@@ -101,10 +104,10 @@ C             contains the upper quasi-triangular matrix T in Schur
 C             canonical form from a Schur factorization of A.
 C             The contents of array T is not modified if FACT = 'F'.
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of the array T.  LDT >= MAX(1,N).
 C
-C     U       (input or output) DOUBLE PRECISION array, dimension
+C     U       (input/output) DOUBLE PRECISION array, dimension
 C             (LDU,N)
 C             If LYAPUN = 'O' and FACT = 'F', then U is an input
 C             argument and on entry, the leading N-by-N part of this
@@ -116,7 +119,7 @@ C             contains the orthogonal N-by-N matrix from a real Schur
 C             factorization of A.
 C             If LYAPUN = 'R', the array U is not referenced.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of the array U.
 C             LDU >= 1,        if LYAPUN = 'R';
 C             LDU >= MAX(1,N), if LYAPUN = 'O'.
@@ -140,12 +143,12 @@ C             If JOB = 'X', then this array may be identified with X
 C             in the call of this routine.
 C             If JOB = 'S', the array C is not referenced.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.
 C             LDC >= 1,        if JOB = 'S';
 C             LDC >= MAX(1,N), otherwise.
 C
-C     X       (input or output) DOUBLE PRECISION array, dimension
+C     X       (input/output) DOUBLE PRECISION array, dimension
 C             (LDX,N)
 C             If JOB = 'C' or 'E', then X is an input argument and on
 C             entry, the leading N-by-N part of this array must contain
@@ -161,7 +164,7 @@ C             LYAPUN = 'O', or of the reduced Lyapunov equation (with
 C             matrix T), if LYAPUN = 'R'.
 C             If JOB = 'S', the array X is not referenced.
 C
-C     LDX     INTEGER
+C     LDX     (input) INTEGER
 C             The leading dimension of the array X.
 C             LDX >= 1,        if JOB = 'S';
 C             LDX >= MAX(1,N), otherwise.
@@ -191,6 +194,8 @@ C             If JOB = 'X' or JOB = 'S' or JOB = 'C', FERR is not
 C             referenced.
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION array, dimension (N)
 C             If FACT = 'N', and INFO = 0 or INFO = N+1, WR and WI
 C             contain the real and imaginary parts, respectively, of the
@@ -199,14 +204,14 @@ C             If FACT = 'F', WR and WI are not referenced.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N*N)
+C     IWORK   (input/output) INTEGER array, dimension (N*N)
 C             This array is not referenced if JOB = 'X'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0 or INFO = N+1, DWORK(1) returns the
 C             optimal value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             If JOB = 'X', then
 C             LDWORK >= MAX(1,N*N),           if FACT = 'F';
@@ -222,7 +227,7 @@ C             For optimum performance LDWORK should sometimes be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -298,7 +303,7 @@ C     an estimate of the 1-norm of inverse(T). The true reciprocal
 C     1-norm of inverse(T) cannot differ from sigma_min(T) by more
 C     than a factor of N.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, February 1999.
 C     This is an extended and improved version of Release 3.0 routine

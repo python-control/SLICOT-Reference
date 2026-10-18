@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     AB09KD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -30,7 +33,7 @@
       LOGICAL          LEFTW, RIGHTW
       DOUBLE PRECISION ALPHA, TOL1, TOL2
       INTEGER          I, INFO, IWARN, J, M, N, NR, NS, NV, NW, P
-      CHARACTER*1      DICO, EQUIL, JOB, ORDSEL, WEIGHT
+      CHARACTER(LEN=1)      DICO, EQUIL, JOB, ORDSEL, WEIGHT
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), AV(LDAV,NVMAX), AW(LDAW,NWMAX),
      $                 B(LDB,MMAX), BV(LDBV,PMAX),  BW(LDBW,MMAX),

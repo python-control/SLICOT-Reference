@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TD03AY( MWORK, PWORK, INDEX, DCOEFF, LDDCOE, UCOEFF,
      $                   LDUCO1, LDUCO2, N, A, LDA, B, LDB, C, LDC, D,
      $                   LDD, INFO )
@@ -25,6 +28,45 @@ C     (as D(s) and U(s) are not necessarily relatively left prime), but
 C     it is theoretically completely observable: however, its
 C     observability matrix may be poorly conditioned, so it is safer
 C     not to assume observability either.
+C
+C     ARGUMENTS
+C
+C     MWORK   (input) INTEGER
+C
+C     PWORK   (input) INTEGER
+C
+C     INDEX   (input) INTEGER, dimension(*)
+C
+C     DCOEFF  (input) DOUBLE PRECISION, dimension( LDDCOE, *)
+C
+C     LDDCOE  (input) INTEGER
+C
+C     UCOEFF  (input) DOUBLE PRECISION,
+C             dimension(LDUCO1,LDUCO2,*)
+C
+C     LDUCO1  (input) INTEGER
+C
+C     LDUCO2  (input) INTEGER
+C
+C     N       (input) INTEGER
+C
+C     A       (input/output) DOUBLE PRECISION, dimension(LDA,*)
+C
+C     LDA     (input) INTEGER
+C
+C     B       (input/output) DOUBLE PRECISION, dimension(LDB,*)
+C
+C     LDB     (input) INTEGER
+C
+C     C       (input/output) DOUBLE PRECISION, dimension(LDC,*)
+C
+C     LDC     (input) INTEGER
+C
+C     D       (input/output) DOUBLE PRECISION, dimension(LDD,*)
+C
+C     LDD     (input) INTEGER
+C
+C     INFO    (input/output) INTEGER
 C
 C     REVISIONS
 C

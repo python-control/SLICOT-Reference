@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MA01DZ( AR1, AI1, B1, AR2, AI2, B2, EPS, SAFEMN, D1,
      $                   D2, IWARN )
 C
@@ -15,6 +18,8 @@ C
 C     Input/Output Parameters
 C
 C     AR1     (input) DOUBLE PRECISION
+C             See AI1
+C
 C     AI1     (input) DOUBLE PRECISION
 C             These scalars define the real and imaginary parts of the
 C             numerator of A1.
@@ -23,6 +28,8 @@ C     B1      (input) DOUBLE PRECISION
 C             The denominator of A1.  B1 >= 0.
 C
 C     AR2     (input) DOUBLE PRECISION
+C             See AI2
+C
 C     AI2     (input) DOUBLE PRECISION
 C             These scalars define the real and imaginary parts of the
 C             numerator of A2.
@@ -48,7 +55,7 @@ C             either A1 and/or A2 are undefined.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 1:  A1 or A2 is not a number (NaN);  D1 and D2 are both
 C                   set to 0.
@@ -64,7 +71,7 @@ C     taking into account the special cases of infinite or NaN values.
 C     The chordal metric is finite even if A1 and A2 are both infinite,
 C     or if one of them is infinite and the other is finite, nonzero.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Feb. 2023.
 C
@@ -138,7 +145,7 @@ C
             ELSE IF( MX2.GT.ZERO ) THEN
                D1 = B2/DLAPY2( AR2, AI2 )
                D2 = ONE
-            ELSE 
+            ELSE
                D1 = ONE
                D2 = ZERO
             END IF
@@ -161,7 +168,7 @@ C
             ELSE IF( MX1.GT.ZERO ) THEN
                D1 = B1/DLAPY2( AR1, AI1 )
                D2 = ONE
-            ELSE 
+            ELSE
                D1 = ONE
                D2 = ZERO
             END IF

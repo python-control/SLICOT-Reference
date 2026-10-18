@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04VD( MODE, JOBQ, JOBZ, M, N, RANKE, A, LDA, E, LDE,
      $                   Q, LDQ, Z, LDZ, ISTAIR, NBLCKS, NBLCKI, IMUK,
      $                   INUK, IMUK0, MNEI, TOL, IWORK, INFO )
@@ -48,7 +51,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     MODE    CHARACTER*1
+C     MODE    (input) CHARACTER*1
 C             Specifies the desired structure of the transformed
 C             pencil Q'(sE-A)Z to be computed as follows:
 C             = 'B':  Basic reduction given by (1);
@@ -56,7 +59,7 @@ C             = 'T':  Further reduction of (1) to triangular form;
 C             = 'S':  Further separation of sE(eps,inf)-A(eps,inf)
 C                     in (1) into the two pencils in (2).
 C
-C     JOBQ    CHARACTER*1
+C     JOBQ    (input) CHARACTER*1
 C             Indicates whether the user wishes to accumulate in a
 C             matrix Q the orthogonal row transformations, as follows:
 C             = 'N':  Do not form Q;
@@ -65,7 +68,7 @@ C                     orthogonal transformation matrix Q is returned;
 C             = 'U':  The given matrix Q is updated by the orthogonal
 C                     row transformations used in the reduction.
 C
-C     JOBZ    CHARACTER*1
+C     JOBZ    (input) CHARACTER*1
 C             Indicates whether the user wishes to accumulate in a
 C             matrix Z the orthogonal column transformations, as
 C             follows:
@@ -96,7 +99,7 @@ C             On exit, the leading M-by-N part of this array contains
 C             the matrix that has been row compressed while keeping
 C             matrix E in column echelon form.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,M).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -107,7 +110,7 @@ C             On exit, the leading M-by-N part of this array contains
 C             the matrix that has been transformed equivalent to matrix
 C             A.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.  LDE >= MAX(1,M).
 C
 C     Q       (input/output) DOUBLE PRECISION array, dimension (LDQ,*)
@@ -124,7 +127,7 @@ C             If JOBQ = 'N', the array Q is not referenced and can be
 C             supplied as a dummy array (i.e. set parameter LDQ = 1 and
 C             declare this array to be Q(1,1) in the calling program).
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of array Q. If JOBQ = 'U' or
 C             JOBQ = 'I', LDQ >= MAX(1,M); if JOBQ = 'N', LDQ >= 1.
 C
@@ -142,7 +145,7 @@ C             If JOBZ = 'N', the array Z is not referenced and can be
 C             supplied as a dummy array (i.e. set parameter LDZ = 1 and
 C             declare this array to be Z(1,1) in the calling program).
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of array Z. If JOBZ = 'U' or
 C             JOBZ = 'I', LDZ >= MAX(1,N); if JOBZ = 'N', LDZ >= 1.
 C
@@ -204,7 +207,7 @@ C                     sE(inf)-A(inf).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             A tolerance below which matrix elements are considered
 C             to be zero. If the user sets TOL to be less than (or
 C             equal to) zero then the tolerance is taken as
@@ -214,11 +217,11 @@ C             I = 1,2,...,M and J = 1,2,...,N.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N)
+C     IWORK   (input/output) INTEGER array, dimension (N)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -269,7 +272,7 @@ C     sE(r)-A(r) and calling the routine with MODE set to 'B'. The
 C     result has got to be pertransposed again. (For more details see
 C     [1]).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Jan. 1998.
 C     Based on Release 3.0 routine MB04TD modified by A. Varga,

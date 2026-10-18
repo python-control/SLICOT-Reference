@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TB01YD( N, M, P, A, LDA, B, LDB, C, LDC, INFO )
 C
 C     PURPOSE
@@ -33,7 +36,7 @@ C             contain the system state matrix A.
 C             On exit, the leading N-by-N part of this array contains
 C             the transformed matrix P*A*P.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -42,7 +45,7 @@ C             contain the system input matrix B.
 C             On exit, the leading N-by-M part of this array contains
 C             the transformed matrix P*B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             LDB >= MAX(1,N) if M > 0.
 C             LDB >= 1        if M = 0.
@@ -53,12 +56,12 @@ C             contain the system output matrix C.
 C             On exit, the leading P-by-N part of this array contains
 C             the transformed matrix C*P.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1,P).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit.
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -72,7 +75,7 @@ C     NUMERICAL ASPECTS
 C
 C     None.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, Feb. 1998.
 C

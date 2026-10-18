@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TC01OD( LERI, M, P, INDLIM, PCOEFF, LDPCO1, LDPCO2,
      $                   QCOEFF, LDQCO1, LDQCO2, INFO )
 C
@@ -12,7 +15,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     LERI    CHARACTER*1
+C     LERI    (input) CHARACTER*1
 C             Indicates whether a left or right matrix fraction is input
 C             as follows:
 C             = 'L':  A left matrix fraction is input;
@@ -44,12 +47,12 @@ C             On exit, the leading porm-by-porm-by-INDLIM part of this
 C             array contains the coefficients of the denominator matrix
 C             P'(s) of the dual system.
 C
-C     LDPCO1  INTEGER
+C     LDPCO1  (input) INTEGER
 C             The leading dimension of array PCOEFF.
 C             LDPCO1 >= MAX(1,P) if LERI = 'L',
 C             LDPCO1 >= MAX(1,M) if LERI = 'R'.
 C
-C     LDPCO2  INTEGER
+C     LDPCO2  (input) INTEGER
 C             The second dimension of array PCOEFF.
 C             LDPCO2 >= MAX(1,P) if LERI = 'L',
 C             LDPCO2 >= MAX(1,M) if LERI = 'R'.
@@ -65,17 +68,17 @@ C             On exit, the leading M-by-P-by-INDLIM part of the array
 C             contains the coefficients of the numerator matrix Q'(s)
 C             of the dual system.
 C
-C     LDQCO1  INTEGER
+C     LDQCO1  (input) INTEGER
 C             The leading dimension of array QCOEFF.
 C             LDQCO1 >= MAX(1,M,P).
 C
-C     LDQCO2  INTEGER
+C     LDQCO2  (input) INTEGER
 C             The second dimension of array QCOEFF.
 C             LDQCO2 >= MAX(1,M,P).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -96,7 +99,7 @@ C     NUMERICAL ASPECTS
 C
 C     None.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Dec. 1996.
 C     Supersedes Release 2.0 routine TC01CD by T.W.C.Williams, Kingston

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TB01IZ( JOB, N, M, P, MAXRED, A, LDA, B, LDB, C, LDC,
      $                   SCALE, INFO )
 C
@@ -26,7 +29,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Indicates which matrices are involved in balancing, as
 C             follows:
 C             = 'A':  All matrices are involved in balancing;
@@ -67,7 +70,7 @@ C             contain the system state matrix A.
 C             On exit, the leading N-by-N part of this array contains
 C             the balanced matrix inv(D)*A*D.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= max(1,N).
 C
 C     B       (input/output) COMPLEX*16 array, dimension (LDB,M)
@@ -77,7 +80,7 @@ C             On exit, if M > 0, the leading N-by-M part of this array
 C             contains the balanced matrix inv(D)*B.
 C             The array B is not referenced if M = 0.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             LDB >= MAX(1,N) if M > 0.
 C             LDB >= 1        if M = 0.
@@ -89,7 +92,7 @@ C             On exit, if P > 0, the leading P-by-N part of this array
 C             contains the balanced matrix C*D.
 C             The array C is not referenced if P = 0.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1,P).
 C
 C     SCALE   (output) DOUBLE PRECISION array, dimension (N)
@@ -99,7 +102,7 @@ C             for j = 1,...,N.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit.
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -129,7 +132,7 @@ C     NUMERICAL ASPECTS
 C
 C     None.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, Jan. 1998.
 C     Complex version: V. Sima, Research Institute for Informatics,
@@ -181,12 +184,6 @@ C     .. External Subroutines ..
 C     ..
 C     .. Intrinsic Functions ..
       INTRINSIC          ABS, DBLE, DIMAG, MAX, MIN
-C     ..
-C     .. Statement Functions ..
-      DOUBLE PRECISION   CABS1
-C     ..
-C     .. Statement Function definitions ..
-      CABS1( CDUM ) = ABS( DBLE( CDUM ) ) + ABS( DIMAG( CDUM ) )
 C     ..
 C     .. Executable Statements ..
 C
@@ -387,5 +384,14 @@ C
       END IF
       MAXRED = MAXRED/SNORM
       RETURN
+      CONTAINS
+          FUNCTION CABS1(X)
+              COMPLEX*16 :: X
+              DOUBLE PRECISION :: CABS1
+              CABS1 = ABS( DBLE( X ) ) + ABS( DIMAG( X ) )
+              RETURN
+          END FUNCTION
+
+
 C *** Last line of TB01IZ ***
       END

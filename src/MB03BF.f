@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03BF( K, AMAP, S, SINV, A, LDA1, LDA2, ULP )
 C
 C     PURPOSE
@@ -35,13 +38,13 @@ C             On exit, the leading 2-by-2-by-K part of this array
 C             contains the product after at most 20 iterations of a real
 C             shifted periodic QZ algorithm.
 C
-C     LDA1    INTEGER
+C     LDA1    (input) INTEGER
 C             The first leading dimension of the array A.  LDA1 >= 2.
 C
-C     LDA2    INTEGER
+C     LDA2    (input) INTEGER
 C             The second leading dimension of the array A.  LDA2 >= 2.
 C
-C     ULP     INTEGER
+C     ULP     (input) DOUBLE PRECISION
 C             The machine relation precision.
 C
 C     METHOD
@@ -49,7 +52,7 @@ C
 C     Twenty iterations of a real single shifted periodic QZ algorithm
 C     are applied to the 2-by-2 matrix product A.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Romania,
 C     Dec. 2018.

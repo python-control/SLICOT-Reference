@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       INTEGER FUNCTION MC01SX( LB, UB, E, MANT )
 C
 C     PURPOSE
@@ -8,7 +11,18 @@ C     where beta is the base of the machine representation of
 C     floating-point numbers, i.e.,
 C     V = max(E(j)) - min(E(j)), j = LB,...,UB and MANT(j) non-zero.
 C
-C     CONTRIBUTOR
+C     Arguments
+C
+C     LB        (input) INTEGER
+C
+C     UB        (input) INTEGER
+C
+C     E         (input) DOUBLE PRECISION array
+C
+C     MANT      (input) DOUBLE PRECISION array
+C
+C
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Mar. 1997.
 C     Supersedes Release 2.0 routine MC01GX by A.J. Geurts.

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04TW( UPDATQ, M, N, NRE, NCE, IFIRE, IFICE, IFICA, A,
      $                   LDA, E, LDE, Q, LDQ )
 C
@@ -19,7 +22,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPDATQ  LOGICAL
+C     UPDATQ  (input) LOGICAL
 C             Indicates whether the user wishes to accumulate in a
 C             matrix Q the orthogonal row transformations, as follows:
 C             = .FALSE.: Do not form Q;
@@ -53,7 +56,7 @@ C     A       (input/output) DOUBLE PRECISION array, dimension (LDA,N)
 C             On entry, this array contains the submatrix A(k).
 C             On exit, it contains the transformed matrix A(k).
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,M).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -61,7 +64,7 @@ C             On entry, this array contains the submatrix E(k) of full
 C             column rank to be reduced to upper triangular form.
 C             On exit, it contains the transformed matrix E.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.  LDE >= MAX(1,M).
 C
 C     Q       (input/output) DOUBLE PRECISION array, dimension (LDQ,*)
@@ -77,7 +80,7 @@ C             can be supplied as a dummy array (i.e. set parameter
 C             LDQ = 1 and declare this array to be Q(1,1) in the calling
 C             program).
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of array Q. If UPDATQ = .TRUE.,
 C             LDQ >= MAX(1,M); if UPDATQ = .FALSE., LDQ >= 1.
 C
@@ -93,7 +96,7 @@ C     NUMERICAL ASPECTS
 C
 C     The algorithm is backward stable.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Apr. 1997.
 C     Supersedes Release 2.0 routine MB04FW by Th.G.J. Beelen,

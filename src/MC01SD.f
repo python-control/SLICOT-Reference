@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MC01SD( DP, P, S, T, MANT, E, IWORK, INFO )
 C
 C     PURPOSE
@@ -41,11 +44,11 @@ C             scaled polynomial Q(x) in increasing powers of x.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (DP+1)
+C     IWORK   (input/output) INTEGER array, dimension (DP+1)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -104,7 +107,7 @@ C     FURTHER COMMENTS
 C
 C     The scaling factors s and t are BASE dependent.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Mar. 1997.
 C     Supersedes Release 2.0 routine MC01GD by A.J. Geurts.

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TG01HY( COMPQ, COMPZ, L, N, M, P, N1, LBE, A, LDA,
      $                   E, LDE, B, LDB, C, LDC, Q, LDQ, Z, LDZ, NR,
      $                   NRBLCK, RTAU, TOL, IWORK, DWORK, LDWORK, INFO )
@@ -63,14 +66,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     COMPQ   CHARACTER*1
+C     COMPQ   (input) CHARACTER*1
 C             = 'N':  do not compute Q;
 C             = 'I':  Q is initialized to the unit matrix, and the
 C                     orthogonal matrix Q is returned;
 C             = 'U':  Q must contain an orthogonal matrix Q1 on entry,
 C                     and the product Q1*Q is returned.
 C
-C     COMPZ   CHARACTER*1
+C     COMPZ   (input) CHARACTER*1
 C             = 'N':  do not compute Z;
 C             = 'I':  Z is initialized to the unit matrix, and the
 C                     orthogonal matrix Z is returned;
@@ -123,7 +126,7 @@ C             where Ac is NR-by-NR and Anc is (N1-NR)-by-(N1-NR).
 C             The matrix ( Bc Ac ) is in the controllability staircase
 C             form (1).
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,L).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -146,7 +149,7 @@ C
 C             where Ec is NR-by-NR and Enc is (N1-NR)-by-(N1-NR).
 C             Both Ec and Enc are upper triangular.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.  LDE >= MAX(1,L).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -169,7 +172,7 @@ C             where Bc is NR-by-M.
 C             The matrix ( Bc Ac ) is in the controllability staircase
 C             form (1).
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,L).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -178,7 +181,7 @@ C             contain the state/output matrix C.
 C             On exit, the leading P-by-N part of this array contains
 C             the transformed matrix C*Zc.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1,P).
 C
 C     Q       (input/output) DOUBLE PRECISION array, dimension (LDQ,L)
@@ -195,7 +198,7 @@ C                             on exit, the leading L-by-L part of this
 C                             array contains the orthogonal matrix
 C                             Q*Qc.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.
 C             LDQ >= 1,        if COMPQ = 'N';
 C             LDQ >= MAX(1,L), if COMPQ = 'U' or 'I'.
@@ -213,7 +216,7 @@ C                             on exit, the leading N-by-N part of this
 C                             array contains the orthogonal matrix
 C                             Z*Zc.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z.
 C             LDZ >= 1,        if COMPZ = 'N';
 C             LDZ >= MAX(1,N), if COMPZ = 'U' or 'I'.
@@ -235,7 +238,7 @@ C             the full row rank block Ai,i-1 in the staircase form (1).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used in rank determinations when
 C             transforming (A-lambda*E, B). If the user sets TOL > 0,
 C             then the given value of TOL is used as a lower bound for
@@ -249,13 +252,13 @@ C             DLAMCH).  TOL < 1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (M)
+C     IWORK   (input/output) INTEGER array, dimension (M)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if  INFO = 0,  DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(1,N,L,2*(M+N1-1))
 C             For good performance, LDWORK should be generally larger.
@@ -268,7 +271,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -298,7 +301,7 @@ C
 C     If INFO > 0 on entry, that value is used as block size for the
 C     block algorithms. Otherwise, the block size is chosen internally.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Jan. 2012.
 C     Based on SLICOT Library routine TG01HX, by A. Varga.

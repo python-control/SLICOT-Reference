@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03QY( N, L, A, LDA, U, LDU, E1, E2, INFO )
 C
 C     PURPOSE
@@ -28,7 +31,7 @@ C             the upper quasi-triangular matrix A after its selected
 C             block has been splitt and/or put in the LAPACK standard
 C             form.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= N.
 C
 C     U       (input/output) DOUBLE PRECISION array, dimension (LDU,N)
@@ -38,17 +41,20 @@ C             On exit, the leading N-by-N part of this array contains
 C             U*UT, where UT is the transformation matrix used to
 C             split and/or standardize the selected block.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of array U.  LDU >= N.
 C
-C     E1, E2  (output) DOUBLE PRECISION
+C     E1      (output) DOUBLE PRECISION
+C             See E2
+C
+C     E2      (output) DOUBLE PRECISION
 C             E1 and E2 contain either the real eigenvalues or the real
 C             and positive imaginary parts, respectively, of the complex
 C             eigenvalues of the selected 2-by-2 diagonal block of A.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -70,7 +76,7 @@ C     U1'*A1*U1 has the appropriate form. Let UT be an extension of U1
 C     to an N-by-N orthogonal matrix, using identity submatrices. Then A
 C     is replaced by UT'*A*UT and the contents of array U is U * UT.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen,
 C     March 1998. Based on the RASP routine SPLITB.

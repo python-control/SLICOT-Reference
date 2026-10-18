@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MC01QD( DA, DB, A, B, RQ, IWARN, INFO )
 C
 C     PURPOSE
@@ -46,7 +49,7 @@ C             Q(x) in increasing powers of x.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = k:  if the degree of the denominator polynomial B(x) has
 C                   been reduced to (DB - k) because B(DB+1-j) = 0.0 on
@@ -54,7 +57,7 @@ C                   entry for j = 0, 1, ..., k-1 and B(DB+1-k) <> 0.0.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -105,7 +108,7 @@ C     NUMERICAL ASPECTS
 C
 C     None.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Mar. 1997.
 C     Supersedes Release 2.0 routine MC01ED by A.J. Geurts.

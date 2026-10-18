@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04DP( JOB, N, THRESH, A, LDA, DE, LDDE, C, LDC, VW,
      $                   LDVW, ILO, LSCALE, RSCALE, DWORK, IWARN, INFO )
 C
@@ -23,7 +26,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Specifies the operations to be performed on S and H:
 C             = 'N':  none:  simply set ILO = 1, LSCALE(I) = 1.0 and
 C                     RSCALE(I) = 1.0 for i = 1,...,N.
@@ -78,7 +81,7 @@ C             the matrix A of the balanced skew-Hamiltonian matrix S.
 C             In particular, the strictly lower triangular part of the
 C             first ILO-1 columns of A is zero.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     DE      (input/output) DOUBLE PRECISION array, dimension
@@ -101,7 +104,7 @@ C             part of the balanced matrix D. In particular, the strictly
 C             lower triangular part of the first ILO-1 columns of DE is
 C             zero.
 C
-C     LDDE    INTEGER
+C     LDDE    (input) INTEGER
 C             The leading dimension of the array DE.  LDDE >= MAX(1, N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC, N)
@@ -112,7 +115,7 @@ C             the matrix C of the balanced Hamiltonian matrix H.
 C             In particular, the strictly lower triangular part of the
 C             first ILO-1 columns of C is zero.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1, N).
 C
 C     VW      (input/output) DOUBLE PRECISION array, dimension
@@ -131,7 +134,7 @@ C             the upper triangular part of the balanced matrix V. In
 C             particular, the lower triangular part of the first ILO-1
 C             columns of VW is zero.
 C
-C     LDVW    INTEGER
+C     LDVW    (input) INTEGER
 C             The leading dimension of the array VW.  LDVW >= MAX(1, N).
 C
 C     ILO     (output) INTEGER
@@ -163,7 +166,7 @@ C             column j of the matrices A, E, C, and W.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK) where
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK) where
 C             LDWORK = 0,   if  JOB = 'N' or JOB = 'P', or N = 0;
 C             LDWORK = 6*N, if (JOB = 'S' or JOB = 'B') and THRESH >= 0;
 C             LDWORK = 8*N, if (JOB = 'S' or JOB = 'B') and THRESH <  0.
@@ -175,7 +178,7 @@ C             used (irrelevant if IWARN = 1 or ILO = N).
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 1:  scaling has been requested, for THRESH = -2 or
 C                   THRESH = -4, but it most probably would not improve
@@ -189,7 +192,7 @@ C                   if requested, has been preserved.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit.
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -246,7 +249,7 @@ C     the scaling transformations is bounded by MXCOND = 1/SQRT(EPS),
 C     where EPS is the machine precision (see LAPACK Library routine
 C     DLAMCH).
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Sep. 2015.
 C

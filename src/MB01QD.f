@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB01QD( TYPE, M, N, KL, KU, CFROM, CTO, NBL, NROWS, A,
      $                   LDA, INFO )
 C
@@ -13,7 +16,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TYPE    CHARACTER*1
+C     TYPE    (input) CHARACTER*1
 C             TYPE indices the storage type of the input matrix.
 C             = 'G':  A is a full matrix.
 C             = 'L':  A is a (block) lower triangular matrix.
@@ -45,6 +48,8 @@ C             The upper bandwidth of A.  Referenced only if TYPE = 'B',
 C             'Q' or 'Z'.
 C
 C     CFROM   (input) DOUBLE PRECISION
+C             See CTO
+C
 C     CTO     (input) DOUBLE PRECISION
 C             The matrix A is multiplied by CTO/CFROM. A(I,J) is
 C             computed without over/underflow if the final result
@@ -71,7 +76,7 @@ C             The leading dimension of the array A.  LDA >= max(1,M).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             Not used in this implementation.
 C
 C     METHOD
@@ -83,7 +88,7 @@ C     dealing with block triangular, or block Hessenberg matrices.
 C     For efficiency, no tests of the input scalar parameters are
 C     performed.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, Nov. 1996.
 C

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03WD( JOB, COMPZ, N, P, ILO, IHI, ILOZ, IHIZ, H,
      $                   LDH1, LDH2, Z, LDZ1, LDZ2, WR, WI, DWORK,
      $                   LDWORK, INFO )
@@ -28,14 +31,14 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Indicates whether the user wishes to compute the full
 C             Schur form or the eigenvalues only, as follows:
 C             = 'E':  Compute the eigenvalues only;
 C             = 'S':  Compute the factors T_1, ..., T_p of the full
 C                     Schur form, T = T_1*T_2*...*T_p.
 C
-C     COMPZ   CHARACTER*1
+C     COMPZ   (input) CHARACTER*1
 C             Indicates whether or not the user wishes to accumulate
 C             the matrices Z_1, ..., Z_p, as follows:
 C             = 'N':  The matrices Z_1, ..., Z_p are not required;
@@ -56,6 +59,8 @@ C             The number of matrices in the product H_1*H_2*...*H_p.
 C             P >= 1.
 C
 C     ILO     (input) INTEGER
+C             See IHI
+C
 C     IHI     (input) INTEGER
 C             It is assumed that all matrices H_j, j = 2, ..., p, are
 C             already upper triangular in rows and columns 1:ILO-1 and
@@ -69,6 +74,8 @@ C             matrices H_i, i = 1,...,p, if JOB = 'S'.
 C             1 <= ILO <= max(1,N); min(ILO,N) <= IHI <= N.
 C
 C     ILOZ    (input) INTEGER
+C             See IHIZ
+C
 C     IHIZ    (input) INTEGER
 C             Specify the rows of Z to which the transformations must be
 C             applied if COMPZ = 'I' or COMPZ = 'V'.
@@ -88,11 +95,11 @@ C             part of H(*,*,j) for j > 1 contains the resulting upper
 C             triangular matrix T_j.
 C             If JOB = 'E', the contents of H are unspecified on exit.
 C
-C     LDH1    INTEGER
+C     LDH1    (input) INTEGER
 C             The first leading dimension of the array H.
 C             LDH1 >= max(1,N).
 C
-C     LDH2    INTEGER
+C     LDH2    (input) INTEGER
 C             The second leading dimension of the array H.
 C             LDH2 >= max(1,N).
 C
@@ -110,17 +117,19 @@ C             transformations are applied only to the submatrices
 C             Z_j(ILOZ:IHIZ,ILO:IHI), j = 1, ..., P.
 C             If COMPZ = 'N', Z is not referenced.
 C
-C     LDZ1    INTEGER
+C     LDZ1    (input) INTEGER
 C             The first leading dimension of the array Z.
 C             LDZ1 >= 1,        if COMPZ = 'N';
 C             LDZ1 >= max(1,N), if COMPZ = 'I' or COMPZ = 'V'.
 C
-C     LDZ2    INTEGER
+C     LDZ2    (input) INTEGER
 C             The second leading dimension of the array Z.
 C             LDZ2 >= 1,        if COMPZ = 'N';
 C             LDZ2 >= max(1,N), if COMPZ = 'I' or COMPZ = 'V'.
 C
 C     WR      (output) DOUBLE PRECISION array, dimension (N)
+C             See WI
+C
 C     WI      (output) DOUBLE PRECISION array, dimension (N)
 C             The real and imaginary parts, respectively, of the
 C             computed eigenvalues ILO to IHI are stored in the
@@ -133,14 +142,14 @@ C             diagonal of the Schur form returned in H.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= IHI-ILO+P-1.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -182,7 +191,7 @@ C     because DHSEQR uses a block multishift QR algorithm.
 C     When P is large and JOB = 'S', it could be more efficient to
 C     compute the product matrix H, and use the LAPACK Library routines.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, and A. Varga,
 C     German Aerospace Center, DLR Oberpfaffenhofen, February 1999.

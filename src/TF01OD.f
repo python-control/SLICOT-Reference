@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TF01OD( NH1, NH2, NR, NC, H, LDH, T, LDT, INFO )
 C
 C     PURPOSE
@@ -32,7 +35,7 @@ C             ...,(NR+NC-1). Specifically, each parameter M(k) is an
 C             NH1-by-NH2 matrix whose (i,j)-th element must be stored in
 C             H(i,(k-1)*NH2+j) for i = 1,2,...,NH1 and j = 1,2,...,NH2.
 C
-C     LDH     INTEGER
+C     LDH     (input) INTEGER
 C             The leading dimension of array H.  LDH >= MAX(1,NH1).
 C
 C     T       (output) DOUBLE PRECISION array, dimension (LDT,NH2*NC)
@@ -40,12 +43,12 @@ C             The leading NH1*NR-by-NH2*NC part of this array contains
 C             the block Hankel expansion of the multivariable sequence
 C             M(k).
 C
-C     LDT     INTEGER
+C     LDT     (input) INTEGER
 C             The leading dimension of array T.  LDT >= MAX(1,NH1*NR).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -77,7 +80,7 @@ C
 C     The time taken is approximately proportional to
 C     NH1 x NH2 x NR x NC.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Dec. 1996.
 C     Supersedes Release 2.0 routine TF01CD by S. Van Huffel, Katholieke

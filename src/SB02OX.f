@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       LOGICAL FUNCTION SB02OX( ALPHAR, ALPHAI, BETA )
 C
 C     PURPOSE
@@ -34,7 +37,7 @@ C     NUMERICAL ASPECTS
 C
 C     None.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Sep. 1997.
 C     Supersedes Release 2.0 routine SB02CX by P. Van Dooren, Philips

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     AB04MD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -13,7 +16,7 @@
 *     .. Local Scalars ..
       DOUBLE PRECISION ALPHA, BETA
       INTEGER          I, INFO, J, M, N, P
-      CHARACTER*1      TYPE
+      CHARACTER(LEN=1)      TYPE
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), B(LDB,MMAX), C(LDC,NMAX),
      $                 D(LDD,MMAX), DWORK(LDWORK)

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB01XD( UPLO, N, A, LDA, INFO )
 C
 C     PURPOSE
@@ -15,7 +18,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     UPLO    CHARACTER*1
+C     UPLO    (input) CHARACTER*1
 C             Specifies which triangle (U or L) is given in the array A,
 C             as follows:
 C             = 'U':  the upper triangular part U is given;
@@ -42,12 +45,12 @@ C             triangular part of this array contains the lower
 C             triangular part of the product L * L'. The strictly upper
 C             triangular part is not referenced.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= max(1,N).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -62,7 +65,7 @@ C
 C     This routine is a counterpart of LAPACK Library routine DLAUUM,
 C     which computes the matrix product U * U' or L' * L.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Nov. 2000.
 C

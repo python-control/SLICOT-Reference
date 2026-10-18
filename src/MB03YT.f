@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03YT( A, LDA, B, LDB, ALPHAR, ALPHAI, BETA, CSL, SNL,
      $                   CSR, SNR )
 C
@@ -39,7 +42,7 @@ C             contain the matrix A.
 C             On exit, the leading 2-by-2 part of this array contains
 C             the matrix A of the pair in periodic Schur form.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= 2.
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,2)
@@ -48,11 +51,15 @@ C             contain the upper triangular matrix B.
 C             On exit, the leading 2-by-2 part of this array contains
 C             the matrix B of the pair in periodic Schur form.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= 2.
 C
 C     ALPHAR  (output) DOUBLE PRECISION array, dimension (2)
+C             See BETA
+C
 C     ALPHAI  (output) DOUBLE PRECISION array, dimension (2)
+C             See BETA
+C
 C     BETA    (output) DOUBLE PRECISION array, dimension (2)
 C             (ALPHAR(k)+i*ALPHAI(k))*BETA(k) are the eigenvalues of the
 C             pair (A,B), k=1,2, i = sqrt(-1). ALPHAI(1) >= 0.

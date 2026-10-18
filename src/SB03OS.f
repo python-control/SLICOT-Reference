@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB03OS( DISCR, LTRANS, N, S, LDS, R, LDR, SCALE, DWORK,
      $                   ZWORK, INFO )
 C
@@ -28,13 +31,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     DISCR   LOGICAL
+C     DISCR   (input) LOGICAL
 C             Specifies the type of Lyapunov equation to be solved as
 C             follows:
 C             = .TRUE. :  Equation (2), discrete-time case;
 C             = .FALSE.:  Equation (1), continuous-time case.
 C
-C     LTRANS  LOGICAL
+C     LTRANS  (input) LOGICAL
 C             Specifies the form of op(K) to be used, as follows:
 C             = .FALSE.:  op(K) = K    (No transpose);
 C             = .TRUE. :  op(K) = K**H (Conjugate transpose).
@@ -50,7 +53,7 @@ C             must contain the upper triangular matrix.
 C             The elements below the upper triangular part of the array
 C             S are not referenced.
 C
-C     LDS     INTEGER
+C     LDS     (input) INTEGER
 C             The leading dimension of array S.  LDS >= MAX(1,N).
 C
 C     R       (input/output) COMPLEX*16 array of dimension (LDR,N)
@@ -62,7 +65,7 @@ C             array contains the upper triangular matrix U, with real
 C             non-negative entries on its main diagonal.
 C             The strictly lower triangle of R is not referenced.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.  LDR >= MAX(1,N).
 C
 C     SCALE   (output) DOUBLE PRECISION
@@ -71,13 +74,13 @@ C             prevent the solution overflowing.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (N-1)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (N-1)
 C
-C     ZWORK   COMPLEX*16 array, dimension (2*N-2)
+C     ZWORK   (input/output) COMPLEX~*16 array, dimension (2*N-2)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -128,7 +131,7 @@ C     to those of S and R, or a "small" value for scale, is a symptom
 C     of ill-conditioning. A condition estimate can be computed using
 C     SLICOT Library routine SB03MD.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, March 2022.
 C

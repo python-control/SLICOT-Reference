@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     SB02OD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -21,7 +24,7 @@
 *     .. Local Scalars ..
       DOUBLE PRECISION RCOND, TOL
       INTEGER          I, INFO, J, M, N, P
-      CHARACTER*1      DICO, FACT, JOBB, JOBL, SORT, UPLO
+      CHARACTER(LEN=1)      DICO, FACT, JOBB, JOBL, SORT, UPLO
       LOGICAL          LJOBB
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), ALFAI(NMAX2), ALFAR(NMAX2),

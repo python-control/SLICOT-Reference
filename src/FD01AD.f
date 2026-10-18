@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE FD01AD( JP, L, LAMBDA, XIN, YIN, EFOR, XF, EPSBCK,
      $                   CTETA, STETA, YQ, EPOS, EOUT, SALPH, IWARN,
      $                   INFO )
@@ -12,7 +15,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JP      CHARACTER*1
+C     JP      (input) CHARACTER*1
 C             Indicates whether the user wishes to apply both prediction
 C             and filtering parts, as follows:
 C             = 'B':  Both prediction and filtering parts are to be
@@ -104,7 +107,7 @@ C             normalized lattice predictor (whose value is -SALPH(i)).
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 1:  an element to be annihilated by a rotation is less
 C                   than the machine precision (see LAPACK Library
@@ -112,7 +115,7 @@ C                   routine DLAMCH).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -213,7 +216,7 @@ C         If sigma is the standard deviation of the input sequence
 C         XIN, then initializing EFOR = sigma*1.0E-02 usually works
 C         well.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     P. A. Regalia (October 1994).
 C     Release 4.0: V. Sima, Katholieke Univ. Leuven, Belgium, Dec. 1999.

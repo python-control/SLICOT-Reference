@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB01MD( NCONT, N, A, LDA, B, WR, WI, Z, LDZ, G, DWORK,
      $                   INFO )
 C
@@ -40,7 +43,7 @@ C             for possible 2-by-2 diagonal blocks.
 C             (To reconstruct the closed-loop system matrix see
 C             FURTHER COMMENTS below.)
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,NCONT).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (NCONT)
@@ -51,6 +54,8 @@ C             On exit, this array contains the transformed vector Z * B
 C             of the closed-loop system.
 C
 C     WR      (input) DOUBLE PRECISION array, dimension (NCONT)
+C             See WI
+C
 C     WI      (input) DOUBLE PRECISION array, dimension (NCONT)
 C             These arrays must contain the real and imaginary parts,
 C             respectively, of the desired poles of the closed-loop
@@ -67,7 +72,7 @@ C             contains the orthogonal matrix Z which reduces the closed-
 C             loop system matrix (A - B * G) to upper quasi-triangular
 C             form.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of array Z.  LDZ >= MAX(1,N).
 C
 C     G       (output) DOUBLE PRECISION array, dimension (NCONT)
@@ -76,11 +81,11 @@ C             matrix G of the original system.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (3*NCONT)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (3*NCONT)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE DE01OD( CONV, N, A, B, INFO )
 C
 C     PURPOSE
@@ -9,7 +12,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     CONV    CHARACTER*1
+C     CONV    (input) CHARACTER*1
 C             Indicates whether convolution or deconvolution is to be
 C             performed as follows:
 C             = 'C':  Convolution;
@@ -32,7 +35,7 @@ C             NOTE that this array is overwritten.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -53,7 +56,7 @@ C     NUMERICAL ASPECTS
 C
 C     The algorithm requires 0( N*log(N) ) operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Feb. 1997.
 C     Supersedes Release 2.0 routine DE01CD by R. Dekeyser, State

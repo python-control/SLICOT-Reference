@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     MB03SD EXAMPLE PROGRAM TEXT.
 *
 *     .. Parameters ..
@@ -11,7 +14,7 @@
       PARAMETER        ( LDWORK = NMAX*( NMAX+1 ) )
 *     .. Local Scalars ..
       INTEGER          I, INFO, J, N
-      CHARACTER*1      JOBSCL
+      CHARACTER(LEN=1)      JOBSCL
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), DWORK(LDWORK), QG(LDQG,NMAX+1),
      $                 WI(NMAX), WR(NMAX)

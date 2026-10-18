@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TF01QD( NC, NB, N, IORD, AR, MA, H, LDH, INFO )
 C
 C     PURPOSE
@@ -55,12 +58,12 @@ C             The Markov parameters are stored such that H(i,(k-1)xNB+j)
 C             contains the (i,j)-th element of M(k) for i = 1,2,...,NC
 C             and j = 1,2,...,NB.
 C
-C     LDH     INTEGER
+C     LDH     (input) INTEGER
 C             The leading dimension of array H.  LDH >= MAX(1,NC).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -120,7 +123,7 @@ C     The computation of the (i,j)-th element of M(k) requires:
 C        (k-1) multiplications and k additions if k <= r;
 C          r   multiplications and r additions if k > r.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, Dec. 1996.
 C     Supersedes Release 2.0 routine TF01ED by S. Van Huffel, Katholieke

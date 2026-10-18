@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TG01JD( JOB, SYSTYP, EQUIL, N, M, P, A, LDA, E, LDE,
      $                   B, LDB, C, LDC, NR, INFRED, TOL, IWORK, DWORK,
      $                   LDWORK, INFO )
@@ -14,7 +17,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             Indicates whether the user wishes to remove the
 C             uncontrollable and/or unobservable parts as follows:
 C             = 'I':  Remove both the uncontrollable and unobservable
@@ -25,7 +28,7 @@ C                     controllable descriptor representation;
 C             = 'O':  Remove the unobservable part only to get an
 C                     observable descriptor representation.
 C
-C     SYSTYP  CHARACTER*1
+C     SYSTYP  (input) CHARACTER*1
 C             Indicates the type of descriptor system algorithm
 C             to be applied according to the assumed
 C             transfer-function matrix as follows:
@@ -33,7 +36,7 @@ C             = 'R':  Rational transfer-function matrix;
 C             = 'S':  Proper (standard) transfer-function matrix;
 C             = 'P':  Polynomial transfer-function matrix.
 C
-C     EQUIL   CHARACTER*1
+C     EQUIL   (input) CHARACTER*1
 C             Specifies whether the user wishes to preliminarily scale
 C             the system (A-lambda*E,B,C) as follows:
 C             = 'S':  Perform scaling;
@@ -71,7 +74,7 @@ C             is in an observable staircase form (see TG01HD).
 C             The block structure of staircase forms is contained
 C             in the leading INFRED(7) elements of IWORK.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -90,7 +93,7 @@ C             performed order reduction phase (see METHOD).
 C             The block structure of staircase forms is contained
 C             in the leading INFRED(7) elements of IWORK.
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of array E.  LDE >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M),
@@ -107,7 +110,7 @@ C             JOB = 'C', or JOB = 'O', respectively.
 C             If JOB = 'C', only the first IWORK(1) rows of B are
 C             nonzero.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -123,7 +126,7 @@ C             JOB = 'C', or JOB = 'O', respectively.
 C             If JOB = 'I', or JOB = 'O', only the last IWORK(1) columns
 C             (in the first NR columns) of C are nonzero.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.
 C             LDC >= MAX(1,M,P) if N > 0.
 C             LDC >= 1          if N = 0.
@@ -153,7 +156,7 @@ C                            in the first INFRED(7) elements of IWORK.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The tolerance to be used in rank determinations when
 C             transforming (A-lambda*E,B,C). If the user sets TOL > 0,
 C             then the given value of TOL is used as a lower bound for
@@ -167,15 +170,15 @@ C             DLAMCH).  TOL < 1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension ((c*N+MAX(M,P)), where
+C     IWORK   (input/output) INTEGER array, dimension ((c*N+MAX(M,P)), where
 C             c = 2, if JOB = 'I' or SYSTYP = 'R', and c = 1, otherwise.
 C             On exit, if INFO = 0, the leading INFRED(7) elements of
 C             IWORK contain the orders of the diagonal blocks of
 C             Ar-lambda*Er.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= MAX(8*N,2*M,2*P), if EQUIL = 'S';
 C             LDWORK >= MAX(N,2*M,2*P),   if EQUIL = 'N'.
@@ -188,7 +191,7 @@ C             order reduction took place.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -242,7 +245,7 @@ C     If the pencil (A-lambda*E) has no zero eigenvalues, then an
 C     irreducible realization can be computed skipping Phases 1 and 3
 C     by using the setting: JOB = 'I' and SYSTYP = 'P'.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen.
 C     April 1999. Based on the RASP routine RPDSIR.

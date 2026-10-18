@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB03KE( TRANA, TRANB, ISGN, K, M, N, PREC, SMIN, S, A,
      $                   B, C, SCALE, DWORK, LDWORK, INFO )
 C
@@ -17,17 +20,17 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TRANA   LOGICAL
+C     TRANA   (input) LOGICAL
 C             Specifies the form of op(A) to be used, as follows:
 C             = .FALSE.:  op(A) = A,
 C             = .TRUE. :  op(A) = A**T.
 C
-C     TRANB   LOGICAL
+C     TRANB   (input) LOGICAL
 C             Specifies the form of op(B) to be used, as follows:
 C             = .FALSE.:  op(B) = B,
 C             = .TRUE. :  op(B) = B**T.
 C
-C     ISGN    INTEGER
+C     ISGN    (input) INTEGER
 C             Specifies which sign variant of the equations to solve.
 C             ISGN = 1 or ISGN = -1.
 C
@@ -85,12 +88,12 @@ C             avoid overflow in X.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal LDWORK.
 C             On exit, if INFO = -21, DWORK(1) returns the minimum value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The dimension of the array DWORK.
 C             LDWORK >= (4*K-3) * (M*N)**2 + K * M*N.
 C
@@ -101,7 +104,7 @@ C             array, and no error message is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -21, then LDWORK is too small; appropriate
 C                   value for LDWORK is returned in DWORK(1); the other
@@ -129,7 +132,7 @@ C     NUMERICAL ASPECTS
 C
 C     The implemented method is numerically backward stable.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Romania,
 C     Mar. 2010, an essentially new version of the PEP routine

@@ -1,17 +1,20 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 C     BD01AD EXAMPLE PROGRAM TEXT
 C
 C     .. Parameters ..
       INTEGER          NIN, NOUT
       PARAMETER        (NIN = 5, NOUT = 6)
       INTEGER          NMAX, MMAX, PMAX
-      PARAMETER        (NMAX = 421, MMAX = 211, PMAX = 211)
+      PARAMETER        (NMAX = 100, MMAX = 100, PMAX = 100)
       INTEGER          LDA, LDB, LDC, LDD, LDE, LDWORK
       PARAMETER        (LDA = NMAX, LDB = NMAX, LDC = PMAX, LDD = PMAX,
      1                  LDE = NMAX, LDWORK = 4*NMAX)
 C     .. Local Scalars ..
       CHARACTER        DEF
       INTEGER          I, INFO, J, LDPAR, LIPAR, M, N, P
-      CHARACTER*70     NOTE
+      CHARACTER(LEN=70)     NOTE
 C     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), B(LDB,MMAX), C(LDC,NMAX),
      1                 D(LDD,MMAX), DPAR(7), DWORK(LDWORK), E(LDE,NMAX)

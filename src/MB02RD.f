@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB02RD( TRANS, N, NRHS, H, LDH, IPIV, B, LDB, INFO )
 C
 C     PURPOSE
@@ -11,7 +14,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER*1
 C             Specifies the form of the system of equations:
 C             = 'N':  H * X = B  (No transpose)
 C             = 'T':  H'* X = B  (Transpose)
@@ -30,7 +33,7 @@ C     H       (input) DOUBLE PRECISION array, dimension (LDH,N)
 C             The factors L and U from the factorization H = P*L*U
 C             as computed by MB02SD.
 C
-C     LDH     INTEGER
+C     LDH     (input) INTEGER
 C             The leading dimension of the array H.  LDH >= max(1,N).
 C
 C     IPIV    (input) INTEGER array, dimension (N)
@@ -42,7 +45,7 @@ C             (LDB,NRHS)
 C             On entry, the right hand side matrix B.
 C             On exit, the solution matrix X.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= max(1,N).
 C
 C     Error Indicator
@@ -68,7 +71,7 @@ C     NUMERICAL ASPECTS
 C                                2
 C     The algorithm requires 0( N x NRHS ) operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Katholieke Univ. Leuven, Belgium, June 1998.
 C

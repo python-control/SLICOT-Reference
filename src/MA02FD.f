@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MA02FD( X1, X2, C, S, INFO )
 C
 C     PURPOSE
@@ -32,11 +35,11 @@ C             The sines s of the modified hyperbolic plane rotation.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  succesful exit;
 C             = 1:  if abs(x2) >= abs(x1) and either x1 <> 0 or x2 <> 0.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Chemnitz, Germany, June 2000.
 C

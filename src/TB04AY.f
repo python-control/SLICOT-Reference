@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TB04AY( N, MWORK, PWORK, A, LDA, B, LDB, C, LDC, D,
      $                   LDD, NCONT, INDEXD, DCOEFF, LDDCOE, UCOEFF,
      $                   LDUCO1, LDUCO2, AT, N1, TAU, TOL1, TOL2, IWORK,
@@ -27,6 +30,63 @@ C     in reverse order (IW = NMINL - 1,...,1), the monic denominator
 C     D:I(s) found exactly as if it were V:0(s), and finally the
 C     numerator vector U:I(s) obtained from the Orthogonal Structure
 C     Theorem relation.
+C
+C     ARGUMENTS
+C
+C     N       (input) INTEGER
+C
+C     MWORK   (input) INTEGER
+C
+C     PWORK   (input) INTEGER
+C
+C     A       (input) DOUBLE PRECISION, dimension(LDA, *)
+C
+C     LDA     (input) INTEGER
+C
+C     B       (input) DOUBLE PRECISION, dimension(LDB, *)
+C
+C     LDB     (input) INTEGER
+C
+C     C       (input) DOUBLE PRECISION, dimension(LDC, *)
+C
+C     LDC     (input) INTEGER
+C
+C     D       (input) DOUBLE PRECISION, dimension(LDD, *)
+C
+C     LDD     (input) INTEGER
+C
+C     NCONT   (input) INTEGER
+C
+C     INDEXD  (input) INTEGER, dimension(*)
+C
+C     DCOEFF  (input) DOUBLE PRECISION, dimension(LDDCOE)
+C
+C     LDDCOE  (input) INTEGER
+C
+C     UCOEFF  (input/output) DOUBLE PRECISION, dimension(LDUCO1,LDUCO2,*)
+C
+C     LDUCO1  (input) INTEGER
+C
+C     LDUCO2  (input) INTEGER
+C
+C     AT      (input/output) DOUBLE PRECISION, dimension(N1, *)
+C
+C     N1      (input) INTEGER
+C
+C     TAU     (input) DOUBLE PRECISION, dimension(*)
+C
+C     TOL1    (input) DOUBLE PRECISION
+C
+C     TOL2    (input) DOUBLE PRECISION
+C
+C     IWORK   (input/output) INTEGER, dimension(*)
+C
+C     DWORK   (input/output) DOUBLE PRECISION, dimension(LDWORK)
+C
+C     LDWORK  (input) INTEGER
+C
+C     INFO    (input/output) INTEGER
+C
 C
 C     ******************************************************************
 C

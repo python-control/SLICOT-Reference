@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE SB01BY( N, M, S, P, A, B, F, TOL, DWORK, INFO )
 C
 C     PURPOSE
@@ -52,21 +55,21 @@ C             uncontrollable part of the pair (A,B).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             The absolute tolerance level below which the elements of A
 C             and B are considered zero (used for controllability test).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (M)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (M)
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             = 1:  if uncontrollability of the pair (A,B) is detected.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center,
 C     DLR Oberpfaffenhofen, July 1998.

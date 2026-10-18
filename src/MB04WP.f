@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB04WP( N, ILO, U1, LDU1, U2, LDU2, CS, TAU, DWORK,
      $                   LDWORK, INFO )
 C
@@ -39,7 +42,7 @@ C             elementary reflector F(i).
 C             On exit, the leading N-by-N part of this array contains
 C             the matrix U1.
 C
-C     LDU1    INTEGER
+C     LDU1    (input) INTEGER
 C             The leading dimension of the array U1.  LDU1 >= MAX(1,N).
 C
 C     U2      (input/output) DOUBLE PRECISION array, dimension (LDU2,N)
@@ -50,7 +53,7 @@ C             scalar factor of H(i).
 C             On exit, the leading N-by-N part of this array contains
 C             the matrix U2.
 C
-C     LDU2    INTEGER
+C     LDU2    (input) INTEGER
 C             The leading dimension of the array U2.  LDU2 >= MAX(1,N).
 C
 C     CS      (input) DOUBLE PRECISION array, dimension (2N-2)
@@ -65,13 +68,13 @@ C             F(i).
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0,  DWORK(1)  returns the optimal
 C             value of LDWORK.
 C             On exit, if  INFO = -10,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK. LDWORK >= MAX(1,2*(N-ILO)).
 C             For optimum performance LDWORK should be larger. (See
 C             SLICOT Library routine MB04WD).
@@ -84,7 +87,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.

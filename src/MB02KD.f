@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE MB02KD( LDBLK, TRANS, K, L, M, N, R, ALPHA, BETA,
      $                   TC, LDTC, TR, LDTR, B, LDB, C, LDC, DWORK,
      $                   LDWORK, INFO )
@@ -16,13 +19,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     LDBLK   CHARACTER*1
+C     LDBLK   (input) CHARACTER(LEN=1)
 C             Specifies where the (1,1)-block of T is stored, as
 C             follows:
 C             = 'C':  in the first block of TC;
 C             = 'R':  in the first block of TR.
 C
-C     TRANS   CHARACTER*1
+C     TRANS   (input) CHARACTER(LEN=1)
 C             Specifies the form of op( T ) to be used in the matrix
 C             multiplication as follows:
 C             = 'N':  op( T ) = T;
@@ -62,7 +65,7 @@ C             On entry with LDBLK = 'R', the leading (M-1)*K-by-L part
 C             of this array must contain the 2nd to the M-th blocks of
 C             the first block column of T.
 C
-C     LDTC    INTEGER
+C     LDTC    (input) INTEGER
 C             The leading dimension of the array TC.
 C             LDTC >= MAX(1,M*K),      if LDBLK = 'C';
 C             LDTC >= MAX(1,(M-1)*K),  if LDBLK = 'R'.
@@ -76,7 +79,7 @@ C             the first block row of T.
 C             On entry with LDBLK = 'R', the leading K-by-N*L part of
 C             this array must contain the first block row of T.
 C
-C     LDTR    INTEGER
+C     LDTR    (input) INTEGER
 C             The leading dimension of the array TR.  LDTR >= MAX(1,K).
 C
 C     B       (input)  DOUBLE PRECISION array, dimension (LDB,R)
@@ -85,7 +88,7 @@ C             this array must contain the matrix B.
 C             On entry with TRANS = 'T' or TRANS = 'C', the leading
 C             M*K-by-R part of this array must contain the matrix B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.
 C             LDB >= MAX(1,N*L),  if TRANS = 'N';
 C             LDB >= MAX(1,M*K),  if TRANS = 'T' or TRANS = 'C'.
@@ -100,20 +103,20 @@ C             this array contains the updated matrix C.
 C             On exit with TRANS = 'T' or TRANS = 'C', the leading
 C             N*L-by-R part of this array contains the updated matrix C.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.
 C             LDC >= MAX(1,M*K),  if TRANS = 'N';
 C             LDC >= MAX(1,N*L),  if TRANS = 'T' or TRANS = 'C'.
 C
 C     Workspace
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0,  DWORK(1)  returns the optimal
 C             value of LDWORK.
 C             On exit, if  INFO = -19,  DWORK(1)  returns the minimum
 C             value of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= 1.
 C             For optimum performance LDWORK should be larger.
 C
@@ -125,7 +128,7 @@ C             is issued by XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -149,7 +152,7 @@ C
 C     The algorithm requires O( (K*L+R*L+K*R)*(N+M)*log(N+M) + K*L*R )
 C     floating point operations.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     D. Kressner, Technical Univ. Berlin, Germany, May 2001.
 C
@@ -179,7 +182,7 @@ C     .. Array Arguments ..
      $                  TR(LDTR,*)
 C     .. Local Scalars ..
       LOGICAL           FULLC, LMULT, LQUERY, LTRAN
-      CHARACTER*1       WGHT
+      CHARACTER(LEN=1)       WGHT
       INTEGER           DIMB, DIMC, I, ICP, ICQ, IERR, IR, J, JJ, KK,
      $                  LEN, LL, LN, METH, MK, NL, P, P1, P2, PB, PC,
      $                  PDW, PP, PT, Q1, Q2, R1, R2, S1, S2, SHFT, WPOS,

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE FB01QD( JOBK, MULTBQ, N, M, P, S, LDS, A, LDA, B,
      $                   LDB, Q, LDQ, C, LDC, R, LDR, K, LDK, TOL,
      $                   IWORK, DWORK, LDWORK, INFO )
@@ -12,7 +15,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOBK    CHARACTER*1
+C     JOBK    (input) CHARACTER*1
 C             Indicates whether the user wishes to compute the Kalman
 C             filter gain matrix K  as follows:
 C                                 i
@@ -21,7 +24,7 @@ C                      i
 C             = 'N':  K  is not required.
 C                      i
 C
-C     MULTBQ  CHARACTER*1                    1/2
+C     MULTBQ  (input) CHARACTER*1            1/2
 C             Indicates how matrices B  and Q    are to be passed to
 C                                     i      i
 C             the routine as follows:
@@ -63,7 +66,7 @@ C             of the state covariance matrix at instant i.
 C             The strict upper triangular part of this array is not
 C             referenced.
 C
-C     LDS     INTEGER
+C     LDS     (input) INTEGER
 C             The leading dimension of array S.  LDS >= MAX(1,N).
 C
 C     A       (input) DOUBLE PRECISION array, dimension (LDA,N)
@@ -72,7 +75,7 @@ C                                                                 i
 C             the state transition matrix of the discrete system at
 C             instant i.
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of array A.  LDA >= MAX(1,N).
 C
 C     B       (input) DOUBLE PRECISION array, dimension (LDB,M)
@@ -82,7 +85,7 @@ C             the input weight matrix (or the product B Q    if
 C                                                      i i
 C             MULTBQ = 'P') of the discrete system at instant i.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of array B.  LDB >= MAX(1,N).
 C
 C     Q       (input) DOUBLE PRECISION array, dimension (LDQ,*)
@@ -98,7 +101,7 @@ C             If MULTBQ = 'P', Q is not referenced and can be supplied
 C             as a dummy array (i.e., set parameter LDQ = 1 and declare
 C             this array to be Q(1,1) in the calling program).
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of array Q.
 C             LDQ >= MAX(1,M) if MULTBQ = 'N';
 C             LDQ >= 1        if MULTBQ = 'P'.
@@ -108,7 +111,7 @@ C             The leading P-by-N part of this array must contain C , the
 C                                                                 i
 C             output weight matrix of the discrete system at instant i.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of array C.  LDC >= MAX(1,P).
 C
 C     R       (input/output) DOUBLE PRECISION array, dimension (LDR,P)
@@ -127,7 +130,7 @@ C             instant i.
 C             The strict upper triangular part of this array is not
 C             referenced.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of array R.  LDR >= MAX(1,P).
 C
 C     K       (output) DOUBLE PRECISION array, dimension (LDK,P)
@@ -143,12 +146,12 @@ C                                                            -1/2
 C             METHOD). Specifically, AK  = A P     C'(RINOV')    .
 C                                      i    i i|i-1 i      i
 C
-C     LDK     INTEGER
+C     LDK     (input) INTEGER
 C             The leading dimension of array K.   LDK >= MAX(1,N).
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             If JOBK = 'K', then TOL is used to test for near
 C                                               1/2
 C             singularity of the matrix (RINOV )   . If the user sets
@@ -165,11 +168,11 @@ C             Otherwise, TOL is not referenced.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK),
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK),
 C             where LIWORK = P if JOBK = 'K',
 C             and   LIWORK = 1 otherwise.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.  If INFO = 0 and JOBK = 'K', DWORK(2) returns
 C             an estimate of the reciprocal of the condition number
@@ -177,14 +180,14 @@ C                                        1/2
 C             (in the 1-norm) of (RINOV )   .
 C                                      i
 C
-C     LDWORK  The length of the array DWORK.
+C     LDWORK  (input) INTEGER, The length of the array DWORK.
 C             LDWORK >= MAX(1,N*(P+N)+2*P,N*(N+M+2)),     if JOBK = 'N';
 C             LDWORK >= MAX(2,N*(P+N)+2*P,N*(N+M+2),3*P), if JOBK = 'K'.
 C             For optimum performance LDWORK should be larger.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -298,7 +301,8 @@ C     .. External Functions ..
       LOGICAL           LSAME
       EXTERNAL          LSAME
 C     .. External Subroutines ..
-      EXTERNAL          DGELQF, DLACPY, DTRMM, MB02OD, MB04LD, XERBLA
+      EXTERNAL          DGELQF, DLACPY, DTRMM, MB02OD, MB04LD, XERBLA,
+     $                  DLACPY_SLC
 C     .. Intrinsic Functions ..
       INTRINSIC         INT, MAX
 C     .. Executable Statements ..
@@ -397,7 +401,7 @@ C     Now, the workspace for C x S is no longer needed.
 C     Adjust the leading dimension of DWORK, to save space for the
 C     following computations.
 C
-      CALL DLACPY( 'Full', N, N, DWORK, PN, DWORK, N )
+      CALL DLACPY_SLC( 'Full', N, N, DWORK, PN, DWORK, N )
       I12 = N*N + 1
 C
 C     Storing B x Q in the (1,2) block of DWORK.

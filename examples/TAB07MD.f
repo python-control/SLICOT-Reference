@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     AB07MD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -11,7 +14,7 @@
       PARAMETER        ( LDA = NMAX, LDB = NMAX, LDC = MAXMP,
      $                   LDD = MAXMP )
 *     .. Local Scalars ..
-      CHARACTER*1      JOBD
+      CHARACTER(LEN=1)      JOBD
       INTEGER          I, INFO, J, M, N, P
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), B(LDB,MAXMP), C(LDC,NMAX),

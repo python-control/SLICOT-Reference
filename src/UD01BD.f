@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE UD01BD( MP, NP, DP, NIN, P, LDP1, LDP2, INFO )
 C
 C     PURPOSE
@@ -34,15 +37,15 @@ C             s**(k-1) of the polynomial which is the (i,j)-th element
 C             of P(s), where i = 1,2,...,MP, j = 1,2,...,NP and
 C             k = 1,2,...,DP+1.
 C
-C     LDP1    INTEGER
+C     LDP1    (input) INTEGER
 C             The leading dimension of array P.  LDP1 >= MP.
 C
-C     LDP2    INTEGER
+C     LDP2    (input) INTEGER
 C             The second dimension of array P.  LDP2 >= NP.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value.
@@ -62,7 +65,7 @@ C     NUMERICAL ASPECTS
 C
 C     None.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     Release 3.0: V. Sima, Katholieke Univ. Leuven, Belgium, June 1998.
 C     Based on routine RDMAPO by A.J. Geurts, Eindhoven University of

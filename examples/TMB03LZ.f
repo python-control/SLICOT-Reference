@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     MB03LZ EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -12,7 +15,7 @@
      $                     LZWORK =  8*NMAX + 4 )
 *
 *     .. Local Scalars ..
-      CHARACTER*1        COMPQ, ORTH
+      CHARACTER(LEN=1)        COMPQ, ORTH
       INTEGER            I, INFO, J, N, NEIG
 *
 *     .. Local Arrays ..

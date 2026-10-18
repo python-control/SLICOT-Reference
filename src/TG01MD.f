@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TG01MD( JOB, N, M, P, A, LDA, E, LDE, B, LDB, C, LDC,
      $                   ALPHAR, ALPHAI, BETA, Q, LDQ, Z, LDZ, NF, ND,
      $                   NIBLCK, IBLCK, TOL, IWORK, DWORK, LDWORK,
@@ -31,7 +34,7 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     JOB     CHARACTER*1
+C     JOB     (input) CHARACTER*1
 C             = 'F':  perform the finite-infinite separation;
 C             = 'I':  perform the infinite-finite separation.
 C
@@ -64,7 +67,7 @@ C             matrix. Ai has a block structure as in (3) or (4), where
 C             A0,0 is ND-by-ND and Ai,i , for i = 1, ..., NIBLCK, is
 C             IBLCK(i)-by-IBLCK(i). (See METHOD.)
 C
-C     LDA     INTEGER
+C     LDA     (input) INTEGER
 C             The leading dimension of the array A.  LDA >= MAX(1,N).
 C
 C     E       (input/output) DOUBLE PRECISION array, dimension (LDE,N)
@@ -81,7 +84,7 @@ C             where Ef is an NF-by-NF nonsingular and upper triangular
 C             matrix, and Ei is an (N-NF)-by-(N-NF) nilpotent matrix in
 C             an upper triangular block form as in (3) or (4).
 C
-C     LDE     INTEGER
+C     LDE     (input) INTEGER
 C             The leading dimension of the array E.  LDE >= MAX(1,N).
 C
 C     B       (input/output) DOUBLE PRECISION array, dimension (LDB,M)
@@ -90,7 +93,7 @@ C             contain the N-by-M input matrix B.
 C             On exit, the leading N-by-M part of this array contains
 C             the transformed input matrix Q'*B.
 C
-C     LDB     INTEGER
+C     LDB     (input) INTEGER
 C             The leading dimension of the array B.  LDB >= MAX(1,N).
 C
 C     C       (input/output) DOUBLE PRECISION array, dimension (LDC,N)
@@ -99,7 +102,7 @@ C             contain the state/output matrix C.
 C             On exit, the leading P-by-N part of this array contains
 C             the transformed matrix C*Z.
 C
-C     LDC     INTEGER
+C     LDC     (input) INTEGER
 C             The leading dimension of the array C.  LDC >= MAX(1,P).
 C
 C     ALPHAR  (output) DOUBLE PRECISION array, dimension (N)
@@ -143,7 +146,7 @@ C             The leading N-by-N part of this array contains the
 C             orthogonal matrix Q, which is the accumulated product of
 C             the transformations applied to A, E, and B on the left.
 C
-C     LDQ     INTEGER
+C     LDQ     (input) INTEGER
 C             The leading dimension of the array Q.  LDQ >= MAX(1,N).
 C
 C     Z       (output) DOUBLE PRECISION array, dimension (LDZ,N)
@@ -151,7 +154,7 @@ C             The leading N-by-N part of this array contains the
 C             orthogonal matrix Z, which is the accumulated product of
 C             the transformations applied to A, E, and C on the right.
 C
-C     LDZ     INTEGER
+C     LDZ     (input) INTEGER
 C             The leading dimension of the array Z.  LDZ >= MAX(1,N).
 C
 C     NF      (output) INTEGER
@@ -173,7 +176,7 @@ C             staircase form (3), where i = 1,2,...,NIBLCK.
 C
 C     Tolerances
 C
-C     TOL     DOUBLE PRECISION
+C     TOL     (input) DOUBLE PRECISION
 C             A tolerance used in rank decisions to determine the
 C             effective rank, which is defined as the order of the
 C             largest leading (or trailing) triangular submatrix in the
@@ -186,13 +189,13 @@ C             TOL < 1.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (N)
+C     IWORK   (input/output) INTEGER array, dimension (N)
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if INFO = 0, DWORK(1) returns the optimal value
 C             of LDWORK.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.  LDWORK >= 1, and if N > 0,
 C             LDWORK >= 4*N.
 C
@@ -204,7 +207,7 @@ C             XERBLA.
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -258,7 +261,7 @@ C     k, for k = 1, ..., NIBLCK, where IBLCK(NIBLCK+1) = 0.
 C     Note that each infinite pole of multiplicity k corresponds to
 C     an infinite eigenvalue of multiplicity k+1.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     A. Varga, German Aerospace Center, DLR Oberpfaffenhofen.
 C     July 1999. Based on the RASP routines SRISEP and RPDSGH.

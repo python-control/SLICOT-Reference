@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       INTEGER FUNCTION UE01MD( ISPEC, NAME, OPTS, N1, N2, N3 )
 C
 C     PURPOSE
@@ -44,7 +47,11 @@ C             The character options to the subroutine NAME, concatenated
 C             into a single character string.
 C
 C     N1      (input) INTEGER
+C             See N3
+C
 C     N2      (input) INTEGER
+C             See N3
+C
 C     N3      (input) INTEGER
 C             Problem dimensions for the subroutine NAME; these may not
 C             all be required.
@@ -66,9 +73,9 @@ C     .. Scalar Arguments ..
       INTEGER            ISPEC, N1, N2, N3
 C
 C     .. Local Scalars ..
-      CHARACTER*1        C3
-      CHARACTER*2        C2
-      CHARACTER*6        SUBNAM
+      CHARACTER(LEN=1)        C3
+      CHARACTER(LEN=2)        C2
+      CHARACTER(LEN=6)        SUBNAM
       INTEGER            I, IC, IZ, NB, NBMIN, NX
 C     .. External Functions ..
       INTEGER            ILAENV

@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE TB01TY( MODE, IOFF, JOFF, NROW, NCOL, SIZE, X, LDX,
      $                   BVECT )
 C
@@ -30,9 +33,27 @@ C
 C     For efficiency, no tests of the input scalar parameters are
 C     performed.
 C
-C     REVISIONS
+C     ARGUMENTS
 C
-C     -
+C     MODE    (input) INTEGER
+C
+C     IOFF    (input) INTEGER
+C
+C     JOFF    (input) INTEGER
+C
+C     NROW    (input) INTEGER
+C
+C     NCOL    (input) INTEGER
+C
+C     SIZE    (input) DOUBLE PRECISION
+C
+C     X       (input/output) DOUBLE PRECISION, dimension(LDX,*)
+C
+C     LDX     (input) INTEGER,
+C
+C     BVECT   (input/output) DOUBLE PRECISION
+C
+C
 C
 C     ******************************************************************
 C

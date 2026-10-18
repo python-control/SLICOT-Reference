@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     TB01UD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -15,7 +18,7 @@
 *     .. Local Scalars ..
       DOUBLE PRECISION TOL
       INTEGER          I, INFO, INDCON, J, M, N, NCONT, P
-      CHARACTER*1      JOBZ
+      CHARACTER(LEN=1)      JOBZ
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), B(LDB,MMAX), C(LDC,NMAX),
      $                 DWORK(LDWORK), TAU(NMAX), Z(LDZ,NMAX)

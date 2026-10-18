@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     AB09DD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -15,7 +18,7 @@
 *     .. Local Scalars ..
       DOUBLE PRECISION RCOND
       INTEGER          I, INFO, J, M, N, NR, P
-      CHARACTER*1      DICO
+      CHARACTER(LEN=1)      DICO
 *     .. Local Arrays ..
       DOUBLE PRECISION A(LDA,NMAX), B(LDB,MMAX), C(LDC,NMAX),
      $                 D(LDD,MMAX), DWORK(LDWORK)

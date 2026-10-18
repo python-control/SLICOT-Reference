@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
 *     DG01MD EXAMPLE PROGRAM TEXT
 *
 *     .. Parameters ..
@@ -7,7 +10,7 @@
       PARAMETER        ( NMAX = 128 )
 *     .. Local Scalars ..
       INTEGER          I, INFO, N
-      CHARACTER*1      INDI
+      CHARACTER(LEN=1)      INDI
 *     .. Local Arrays ..
       DOUBLE PRECISION XI(NMAX), XR(NMAX)
 *     .. External Subroutines ..

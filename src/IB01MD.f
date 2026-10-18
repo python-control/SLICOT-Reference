@@ -1,3 +1,6 @@
+C
+C SPDX-License-Identifier: BSD-3-Clause
+C
       SUBROUTINE IB01MD( METH, ALG, BATCH, CONCT, NOBR, M, L, NSMP, U,
      $                   LDU, Y, LDY, R, LDR, IWORK, DWORK, LDWORK,
      $                   IWARN, INFO )
@@ -12,13 +15,13 @@ C     ARGUMENTS
 C
 C     Mode Parameters
 C
-C     METH    CHARACTER*1
+C     METH    (input) CHARACTER*1
 C             Specifies the subspace identification method to be used,
 C             as follows:
 C             = 'M':  MOESP  algorithm with past inputs and outputs;
 C             = 'N':  N4SID  algorithm.
 C
-C     ALG     CHARACTER*1
+C     ALG     (input) CHARACTER*1
 C             Specifies the algorithm for computing the triangular
 C             factor R, as follows:
 C             = 'C':  Cholesky algorithm applied to the correlation
@@ -27,7 +30,7 @@ C             = 'F':  Fast QR algorithm;
 C             = 'Q':  QR algorithm applied to the concatenated block
 C                     Hankel matrices.
 C
-C     BATCH   CHARACTER*1
+C     BATCH   (input) CHARACTER*1
 C             Specifies whether or not sequential data processing is to
 C             be used, and, for sequential processing, whether or not
 C             the current data block is the first block, an intermediate
@@ -41,7 +44,7 @@ C             NOTE that when  100  cycles of sequential data processing
 C                  are completed for  BATCH = 'I',  a warning is
 C                  issued, to prevent for an infinite loop.
 C
-C     CONCT   CHARACTER*1
+C     CONCT   (input) CHARACTER*1
 C             Specifies whether or not the successive data blocks in
 C             sequential data processing belong to a single experiment,
 C             as follows:
@@ -90,7 +93,7 @@ C             NSMP  values of the j-th input component for consecutive
 C             time increments.
 C             If M = 0, this array is not referenced.
 C
-C     LDU     INTEGER
+C     LDU     (input) INTEGER
 C             The leading dimension of the array U.
 C             LDU >= NSMP, if M > 0;
 C             LDU >= 1,    if M = 0.
@@ -102,10 +105,10 @@ C             Y = [y_1 y_2 ... y_l].  Column  j  of  Y  contains the
 C             NSMP  values of the j-th output component for consecutive
 C             time increments.
 C
-C     LDY     INTEGER
+C     LDY     (input) INTEGER
 C             The leading dimension of the array Y.  LDY >= NSMP.
 C
-C     R       (output or input/output) DOUBLE PRECISION array, dimension
+C     R       (input/output) DOUBLE PRECISION array, dimension
 C             ( LDR,2*(M+L)*NOBR )
 C             On exit, if INFO = 0 and ALG = 'Q', or (ALG = 'C' or 'F',
 C             and BATCH = 'L' or 'O'), the leading
@@ -127,13 +130,13 @@ C             triangular matrix R computed at the previous call of this
 C             routine in sequential data processing. The array R need
 C             not be set on entry if ALG = 'F' or if BATCH = 'F' or 'O'.
 C
-C     LDR     INTEGER
+C     LDR     (input) INTEGER
 C             The leading dimension of the array  R.
 C             LDR >= 2*(M+L)*NOBR.
 C
 C     Workspace
 C
-C     IWORK   INTEGER array, dimension (LIWORK)
+C     IWORK   (input/output) INTEGER array, dimension (LIWORK)
 C             LIWORK >= MAX(3,M+L), if ALG = 'F';
 C             LIWORK >= 3,          if ALG = 'C' or 'Q'.
 C             On entry with  BATCH = 'I'  or  BATCH = 'L',  IWORK(1:3)
@@ -149,7 +152,7 @@ C             The first three elements of  IWORK  should be preserved
 C             during successive calls of the routine with  BATCH = 'F'
 C             or  BATCH = 'I',  till the final call with   BATCH = 'L'.
 C
-C     DWORK   DOUBLE PRECISION array, dimension (LDWORK)
+C     DWORK   (input/output) DOUBLE PRECISION array, dimension (LDWORK)
 C             On exit, if  INFO = 0,  DWORK(1)  returns the optimal
 C             value of LDWORK.
 C             On exit, if  INFO = -17,  DWORK(1)  returns the minimum
@@ -163,7 +166,7 @@ C             The first (M+L)*k elements of  DWORK  should be preserved
 C             during successive calls of the routine with  BATCH = 'F'
 C             or  'I',  till the final call with  BATCH = 'L'.
 C
-C     LDWORK  INTEGER
+C     LDWORK  (input) INTEGER
 C             The length of the array DWORK.
 C             LDWORK >= (4*NOBR-2)*(M+L), if ALG = 'C', BATCH <> 'O' and
 C                                     CONCT = 'C';
@@ -197,7 +200,7 @@ C             is issued by XERBLA.
 C
 C     Warning Indicator
 C
-C     IWARN   INTEGER
+C     IWARN   (output) INTEGER
 C             = 0:  no warning;
 C             = 1:  the number of 100 cycles in sequential data
 C                   processing has been exhausted without signaling
@@ -209,7 +212,7 @@ C                   (non-sequential data processing).
 C
 C     Error Indicator
 C
-C     INFO    INTEGER
+C     INFO    (output) INTEGER
 C             = 0:  successful exit;
 C             < 0:  if INFO = -i, the i-th argument had an illegal
 C                   value;
@@ -311,7 +314,7 @@ C     much workspace as possible. Almost optimal efficiency can be
 C     obtained for  LDWORK = (NS+2)*(2*(M+L)*NOBR),  assuming that the
 C     cache size is large enough to accommodate R, U, Y, and DWORK.
 C
-C     CONTRIBUTOR
+C     CONTRIBUTORS
 C
 C     V. Sima, Research Institute for Informatics, Bucharest, Aug. 1999.
 C
